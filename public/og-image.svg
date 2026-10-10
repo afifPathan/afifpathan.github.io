@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#07090e"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow1" cx="30%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Architectural Monogram -->
+  <rect x="80" y="80" width="70" height="70" rx="16" fill="#0d111a" stroke="#38bdf8" stroke-width="2"/>
+  <text x="98" y="126" font-family="-apple-system, system-ui, sans-serif" font-size="28" font-weight="bold" fill="#38bdf8">AP</text>
+  
+  <text x="170" y="112" font-family="-apple-system, system-ui, sans-serif" font-size="16" font-weight="600" fill="#94a3b8" letter-spacing="2">SENIOR MOBILE ARCHITECT · FLUTTER LEAD</text>
+  <text x="170" y="136" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#64748b">8+ YEARS IN PRODUCTION · AHMEDABAD, INDIA</text>
+
+  <!-- Title -->
+  <text x="80" y="270" font-family="-apple-system, system-ui, sans-serif" font-size="64" font-weight="800" fill="#ffffff" letter-spacing="-1">
+    Afif Pathan
+  </text>
+  <text x="80" y="340" font-family="-apple-system, system-ui, sans-serif" font-size="44" font-weight="700" fill="#38bdf8">
+    Mobile Architecture &amp; System Engineering
+  </text>
+
+  <!-- Subtitle -->
+  <text x="80" y="410" font-family="-apple-system, system-ui, sans-serif" font-size="22" fill="#cbd5e1">
+    Clean Architecture · BLoC/Cubit · Algorithmic Trading Bots · Real-Time Telemetry · AI Systems
+  </text>
+
+  <!-- Tags -->
+  <g transform="translate(80, 480)">
+    <rect x="0" y="0" width="130" height="42" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.1)"/>
+    <text x="24" y="26" font-family="monospace" font-size="15" fill="#38bdf8">Flutter / Dart</text>
+
+    <rect x="145" y="0" width="180" height="42" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.1)"/>
+    <text x="165" y="26" font-family="monospace" font-size="15" fill="#818cf8">Clean Architecture</text>
+
+    <rect x="340" y="0" width="170" height="42" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.1)"/>
+    <text x="360" y="26" font-family="monospace" font-size="15" fill="#34d399">React 18 / Vite</text>
+
+    <rect x="525" y="0" width="160" height="42" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.1)"/>
+    <text x="545" y="26" font-family="monospace" font-size="15" fill="#a78bfa">Python Daemons</text>
+
+    <rect x="700" y="0" width="140" height="42" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.1)"/>
+    <text x="720" y="26" font-family="monospace" font-size="15" fill="#38bdf8">Firebase Core</text>
+  </g>
+
+  <!-- URL -->
+  <text x="80" y="580" font-family="monospace" font-size="16" fill="#64748b">https://afifpathan.github.io</text>
+</svg>
