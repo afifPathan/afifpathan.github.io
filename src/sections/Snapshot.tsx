@@ -33,8 +33,8 @@ const SNAPSHOT_PILLARS = [
     icon: GitBranch,
     title: 'Full-Stack & Systems Automation',
     description:
-      'Building real-time observability SPAs (React 18, Vite, WebSocket), automated Python algorithmic trading daemons with risk circuit breakers, and Gemini AI data workflows.',
-    tags: ['React 18', 'TypeScript', 'Python', 'Angel One SmartAPI', 'Gemini AI'],
+      'Building real-time observability SPAs (React 18, Vite, WebSocket), automated Python & FastAPI algorithmic trading daemons with risk circuit breakers, and Gemini, OpenAI & Claude AI data workflows.',
+    tags: ['FastAPI', 'Python', 'Angel One SmartAPI', 'Gemini AI', 'OpenAI APIs', 'React 18'],
   },
   {
     icon: Code2,
@@ -137,10 +137,10 @@ export const Snapshot: React.FC = () => {
               I am a <strong className="text-slate-900 dark:text-white">Senior Mobile Architect and Flutter Tech Lead</strong> with <strong className="text-slate-900 dark:text-white">8+ years of total software engineering excellence</strong>, including <strong className="text-slate-900 dark:text-white">6+ years architecting enterprise cross-platform mobile systems</strong> and delivering <strong className="text-slate-900 dark:text-white">25+ production platforms</strong>.
             </p>
             <p>
-              Throughout my career at companies like <strong>Degreed</strong>, <strong>Roadzen</strong>, <strong>Buyzaar</strong>, and <strong>Webclues Infotech</strong>, I have established Clean Architecture standards, managed mission-critical Google Play and Apple App Store releases, and spearheaded engineering teams across India and the United States.
+              Throughout my career at enterprise and high-growth organizations like <strong>Degreed</strong> (Bangalore), <strong>Rana Dev</strong> (Washington, USA), <strong>Roadzen / MVPEX</strong>, <strong>Buyzaar</strong>, <strong>Webclues Infotech</strong>, <strong>Ashutec Solutions</strong>, and <strong>SMG Info Solutions</strong>, I have established Clean Architecture standards, managed mission-critical Google Play and Apple App Store releases, and spearheaded distributed engineering teams across India and the United States.
             </p>
             <p>
-              Beyond mobile, I engineer automated <strong>Python algorithmic trading daemons</strong> interfacing with <strong>Angel One SmartAPI</strong>, real-time WebSocket telemetry dashboards on React 18, and multimodal <strong>Gemini AI data automation</strong>.
+              Beyond mobile, I engineer automated <strong>Python &amp; FastAPI algorithmic trading daemons</strong> interfacing with <strong>Angel One SmartAPI</strong>, real-time WebSocket telemetry dashboards on React 18, and production-grade <strong>Gemini, OpenAI, Claude, and LLM automation workflows</strong>.
             </p>
           </div>
         </div>

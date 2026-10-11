@@ -15,7 +15,7 @@ export const PERSONAL_INFO = {
   productionPlatforms: '25+',
   photo: '/profile.jpg',
   summary:
-    'Senior Mobile Architect and Flutter specialist with 8+ years of software engineering excellence, including 6+ years delivering production-grade cross-platform platforms and 25+ production systems. Proven track record architecting scalable solutions across e-commerce, EdTech, healthcare, commercial facilities, insurance, hardware IoT, and algorithmic trading. Expertise in Clean Architecture, SOLID principles, BLoC/Cubit & Riverpod, WebRTC audio/video teleconsultation, real-time WebSocket telemetry, background GPS geofencing, POS hardware integration (RFID/thermal printing), offline-first SQLite/Hive caching, Python algorithmic daemons, and Gemini AI workflows.',
+    '8+ years of software engineering excellence, including 6+ years architecting production-grade cross-platform platforms and 25+ production systems. Specializing in enterprise Clean Architecture & SOLID, deterministic BLoC/Cubit & Riverpod state machines, real-time WebSocket telemetry & WebRTC teleconsultation, offline-first SQLite/Hive engines, Python algorithmic trading daemons (FastAPI & Angel One SmartAPI), and Gemini & OpenAI automation across EdTech, e-commerce, healthcare, and algorithmic fintech.',
   languages: ['English', 'Hindi', 'Gujarati', 'Urdu'],
   award: {
     title: 'Rising Star Award (2020)',
@@ -759,9 +759,10 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     name: 'AI & Full-Stack Systems',
     description: 'Modern AI-driven workflows, trading bots, and web telemetry',
     skills: [
-      { name: 'Gemini & OpenAI APIs', level: 'AI Integration', context: 'Automated content pipelines, LLM-assisted data generation' },
+      { name: 'Gemini, OpenAI & Claude', level: 'AI Integration', context: 'Prompt engineering, content pipelines, LLM-assisted data generation' },
+      { name: 'AI-Assisted Workflows', level: 'Daily Practice', context: 'Cursor, GitHub Copilot, synthetic test generation & rapid prototyping' },
+      { name: 'FastAPI & Python Daemons', level: 'Backend Microservices', context: 'Sub-second REST APIs, Angel One SmartAPI, risk circuit breakers' },
       { name: 'React 18 & TypeScript', level: 'Modern Frontend', context: 'Strict types, TanStack Query, Vite, Recharts, WebSocket SPAs' },
-      { name: 'Python Systems & Trading', level: 'High-Frequency Bot', context: 'Angel One SmartAPI, broker reconciliation, EMA/VWAP signals' },
       { name: 'systemd & Linux', level: 'Production Operations', context: 'Ubuntu daemon packaging, market-hours scheduling, monitoring' },
     ],
   },

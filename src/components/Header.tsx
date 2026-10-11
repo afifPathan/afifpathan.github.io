@@ -9,18 +9,17 @@ interface HeaderProps {
 }
 
 const NAV_ITEMS = [
-  { id: 'snapshot', label: 'Overview' },
+  { id: 'snapshot', label: 'About' },
   { id: 'philosophy', label: 'Architecture' },
-  { id: 'projects', label: 'Projects (25+)' },
-  { id: 'experience', label: 'Track Record' },
-  { id: 'skills', label: 'Technical Arsenal' },
+  { id: 'projects', label: 'Work (25+)' },
+  { id: 'experience', label: 'Journey' },
+  { id: 'skills', label: 'Toolkit' },
   { id: 'leadership', label: 'Leadership' },
   { id: 'contact', label: 'Contact' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const activeSection = useScrollSpy(
     NAV_ITEMS.map((item) => item.id),
@@ -29,8 +28,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      setScrolledPastHero(window.scrollY > 240);
+      setScrolledPastHero(window.scrollY > 280);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
@@ -39,22 +37,18 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
 
   return (
     <>
+      {/* Accessible Skip Link - completely off-screen unless focused via keyboard */}
       <a href="#main-content" className="skip-to-content">
         Skip to main content
       </a>
 
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#f4f1e8]/90 dark:bg-[#07090e]/85 backdrop-blur-xl border-b border-slate-300/80 dark:border-white/10 py-2.5 shadow-xs'
-            : 'bg-transparent py-4'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Scroll-Responsive Brand: Minimal Monogram at Top -> Docked Photo & Name on Scroll */}
+      {/* Floating Centered Pill Header (exact yaseenmuhammed.com look) */}
+      <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 pointer-events-none px-3 sm:px-4 flex justify-center">
+        <div className="pill-nav pointer-events-auto flex items-center justify-between gap-2 sm:gap-3 px-3 py-1.5 sm:py-2 rounded-full border border-slate-300/80 dark:border-white/10 bg-[#fcfaf4]/92 dark:bg-[#0d111a]/92 backdrop-blur-xl shadow-lg max-w-5xl transition-all duration-300">
+          {/* Identity Monogram / Scrolled Avatar */}
           <a
             href="#hero"
-            className="group flex items-center gap-2.5"
+            className="group flex items-center gap-2 pl-1 pr-1.5 py-0.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors shrink-0"
             aria-label="Afif Pathan - Back to top"
           >
             <AnimatePresence mode="wait">
@@ -63,30 +57,27 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
                   key="top-monogram"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.15 } }}
-                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.2 }}
                   className="flex items-center gap-2"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-cyan-500/30 flex items-center justify-center font-mono font-bold text-slate-900 dark:text-cyan-400 text-xs shadow-xs group-hover:border-blue-500 dark:group-hover:border-cyan-400 group-hover:text-blue-600 transition-colors">
-                    <span>AP</span>
+                  <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center font-mono font-bold text-[11px] shadow-xs">
+                    AP
                   </div>
-                  <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-slate-400 dark:text-slate-500">
-                    <span>/</span>
-                    <span className="group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
-                      portfolio
-                    </span>
-                  </div>
+                  <span className="text-xs font-bold text-slate-900 dark:text-white hidden sm:inline tracking-tight">
+                    Afif
+                  </span>
                 </motion.div>
               ) : (
                 <motion.div
                   key="scrolled-identity"
-                  initial={{ opacity: 0, x: -16, scale: 0.92 }}
+                  initial={{ opacity: 0, x: -10, scale: 0.92 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -16, scale: 0.92, transition: { duration: 0.15 } }}
-                  transition={{ type: 'spring', stiffness: 380, damping: 26 }}
-                  className="flex items-center gap-2.5"
+                  exit={{ opacity: 0, x: -10, scale: 0.92 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-2"
                 >
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-blue-600 dark:border-cyan-400 shadow-md shrink-0">
+                  <div className="relative w-7 h-7 rounded-full overflow-hidden border border-slate-400 dark:border-cyan-400 shrink-0">
                     <img
                       src="/profile.jpg"
                       alt="Afif Pathan"
@@ -95,11 +86,11 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
                     <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border border-white dark:border-slate-900" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-cyan-300 transition-colors">
+                    <span className="text-xs font-bold text-slate-900 dark:text-white leading-none">
                       Afif Pathan
                     </span>
-                    <span className="text-[10px] text-blue-600 dark:text-cyan-400 font-mono hidden sm:inline leading-tight font-medium">
-                      Senior Mobile Architect
+                    <span className="text-[9px] text-blue-600 dark:text-cyan-400 font-mono hidden md:inline leading-tight">
+                      Architect
                     </span>
                   </div>
                 </motion.div>
@@ -107,10 +98,10 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
             </AnimatePresence>
           </a>
 
-          {/* Desktop Navigation Pill */}
+          {/* Desktop Navigation Links */}
           <nav
             aria-label="Primary navigation"
-            className="hidden lg:flex items-center gap-1 bg-white/90 dark:bg-slate-900/60 p-1 rounded-full border border-slate-200 dark:border-white/10 backdrop-blur-md shadow-sm"
+            className="hidden md:flex items-center gap-1 px-1"
           >
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
@@ -118,10 +109,10 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all duration-200 ${
+                  className={`px-3 py-1 rounded-full text-xs font-mono transition-all duration-200 ${
                     isActive
-                      ? 'bg-blue-50 dark:bg-cyan-500/20 text-blue-700 dark:text-cyan-300 font-semibold border border-blue-200 dark:border-cyan-500/40 shadow-sm'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
+                      ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-bold shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                   }`}
                 >
                   {item.label}
@@ -131,33 +122,34 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
           </nav>
 
           {/* Header Right Actions */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 shrink-0">
             {/* Theme Toggle */}
             <button
               onClick={onToggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              className="p-2 rounded-lg bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-white/20 transition-colors shadow-sm"
+              className="p-1.5 sm:p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-colors"
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-600" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-800" />}
             </button>
 
-            {/* Resume Download Button */}
+            {/* Resume Button */}
             <a
               href="/resume.pdf"
               download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-800 dark:text-slate-200 bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-500/30 transition-all duration-200 shadow-sm"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-medium text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white transition-all shadow-2xs"
             >
-              <Download className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
-              <span>Resume PDF</span>
+              <Download className="w-3 h-3 text-blue-600 dark:text-cyan-400" />
+              <span className="hidden sm:inline">Résumé</span>
+              <span>↓</span>
             </a>
 
-            {/* Quick Contact CTA */}
+            {/* Contact CTA */}
             <a
               href="#contact"
-              className="hidden md:inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:text-[#07090e] dark:bg-cyan-400 dark:hover:bg-cyan-300 transition-colors shadow-sm shadow-blue-600/20 dark:shadow-cyan-400/20"
+              className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-white bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 transition-colors shadow-2xs"
             >
-              <span>Get in Touch</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>Contact</span>
+              <ArrowUpRight className="w-3 h-3" />
             </a>
 
             {/* Mobile Menu Trigger */}
@@ -165,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
-              className="lg:hidden p-2 rounded-lg bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-sm"
+              className="md:hidden p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-slate-800 dark:text-slate-200"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -180,18 +172,30 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-0 top-16 z-40 bg-white/95 dark:bg-[#07090e]/95 backdrop-blur-xl border-b border-slate-200 dark:border-white/10 p-6 lg:hidden shadow-2xl"
+            className="fixed inset-x-3 top-16 z-50 bg-[#fcfaf4]/98 dark:bg-[#0d111a]/98 backdrop-blur-2xl border border-slate-300 dark:border-white/10 rounded-3xl p-6 md:hidden shadow-2xl"
           >
-            <nav className="flex flex-col gap-2">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-white/10">
+              <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">
+                Navigation
+              </span>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1 rounded-full text-slate-500 hover:text-slate-900 dark:hover:text-white"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-1.5">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-mono transition-colors ${
+                  className={`px-4 py-2.5 rounded-xl text-sm font-mono transition-colors ${
                     activeSection === item.id
-                      ? 'bg-blue-50 dark:bg-cyan-500/20 text-blue-700 dark:text-cyan-300 font-semibold border border-blue-200 dark:border-cyan-500/30'
-                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5'
+                      ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-bold'
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5'
                   }`}
                 >
                   {item.label}
@@ -204,15 +208,15 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
                 href="/resume.pdf"
                 download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-mono text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-mono text-slate-800 dark:text-slate-200 bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10"
               >
                 <Download className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
-                <span>Download Verified Resume PDF</span>
+                <span>Download Verified Résumé PDF</span>
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-mono font-semibold text-white bg-blue-600 dark:text-[#07090e] dark:bg-cyan-400"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-mono font-bold text-white bg-slate-900 dark:text-slate-950 dark:bg-white"
               >
                 <span>Initiate Contact</span>
                 <ArrowUpRight className="w-4 h-4" />

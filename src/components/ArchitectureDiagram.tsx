@@ -102,6 +102,7 @@ const LAYERS: LayerInfo[] = [
     bgGradient: 'from-purple-950/30 to-pink-950/20',
     components: [
       'Firebase (Firestore, Storage, Cloud Functions)',
+      'FastAPI Microservices & Python Daemons',
       'Angel One SmartAPI & NSE Feeds',
       'SQLite & Hive (Offline-First Storage)',
       'REST & GraphQL Client Adapters',

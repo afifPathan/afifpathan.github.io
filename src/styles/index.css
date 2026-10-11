@@ -59,6 +59,28 @@ em {
   letter-spacing: -0.01em;
 }
 
+/* Accessible Skip Link */
+.skip-to-content {
+  position: fixed;
+  top: -120px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1.2rem;
+  background: #10172a;
+  color: #f8fafc;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  top: 1rem;
+  outline: 2px solid #0284c7;
+}
+
 /* Reference Navigation Pill */
 .pill-nav {
   -webkit-backdrop-filter: blur(14px);
@@ -218,6 +240,51 @@ html.dark .mini-phone {
 
 .mini-phone:hover {
   transform: rotate(0deg) scale(1.04);
+}
+
+/* Mini Browser Mockup for Web / Dashboard Projects */
+.mini-browser {
+  background: #ffffff;
+  border: 3px solid #1e293b;
+  border-radius: 14px;
+  width: 210px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 8px 0px rgba(30, 41, 59, 0.25), 12px 18px 24px rgba(16, 23, 42, 0.12);
+  transform: rotate(3deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+html.dark .mini-browser {
+  background: #090d16;
+  border-color: #334155;
+  box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 24px rgba(0, 0, 0, 0.4);
+}
+
+.mini-browser:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* Mini SDK / Hardware Terminal Mockup */
+.mini-sdk {
+  background: #090d16;
+  border: 3px solid #1e293b;
+  border-radius: 14px;
+  width: 195px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 8px 0px rgba(30, 41, 59, 0.25), 12px 18px 24px rgba(16, 23, 42, 0.12);
+  transform: rotate(-3deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+html.dark .mini-sdk {
+  border-color: #334155;
+  box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 24px rgba(0, 0, 0, 0.4);
+}
+
+.mini-sdk:hover {
+  transform: rotate(0deg) scale(1.03);
 }
 
 .phone-speaker {
