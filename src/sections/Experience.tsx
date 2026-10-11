@@ -16,27 +16,27 @@ export const Experience: React.FC = () => {
     <section
       id="experience"
       aria-label="Professional Experience Timeline"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
     >
-      {/* Section Marker */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-widest font-semibold">
-          04 — Professional Track Record
-        </span>
-        <div className="h-px bg-blue-500/20 dark:bg-cyan-500/20 flex-1 max-w-[120px]" />
+      {/* Signature Section Marker from Reference */}
+      <div className="section-marker">
+        <span>05 — THE JOURNEY · CAREER TIMELINE</span>
+        <span>CONTINUOUS PRODUCTION DELIVERY SINCE 2017</span>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-2">
-          Career Trajectory.<br />
-          <span className="text-slate-500 dark:text-slate-400 font-light">From native Android to Mobile Architect.</span>
+        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2">
+          Where I've engineered<br />
+          <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+            lasting impact.
+          </em>
         </h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
           8+ years of engineering leadership across high-growth startups and global enterprise platforms in India and the United States.
         </p>
       </div>
 
-      {/* Timeline Container */}
+      {/* Timeline Container with draw track */}
       <div className="relative pl-6 sm:pl-8 border-l border-slate-300 dark:border-white/10 space-y-12">
         {EXPERIENCES.map((exp, idx) => (
           <motion.article
@@ -49,9 +49,9 @@ export const Experience: React.FC = () => {
             className="relative group"
           >
             {/* Timeline Node Indicator */}
-            <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-[#07090e] border-2 border-blue-600 dark:border-cyan-400 group-hover:bg-blue-600 dark:group-hover:bg-cyan-400 transition-colors shadow-sm" />
+            <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-[#07090e] border-2 border-blue-600 dark:border-cyan-400 group-hover:bg-blue-600 dark:group-hover:bg-cyan-400 transition-colors shadow-xs" />
 
-            <div className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-900/60 shadow-sm">
+            <div className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-900/60 shadow-xs">
               {/* Header Bar */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
                 <div>
@@ -121,7 +121,7 @@ export const Experience: React.FC = () => {
                       href={exp.links.repo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white bg-white dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10 transition-colors shadow-sm"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white bg-white dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10 transition-colors shadow-xs"
                     >
                       <Github className="w-3.5 h-3.5" />
                       <span>Code Repo</span>
@@ -132,7 +132,7 @@ export const Experience: React.FC = () => {
                       href={exp.links.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-blue-700 dark:text-cyan-300 hover:text-blue-900 dark:hover:text-white bg-blue-50 dark:bg-cyan-500/10 px-2.5 py-1 rounded border border-blue-200 dark:border-cyan-500/20 transition-colors shadow-sm"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-blue-700 dark:text-cyan-300 hover:text-blue-900 dark:hover:text-white bg-blue-50 dark:bg-cyan-500/10 px-2.5 py-1 rounded border border-blue-200 dark:border-cyan-500/20 transition-colors shadow-xs"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>Live App</span>
@@ -143,7 +143,7 @@ export const Experience: React.FC = () => {
                       href={exp.links.playStore}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-white bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-200 dark:border-emerald-500/20 transition-colors shadow-sm"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-white bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-200 dark:border-emerald-500/20 transition-colors shadow-xs"
                     >
                       <Play className="w-3.5 h-3.5" />
                       <span>Play Store</span>
@@ -154,7 +154,7 @@ export const Experience: React.FC = () => {
                       href={exp.links.appStore}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white bg-white dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10 transition-colors shadow-sm"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white bg-white dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10 transition-colors shadow-xs"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>App Store</span>
@@ -165,7 +165,7 @@ export const Experience: React.FC = () => {
                       href={exp.links.package}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 dark:hover:text-white bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1 rounded border border-indigo-200 dark:border-indigo-500/20 transition-colors shadow-sm"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 dark:hover:text-white bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1 rounded border border-indigo-200 dark:border-indigo-500/20 transition-colors shadow-xs"
                     >
                       <Package className="w-3.5 h-3.5" />
                       <span>rz_camera pub.dev</span>
@@ -176,21 +176,6 @@ export const Experience: React.FC = () => {
             </div>
           </motion.article>
         ))}
-      </div>
-
-      {/* Additional Exposure Footer from CV */}
-      <div className="mt-12 p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
-        <div>
-          <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-wider font-semibold">
-            Broad Domain Exposure
-          </span>
-          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mt-1">
-            Web3 &amp; fintech integrations, healthcare systems, automated AI search and content pipelines.
-          </p>
-        </div>
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
-          <span>Continuous production delivery since 2017</span>
-        </div>
       </div>
     </section>
   );

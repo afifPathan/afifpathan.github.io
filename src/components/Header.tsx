@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/85 dark:bg-[#07090e]/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 py-2.5 shadow-sm'
+            ? 'bg-[#f4f1e8]/90 dark:bg-[#07090e]/85 backdrop-blur-xl border-b border-slate-300/80 dark:border-white/10 py-2.5 shadow-xs'
             : 'bg-transparent py-4'
         }`}
       >

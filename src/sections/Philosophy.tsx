@@ -12,23 +12,24 @@ export const Philosophy: React.FC = () => {
     <section
       id="philosophy"
       aria-label="Architecture and Engineering Philosophy"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
     >
-      {/* Section Marker */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-widest font-semibold">
-          02 — Architecture &amp; System Philosophy
-        </span>
-        <div className="h-px bg-blue-500/20 dark:bg-cyan-500/20 flex-1 max-w-[120px]" />
+      {/* Signature Section Marker from Reference */}
+      <div className="section-marker">
+        <span>03 — ARCHITECTURAL PHILOSOPHY · HOW I BUILD</span>
+        <span>ARCHITECTURE &amp; SYSTEM PHILOSOPHY</span>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-4">
-          Architectural Blueprints.<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-sky-600 to-indigo-700 dark:from-cyan-400 dark:to-indigo-400">
-            Systems designed to scale under stress.
-          </span>
+        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-4">
+          Engineering Principles &amp;<br />
+          <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+            System Boundaries.
+          </em>
         </h2>
+        <div className="text-sm font-mono text-blue-700 dark:text-cyan-400 font-semibold mb-2">
+          Enterprise Clean Architecture &amp; System Boundary Model
+        </div>
         <p className="text-slate-700 dark:text-slate-300 max-w-3xl text-sm sm:text-base leading-relaxed">
           Robust mobile engineering is not about assembling widgets; it is about establishing strict architectural boundaries, deterministic reactive data flow, and resilient fail-safes that guarantee continuity across offline edge conditions and market volatility.
         </p>
@@ -40,7 +41,7 @@ export const Philosophy: React.FC = () => {
       </div>
 
       {/* Architectural Principles & Code Snippets Explorer */}
-      <div className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-slate-900/60 shadow-sm">
+      <div className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-slate-900/60 shadow-xs">
         <div className="flex items-center gap-2 text-xs font-mono text-indigo-700 dark:text-indigo-400 mb-6 uppercase tracking-wider font-semibold">
           <Terminal className="w-4 h-4" />
           <span>Core Engineering Principles &amp; Verified Implementations</span>
@@ -56,7 +57,7 @@ export const Philosophy: React.FC = () => {
                 onClick={() => setSelectedPrincipleIndex(idx)}
                 className={`p-4 rounded-xl text-left transition-all duration-200 border flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-blue-50 dark:bg-cyan-500/10 border-blue-400 dark:border-cyan-500/40 shadow-sm'
+                    ? 'bg-blue-50 dark:bg-cyan-500/10 border-blue-400 dark:border-cyan-500/40 shadow-xs'
                     : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20'
                 }`}
               >
@@ -105,7 +106,7 @@ export const Philosophy: React.FC = () => {
             </div>
 
             {/* Code Snippet Column */}
-            <div className="lg:col-span-7 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#090d16] shadow-sm transition-colors">
+            <div className="lg:col-span-7 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#090d16] shadow-xs transition-colors">
               <div className="bg-slate-100/90 dark:bg-[#0f1422] px-4 py-2.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
                   <Code className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />

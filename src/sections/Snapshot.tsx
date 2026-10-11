@@ -6,6 +6,11 @@ import {
   Workflow,
   Layers,
   Award,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  ArrowUpRight,
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -45,44 +50,116 @@ export const Snapshot: React.FC = () => {
     <section
       id="snapshot"
       aria-label="Engineering Profile and Summary"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
     >
-      {/* Section Marker */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-widest font-semibold">
-          01 — Engineering Snapshot
-        </span>
-        <div className="h-px bg-blue-500/20 dark:bg-cyan-500/20 flex-1 max-w-[120px]" />
+      {/* Signature Section Marker from Reference */}
+      <div className="section-marker">
+        <span>01 — THE ARCHITECT · A LITTLE CONTEXT</span>
+        <span>SENIOR MOBILE ARCHITECT &amp; FLUTTER LEAD</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-12">
-        <div className="lg:col-span-6">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-            Production Track Record.<br />
-            <span className="text-slate-500 dark:text-slate-400 font-light">Architected for longevity.</span>
+      {/* Editorial Split: Hi, I'm Afif + Action Links on Left, Story + Quote on Right */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        {/* Left Side: Large Name & Vertical Quick Links */}
+        <div className="lg:col-span-5 space-y-6">
+          <h2 className="text-5xl sm:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[0.95]">
+            Hi, I'm<br />
+            <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+              Afif.
+            </em>
           </h2>
-        </div>
-        <div className="lg:col-span-6">
-          <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-            {PERSONAL_INFO.summary}
+
+          <p className="text-sm font-mono text-slate-500 dark:text-slate-400">
+            Senior Mobile Architect · Flutter Lead · Ahmedabad, India
           </p>
+
+          {/* Quick Action Link Pills */}
+          <div className="flex flex-wrap lg:flex-col gap-2 pt-2">
+            <a
+              href="/resume.pdf"
+              download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
+              className="inline-flex items-center justify-between gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white text-xs font-mono font-medium text-slate-800 dark:text-slate-200 shadow-2xs transition-all w-fit"
+            >
+              <span className="flex items-center gap-2">
+                <Download className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
+                <span>Download Résumé</span>
+              </span>
+              <span>↓</span>
+            </a>
+
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-between gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white text-xs font-mono font-medium text-slate-800 dark:text-slate-200 shadow-2xs transition-all w-fit"
+            >
+              <span className="flex items-center gap-2">
+                <Github className="w-3.5 h-3.5 text-slate-700 dark:text-slate-300" />
+                <span>GitHub Profile</span>
+              </span>
+              <ArrowUpRight className="w-3 h-3 text-slate-400" />
+            </a>
+
+            <a
+              href={PERSONAL_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-between gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white text-xs font-mono font-medium text-slate-800 dark:text-slate-200 shadow-2xs transition-all w-fit"
+            >
+              <span className="flex items-center gap-2">
+                <Linkedin className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
+                <span>LinkedIn Network</span>
+              </span>
+              <ArrowUpRight className="w-3 h-3 text-slate-400" />
+            </a>
+
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="inline-flex items-center justify-between gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white text-xs font-mono font-medium text-slate-800 dark:text-slate-200 shadow-2xs transition-all w-fit"
+            >
+              <span className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-slate-600 dark:text-slate-300" />
+                <span>Email Directly</span>
+              </span>
+              <ArrowUpRight className="w-3 h-3 text-slate-400" />
+            </a>
+          </div>
+        </div>
+
+        {/* Right Side: Editorial Pull Quote & Deep Narrative */}
+        <div className="lg:col-span-7 space-y-6">
+          <blockquote className="p-6 rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border-l-4 border-amber-600 dark:border-amber-400 text-lg sm:text-xl font-serif italic text-slate-900 dark:text-slate-100 leading-snug">
+            "Architecture isn't just about writing code that works today. It's about engineering resilient state machines, strict domain boundaries, and zero-leak pipelines so teams can scale without regressions."
+          </blockquote>
+
+          <div className="space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              I am a <strong className="text-slate-900 dark:text-white">Senior Mobile Architect and Flutter Tech Lead</strong> with <strong className="text-slate-900 dark:text-white">8+ years of total software engineering excellence</strong>, including <strong className="text-slate-900 dark:text-white">6+ years architecting enterprise cross-platform mobile systems</strong> and delivering <strong className="text-slate-900 dark:text-white">25+ production platforms</strong>.
+            </p>
+            <p>
+              Throughout my career at companies like <strong>Degreed</strong>, <strong>Roadzen</strong>, <strong>Buyzaar</strong>, and <strong>Webclues Infotech</strong>, I have established Clean Architecture standards, managed mission-critical Google Play and Apple App Store releases, and spearheaded engineering teams across India and the United States.
+            </p>
+            <p>
+              Beyond mobile, I engineer automated <strong>Python algorithmic trading daemons</strong> interfacing with <strong>Angel One SmartAPI</strong>, real-time WebSocket telemetry dashboards on React 18, and multimodal <strong>Gemini AI data automation</strong>.
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Verified Metrics Counter Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.4, delay: 0.05 }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-cyan-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
-          <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-cyan-400 font-mono mb-1">
+          <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono mb-1">
             {PERSONAL_INFO.yearsTotal}
           </div>
-          <div className="text-xs font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
+          <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
             Total Engineering Experience
           </div>
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
@@ -96,12 +173,12 @@ export const Snapshot: React.FC = () => {
           viewport={{ once: true }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-indigo-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
-          <div className="text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 font-mono mb-1">
+          <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-cyan-400 font-mono mb-1">
             {PERSONAL_INFO.yearsMobile}
           </div>
-          <div className="text-xs font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
+          <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
             Cross-Platform Focus
           </div>
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
@@ -115,12 +192,12 @@ export const Snapshot: React.FC = () => {
           viewport={{ once: true }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.4, delay: 0.15 }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-emerald-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono mb-1">
             {PERSONAL_INFO.productionPlatforms}
           </div>
-          <div className="text-xs font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
+          <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
             Production Systems Delivered
           </div>
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
@@ -134,12 +211,12 @@ export const Snapshot: React.FC = () => {
           viewport={{ once: true }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-purple-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
-          <div className="text-3xl sm:text-4xl font-extrabold text-purple-600 dark:text-purple-400 font-mono mb-1">
+          <div className="text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 font-mono mb-1">
             100%
           </div>
-          <div className="text-xs font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
+          <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
             Verified In CV
           </div>
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
@@ -148,7 +225,7 @@ export const Snapshot: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Pillars Grid */}
+      {/* Architectural Pillars Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {SNAPSHOT_PILLARS.map((pillar, idx) => {
           const IconComp = pillar.icon;
@@ -159,10 +236,10 @@ export const Snapshot: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-200 shadow-sm"
+              className="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-200 shadow-xs"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-slate-800/60 border border-blue-200 dark:border-white/10 flex items-center justify-center text-blue-600 dark:text-cyan-400">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400">
                   <IconComp className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900 dark:text-white">{pillar.title}</h3>
@@ -199,7 +276,7 @@ export const Snapshot: React.FC = () => {
             <p className="text-xs text-slate-700 dark:text-slate-300 mt-0.5">{PERSONAL_INFO.award.description}</p>
           </div>
         </div>
-        <span className="text-xs font-mono text-slate-600 dark:text-slate-400 px-3 py-1 rounded bg-white dark:bg-black/40 border border-slate-200 dark:border-white/5 self-start sm:self-auto shadow-sm">
+        <span className="text-xs font-mono text-slate-600 dark:text-slate-400 px-3 py-1 rounded bg-white dark:bg-black/40 border border-slate-200 dark:border-white/5 self-start sm:self-auto shadow-xs">
           Webclues Infotech (2020)
         </span>
       </div>

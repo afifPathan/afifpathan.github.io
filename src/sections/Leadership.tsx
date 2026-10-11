@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   Workflow,
 } from 'lucide-react';
+import { PERSONAL_INFO } from '../data/portfolioData';
 
 const LEADERSHIP_THEMES = [
   {
@@ -52,24 +53,75 @@ export const Leadership: React.FC = () => {
     <section
       id="leadership"
       aria-label="Technical Leadership and Standards"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
     >
-      {/* Section Marker */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-widest font-semibold">
-          06 — Technical Leadership &amp; Engineering Standards
-        </span>
-        <div className="h-px bg-blue-500/20 dark:bg-cyan-500/20 flex-1 max-w-[120px]" />
+      {/* Signature Section Marker from Reference */}
+      <div className="section-marker">
+        <span>06 — PROUD MOMENTS · SYSTEM METRICS</span>
+        <span>TECHNICAL LEADERSHIP &amp; ENGINEERING STANDARDS</span>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-2">
-          Technical Leadership.<br />
-          <span className="text-slate-500 dark:text-slate-400 font-light">Enforcing quality, repeatability, and resilience.</span>
+        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2">
+          Milestones that<br />
+          <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+            moved things forward.
+          </em>
         </h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
           A Senior Architect delivers more than individual features: they establish sustainable engineering practices, guardrails, and architectural integrity across the entire team.
         </p>
+      </div>
+
+      {/* Proud Moments Milestone Cards from Reference */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/60 shadow-xs">
+          <div className="text-3xl sm:text-5xl font-black font-mono text-slate-900 dark:text-white mb-2">
+            {PERSONAL_INFO.yearsTotal}
+          </div>
+          <div className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
+            Engineering Excellence
+          </div>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            From native Java on Android to Staff Cross-Platform Architect.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/60 shadow-xs">
+          <div className="text-3xl sm:text-5xl font-black font-mono text-blue-600 dark:text-cyan-400 mb-2">
+            {PERSONAL_INFO.productionPlatforms}
+          </div>
+          <div className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
+            Production Systems Built
+          </div>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            Delivered for global enterprise and high-growth startups.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/60 shadow-xs">
+          <div className="text-3xl sm:text-5xl font-black font-mono text-indigo-600 dark:text-indigo-400 mb-2">
+            {PERSONAL_INFO.yearsMobile}
+          </div>
+          <div className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
+            Flutter &amp; Cross-Platform
+          </div>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            Designing 60-120fps compiled mobile and web client platforms.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/60 shadow-xs">
+          <div className="text-3xl sm:text-5xl font-black font-mono text-emerald-600 dark:text-emerald-400 mb-2">
+            100%
+          </div>
+          <div className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
+            CV-Verified Proof
+          </div>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            Every metric backed by production deployments and real users.
+          </p>
+        </div>
       </div>
 
       {/* Leadership Themes Grid */}
@@ -83,10 +135,10 @@ export const Leadership: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-900/60 shadow-sm"
+              className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-900/60 shadow-xs"
             >
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-slate-800/80 border border-blue-200 dark:border-white/10 flex items-center justify-center text-blue-600 dark:text-cyan-400">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400">
                   <IconComp className="w-5 h-5" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{theme.title}</h3>

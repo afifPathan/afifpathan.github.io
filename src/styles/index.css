@@ -3,19 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --card-bg: rgba(255, 255, 255, 0.96);
-  --card-border: rgba(15, 23, 42, 0.08);
+  --bg-primary: #f4f1e8;
+  --bg-secondary: #fcfaf4;
+  --bg-tertiary: #ede8dc;
+  --color-cream: #f4f1e8;
+  --color-ink: #10172a;
+  --color-amber: #a96212;
+  --line: rgba(16, 23, 42, 0.08);
+  --card-bg: #fcfaf4;
+  --card-border: rgba(16, 23, 42, 0.09);
   --accent-cyan: #0284c7;
   --accent-electric: #0369a1;
   --accent-violet: #4f46e5;
   --accent-emerald: #16a34a;
-  --text-primary: #0f172a;
+  --text-primary: #10172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
@@ -23,7 +28,11 @@ html.dark {
   --bg-primary: #07090e;
   --bg-secondary: #0d111a;
   --bg-tertiary: #131926;
-  --card-bg: rgba(13, 17, 26, 0.85);
+  --color-cream: #07090e;
+  --color-ink: #f8fafc;
+  --color-amber: #f59e0b;
+  --line: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(13, 17, 26, 0.9);
   --card-border: rgba(255, 255, 255, 0.08);
   --accent-cyan: #38bdf8;
   --accent-electric: #0ea5e9;
@@ -42,58 +51,219 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Architectural Grid and Ambient Lighting */
-.bg-blueprint-grid {
-  background-size: 36px 36px;
-  background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+/* Editorial Serif Italic Styling from reference (yaseenmuhammed.com) */
+em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-html.dark .bg-blueprint-grid {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+/* Reference Navigation Pill */
+.pill-nav {
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  background: rgba(252, 250, 243, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 50px;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  display: flex;
+  box-shadow: 0 6px 25px rgba(16, 23, 42, 0.05);
 }
 
-.bg-radial-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.08), transparent 70%);
+html.dark .pill-nav {
+  background: rgba(13, 17, 26, 0.85);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
 }
 
-html.dark .bg-radial-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12), transparent 70%);
+/* Reference Section Markers */
+.section-marker {
+  border-top: 1px solid var(--line);
+  letter-spacing: 1.8px;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 48px;
+  padding-top: 16px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  display: flex;
+  color: var(--text-muted);
 }
 
-/* Glassmorphism Surfaces */
+/* Architectural Watermark Ghost */
+.hero-ghost {
+  letter-spacing: -0.08em;
+  color: rgba(16, 23, 42, 0.04);
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+  font-size: clamp(100px, 20vw, 320px);
+  font-weight: 800;
+  line-height: 1;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+html.dark .hero-ghost {
+  color: rgba(255, 255, 255, 0.03);
+}
+
+/* 3D Lanyard & Flippable ID Badge from reference */
+.badge-scene {
+  width: 320px;
+  max-width: 100%;
+  height: 420px;
+  margin: auto;
+  position: relative;
+}
+
+.badge-cord {
+  width: 320px;
+  max-width: 100%;
+  height: 390px;
+  color: var(--text-primary);
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.badge-body {
+  perspective: 1200px;
+  cursor: pointer;
+  width: 220px;
+  height: 310px;
+  position: absolute;
+  top: 48px;
+  left: calc(50% - 110px);
+}
+
+.badge-flip {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  cursor: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 14px;
+  padding: 0;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  box-shadow: 0 20px 40px rgba(16, 23, 42, 0.14);
+}
+
+html.dark .badge-flip {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.badge-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: #fcfaf4;
+  border: 1px solid rgba(16, 23, 42, 0.12);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+html.dark .badge-face {
+  background: #0f1422;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.badge-front {
+  transform: rotateY(0deg);
+}
+
+.badge-back {
+  background: #10172a;
+  color: #f4f1e8;
+  text-align: left;
+  align-items: flex-start;
+  padding: 24px 18px;
+  transform: rotateY(180deg);
+}
+
+html.dark .badge-back {
+  background: #090d16;
+  color: #f8fafc;
+}
+
+/* Reference Mini Phone Device Mockups on Project Cards */
+.mini-phone {
+  background: #ffffff;
+  border: 4px solid #1e293b;
+  border-radius: 24px;
+  width: 165px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 8px 0px rgba(30, 41, 59, 0.3), 15px 20px 30px rgba(16, 23, 42, 0.15);
+  transform: rotate(6deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+html.dark .mini-phone {
+  background: #090d16;
+  border-color: #334155;
+  box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.7), 15px 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.mini-phone:hover {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.phone-speaker {
+  width: 32px;
+  height: 4px;
+  background: #334155;
+  border-radius: 2px;
+  margin: 6px auto 4px;
+  display: block;
+}
+
+/* Reference Interactive Smartphone Toolkit */
+.skill-phone {
+  background: #fdfcf9;
+  border: 6px solid #1e293b;
+  border-radius: 36px;
+  box-shadow: 0 25px 60px rgba(16, 23, 42, 0.16);
+  overflow: hidden;
+  position: relative;
+}
+
+html.dark .skill-phone {
+  background: #0a0e1a;
+  border-color: #334155;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Reference Grid and Glass Panels */
 .glass-panel {
   background-color: var(--card-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--card-border);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 20px -2px rgba(16, 23, 42, 0.05);
 }
 
 html.dark .glass-panel {
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
-.glass-panel-hover {
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-}
-.glass-panel-hover:hover {
-  border-color: rgba(2, 132, 199, 0.4);
-  box-shadow: 0 10px 30px -4px rgba(2, 132, 199, 0.1);
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-html.dark ::-webkit-scrollbar-track {
-  background: #07090e;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
@@ -106,24 +276,7 @@ html.dark ::-webkit-scrollbar-thumb {
   background: #1e293b;
 }
 
-/* Skip link for Accessibility */
-.skip-to-content {
-  position: absolute;
-  top: -100px;
-  left: 1rem;
-  background: #0284c7;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-  border-radius: 0.375rem;
-  z-index: 9999;
-  transition: top 0.2s ease;
-}
-.skip-to-content:focus {
-  top: 1rem;
-}
-
-/* Reduced Motion Support */
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-delay: -1ms !important;

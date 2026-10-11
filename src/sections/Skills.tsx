@@ -6,27 +6,27 @@ export const Skills: React.FC = () => {
     <section
       id="skills"
       aria-label="Technical Skills and Stack"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
     >
-      {/* Section Marker */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-widest font-semibold">
-          05 — Technical Arsenal &amp; Stack
-        </span>
-        <div className="h-px bg-blue-500/20 dark:bg-cyan-500/20 flex-1 max-w-[120px]" />
+      {/* Signature Section Marker from Reference */}
+      <div className="section-marker">
+        <span>02 — THE TOOLKIT · PRODUCTION ARSENAL</span>
+        <span>TESTED UNDER ENTERPRISE CONDITIONS</span>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-2">
-          Technical Capabilities.<br />
-          <span className="text-slate-500 dark:text-slate-400 font-light">Cross-platform depth, systems rigor.</span>
+        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-3">
+          Tools &amp; Technologies I've<br />
+          <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+            mastered.
+          </em>
         </h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
-          Organized across mobile client platforms, enterprise architectural paradigms, reactive state patterns, cloud backends, and algorithmic trading systems.
+          An interactive physical device view of my production arsenal across mobile client runtimes, enterprise architectural patterns, deterministic reactive state machines, cloud infrastructure, and algorithmic trading daemons.
         </p>
       </div>
 
-      {/* Tech Cluster Matrix */}
+      {/* Interactive Smartphone Toolkit Matrix */}
       <TechCluster />
     </section>
   );

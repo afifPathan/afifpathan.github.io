@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full border-t border-slate-200 dark:border-white/10 bg-white dark:bg-[#05070b] py-12 px-4 sm:px-6 lg:px-8 text-slate-600 dark:text-slate-400 transition-colors">
+    <footer className="w-full border-t border-slate-300 dark:border-white/10 bg-[#ede8dc] dark:bg-[#05070b] py-12 px-4 sm:px-6 lg:px-8 text-slate-600 dark:text-slate-400 transition-colors">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand & Title */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">

@@ -6,34 +6,51 @@ import {
   Github,
   Linkedin,
   Mail,
-  ShieldCheck,
-  Cpu,
-  Layers,
-  Activity,
-  Terminal,
+  ChevronDown,
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { LanyardBadge } from '../components/LanyardBadge';
+
+const TICKER_ITEMS = [
+  'ENTERPRISE CLEAN ARCHITECTURE',
+  '25+ PRODUCTION SYSTEMS BUILT',
+  'DETERMINISTIC BLOC / CUBIT',
+  '6+ YEARS CROSS-PLATFORM & FLUTTER',
+  'REAL-TIME WEBSOCKET TELEMETRY',
+  'WEBRTC VIDEO TELECONSULTATION',
+  'OFFLINE-FIRST (SQLITE / HIVE)',
+  'ALGORITHMIC TRADING DAEMONS',
+  'GEMINI AI WORKFLOWS',
+  'COMPILED 60-120 FPS CLIENTS',
+  'ZERO MEMORY LEAKS',
+];
 
 export const Hero: React.FC = () => {
   return (
     <section
       id="hero"
       aria-label="Introduction and Senior Engineering Profile"
-      className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-blueprint-grid overflow-hidden"
+      className="relative min-h-[96vh] flex flex-col justify-between pt-24 pb-8 px-4 sm:px-6 lg:px-8 bg-blueprint-grid overflow-hidden"
     >
-      {/* Ambient Lighting Cones */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-blue-500/[0.08] dark:bg-cyan-500/[0.08] rounded-full blur-[110px] pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[420px] h-[320px] bg-indigo-500/[0.07] rounded-full blur-[120px] pointer-events-none" />
+      {/* Editorial Watermark Ghost from Reference Site */}
+      <div className="hero-ghost" aria-hidden="true">
+        ARCHITECT
+      </div>
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-        {/* Left Column: Senior Executive Positioning & Photo */}
+      {/* Ambient Lighting Cones */}
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-500/[0.06] dark:bg-cyan-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-[450px] h-[320px] bg-amber-500/[0.04] dark:bg-indigo-500/[0.05] rounded-full blur-[130px] pointer-events-none" />
+
+      {/* Main Hero Content Grid */}
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10 flex-1 my-auto">
+        {/* Left Column: Editorial Headlines & Senior Positioning */}
         <div className="lg:col-span-7 flex flex-col justify-center">
-          {/* Executive Status Eyebrow Badge */}
+          {/* Status Eyebrow Note */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 w-fit mb-6 shadow-xs backdrop-blur-sm"
+            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 w-fit mb-6 shadow-xs backdrop-blur-sm"
           >
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -43,77 +60,61 @@ export const Hero: React.FC = () => {
             <span className="text-slate-300 dark:text-slate-700">|</span>
             <span className="text-slate-600 dark:text-slate-400">Flutter Tech Lead</span>
             <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">|</span>
-            <span className="text-emerald-700 dark:text-emerald-400 font-medium hidden sm:inline">Available for Remote / Advisory</span>
+            <span className="text-emerald-700 dark:text-emerald-400 font-medium hidden sm:inline">
+              Available for Remote / Advisory
+            </span>
           </motion.div>
 
-          {/* Executive Portrait Badge & Name Block */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6 mb-5">
-            <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative group shrink-0 w-fit"
-            >
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-blue-500/30 dark:border-cyan-400/30 shadow-lg shadow-blue-500/10 bg-slate-100 dark:bg-slate-800 transition-transform duration-300 group-hover:scale-105">
-                <img
-                  src={PERSONAL_INFO.photo}
-                  alt="Afif Pathan - Senior Mobile Architect"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white dark:border-slate-900" />
+          {/* Primary Editorial Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.02] mb-3">
+              Senior Mobile<br />
+              &amp; Flutter<br />
+              <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+                Architect.
+              </em>
+            </h1>
+
+            <div className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-200 tracking-tight flex items-center gap-2 mb-4">
+              <span>{PERSONAL_INFO.name}</span>
+              <span className="text-slate-400 dark:text-slate-600 font-normal">/</span>
+              <span className="text-blue-700 dark:text-cyan-400 font-mono text-base font-semibold">
+                Staff Engineer
               </span>
-            </motion.div>
-
-            <div>
-              <motion.h1
-                initial={{ opacity: 0, x: -15 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05]"
-              >
-                Afif Pathan
-              </motion.h1>
-              <motion.div
-                initial={{ opacity: 0, x: -15 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-sky-600 to-indigo-700 dark:from-cyan-400 dark:via-sky-300 dark:to-indigo-400 mt-1"
-              >
-                Senior Mobile Architect &amp; Flutter Lead
-              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Specialties Badges Bar */}
+          {/* Specialization Chips Bar */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 mb-6"
           >
-            <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium">
+            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-xs">
               Cross-Platform Systems
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium">
+            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-xs">
               Enterprise Clean Architecture
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium">
+            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-xs">
               Algorithmic Trading &amp; Real-Time
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium">
+            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-xs">
               AI-Assisted Workflows
             </span>
           </motion.div>
 
-          {/* Positioning Statement */}
+          {/* Positioning Statement with Verified Metrics */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl font-normal"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl font-normal"
           >
             <span className="text-slate-900 dark:text-white font-semibold">
               8+ years of software engineering excellence
@@ -123,42 +124,35 @@ export const Hero: React.FC = () => {
               6+ years architecting production-grade cross-platform platforms
             </span>{' '}
             and{' '}
-            <span className="text-blue-700 dark:text-cyan-300 font-semibold">
+            <span className="text-blue-700 dark:text-cyan-400 font-semibold">
               {PERSONAL_INFO.productionPlatforms} production systems
             </span>
             . Specializing in enterprise{' '}
-            <span className="text-blue-700 dark:text-cyan-300 font-medium">Clean Architecture &amp; SOLID</span>
+            <span className="text-blue-700 dark:text-cyan-400 font-medium">Clean Architecture &amp; SOLID</span>
             , deterministic{' '}
             <span className="text-indigo-600 dark:text-indigo-300 font-medium">
               BLoC/Cubit &amp; Riverpod state machines
             </span>
             , real-time{' '}
             <span className="text-slate-900 dark:text-white font-medium">
-              WebSocket telemetry &amp; WebRTC audio/video teleconsultation
+              WebSocket telemetry &amp; WebRTC teleconsultation
             </span>
-            , automated{' '}
-            <span className="text-slate-900 dark:text-white font-medium">
-              background GPS geofencing &amp; telematics
-            </span>
-            , POS hardware integration (thermal receipt printing &amp; MiFare RFID), offline-first reconciliation (SQLite/Hive), Python algorithmic trading daemons, and{' '}
-            <span className="text-blue-700 dark:text-cyan-300 font-medium">
-              Gemini AI automation
-            </span>{' '}
-            across EdTech, e-commerce, healthcare, commercial facilities, and algorithmic fintech.
+            , offline-first SQLite/Hive engines, Python algorithmic trading daemons, and{' '}
+            <span className="text-blue-700 dark:text-cyan-400 font-medium">Gemini AI automation</span> across EdTech, e-commerce, healthcare, and algorithmic fintech.
           </motion.p>
 
           {/* Action CTAs with Micro-Interactions */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap items-center gap-3.5 mb-10"
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="flex flex-wrap items-center gap-3.5 mb-8"
           >
             <motion.a
               href="#projects"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-mono text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-cyan-400 dark:hover:bg-cyan-300 dark:text-[#07090e] transition-all duration-200 shadow-lg shadow-blue-600/25 dark:shadow-cyan-400/20"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-mono text-xs font-semibold text-white bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-100 dark:text-[#07090e] transition-all duration-200 shadow-md"
             >
               <span>Explore 25+ Systems &amp; Work</span>
               <ArrowRight className="w-4 h-4" />
@@ -169,7 +163,7 @@ export const Hero: React.FC = () => {
               download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-cyan-500/40 shadow-sm transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-white/10 hover:border-slate-500 shadow-xs transition-all duration-200"
             >
               <Download className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
               <span>Download Verified CV</span>
@@ -185,21 +179,21 @@ export const Hero: React.FC = () => {
             </motion.a>
           </motion.div>
 
-          {/* Verified Direct Channels */}
+          {/* Direct Verified Channels */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="pt-6 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-6 text-xs font-mono text-slate-600 dark:text-slate-400"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="pt-5 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-5 text-xs font-mono text-slate-600 dark:text-slate-400"
           >
-            <span className="text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">
+            <span className="text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
               Direct Channels:
             </span>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-blue-600 dark:hover:text-cyan-300 transition-colors"
+              className="flex items-center gap-1.5 hover:text-slate-950 dark:hover:text-cyan-300 transition-colors"
             >
               <Github className="w-3.5 h-3.5" />
               <span>github.com/afifPathan</span>
@@ -208,14 +202,14 @@ export const Hero: React.FC = () => {
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-blue-600 dark:hover:text-cyan-300 transition-colors"
+              className="flex items-center gap-1.5 hover:text-slate-950 dark:hover:text-cyan-300 transition-colors"
             >
               <Linkedin className="w-3.5 h-3.5" />
               <span>linkedin.com/in/afif-pathan</span>
             </a>
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="flex items-center gap-1.5 hover:text-blue-600 dark:hover:text-cyan-300 transition-colors"
+              className="flex items-center gap-1.5 hover:text-slate-950 dark:hover:text-cyan-300 transition-colors"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>{PERSONAL_INFO.email}</span>
@@ -223,111 +217,46 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Floating Architectural System Visualization */}
+        {/* Right Column: Signature Interactive 3D Lanyard ID Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-5 flex flex-col gap-4"
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-5 flex flex-col items-center justify-center relative"
         >
-          {/* Architectural System Board with Smooth Floating Motion */}
-          <motion.div
-            animate={{ y: [0, -6, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
-            className="glass-panel rounded-2xl p-6 border border-slate-200 dark:border-white/10 shadow-xl relative overflow-hidden bg-white/95 dark:bg-[#0c101c]/90"
-          >
-            {/* Visual Header */}
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200 dark:border-white/10 text-xs font-mono">
-              <div className="flex items-center gap-2 text-blue-600 dark:text-cyan-400 font-semibold">
-                <Terminal className="w-4 h-4" />
-                <span>ARCHITECTURAL STACK CORE</span>
-              </div>
-              <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold">
-                <Activity className="w-3 h-3 animate-pulse" />
-                <span>60 FPS COMPILED</span>
-              </div>
-            </div>
-
-            {/* Architectural Nodes Grid */}
-            <div className="space-y-3 font-mono text-xs">
-              {/* Node 1: Mobile UI Surface */}
-              <motion.div
-                whileHover={{ scale: 1.02, x: 3 }}
-                transition={{ duration: 0.2 }}
-                className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-blue-200 dark:border-cyan-500/30 flex items-center justify-between cursor-default transition-colors hover:border-blue-400 dark:hover:border-cyan-400"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-blue-100 dark:bg-cyan-950/60 border border-blue-200 dark:border-cyan-500/40 text-blue-700 dark:text-cyan-400">
-                    <Layers className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 dark:text-white">Flutter &amp; Native Clients</div>
-                    <div className="text-[10px] text-slate-500 dark:text-slate-400">Material 3 · Adaptive Viewports · 120Hz</div>
-                  </div>
-                </div>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-blue-100 dark:bg-cyan-950/40 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-cyan-800/40 font-medium">
-                  Presentation
-                </span>
-              </motion.div>
-
-              {/* Node 2: State Machines */}
-              <motion.div
-                whileHover={{ scale: 1.02, x: 3 }}
-                transition={{ duration: 0.2 }}
-                className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-indigo-200 dark:border-indigo-500/30 flex items-center justify-between cursor-default transition-colors hover:border-indigo-400 dark:hover:border-indigo-400"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-indigo-100 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-500/40 text-indigo-700 dark:text-indigo-400">
-                    <Cpu className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 dark:text-white">BLoC / Cubit Reactive Streams</div>
-                    <div className="text-[10px] text-slate-500 dark:text-slate-400">Unidirectional · Zero Memory Leaks</div>
-                  </div>
-                </div>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/40 font-medium">
-                  Application
-                </span>
-              </motion.div>
-
-              {/* Node 3: Clean Domain Core */}
-              <motion.div
-                whileHover={{ scale: 1.02, x: 3 }}
-                transition={{ duration: 0.2 }}
-                className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-between cursor-default transition-colors hover:border-emerald-400 dark:hover:border-emerald-400"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-400">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 dark:text-white">Clean Architecture &amp; Use Cases</div>
-                    <div className="text-[10px] text-slate-500 dark:text-slate-400">Decoupled Entities · Inversion of Control</div>
-                  </div>
-                </div>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 font-medium">
-                  Domain Core
-                </span>
-              </motion.div>
-            </div>
-
-            {/* Quick Metrics Bar */}
-            <div className="mt-5 pt-4 border-t border-slate-200 dark:border-white/10 grid grid-cols-3 gap-2 text-center font-mono">
-              <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-cyan-400">{PERSONAL_INFO.yearsTotal}</div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Years Eng.</div>
-              </motion.div>
-              <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                <div className="text-xl sm:text-2xl font-bold text-indigo-600 dark:text-indigo-400">{PERSONAL_INFO.yearsMobile}</div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Cross-Platform</div>
-              </motion.div>
-              <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                <div className="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400">{PERSONAL_INFO.productionPlatforms}</div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Systems Built</div>
-              </motion.div>
-            </div>
-          </motion.div>
+          <LanyardBadge />
         </motion.div>
+      </div>
+
+      {/* Bottom Scroll Cue & Continuous Marquee Ticker */}
+      <div className="relative z-10 mt-6 pt-4 border-t border-slate-200 dark:border-white/10">
+        {/* Scroll Prompt */}
+        <div className="flex items-center justify-between pb-3 text-xs font-mono text-slate-500 dark:text-slate-400">
+          <div className="flex items-center gap-2">
+            <span className="inline-block w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400 animate-pulse" />
+            <span className="uppercase tracking-widest text-[10px]">SCROLL TO EXPLORE ARCHITECTURE</span>
+          </div>
+          <a href="#snapshot" className="flex items-center gap-1 text-[11px] hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span>Scroll</span>
+            <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
+          </a>
+        </div>
+
+        {/* Continuous Marquee Ticker */}
+        <div className="overflow-hidden py-2 bg-slate-100/70 dark:bg-slate-900/50 rounded-xl border border-slate-200/80 dark:border-white/5 select-none">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}
+            className="flex items-center gap-8 whitespace-nowrap text-[11px] font-mono text-slate-700 dark:text-slate-300 uppercase tracking-widest"
+          >
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+              <span key={idx} className="flex items-center gap-4">
+                <span>{item}</span>
+                <span className="text-blue-500 dark:text-cyan-400 font-bold">·</span>
+              </span>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -30,20 +30,18 @@ export const Contact: React.FC = () => {
       {/* Ambient background light */}
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 dark:bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Section Marker */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-widest font-semibold">
-          08 — Connect &amp; Engage
-        </span>
-        <div className="h-px bg-blue-500/20 dark:bg-cyan-500/20 flex-1 max-w-[120px]" />
+      {/* Signature Section Marker from Reference */}
+      <div className="section-marker">
+        <span>08 — CONNECT &amp; ENGAGE</span>
+        <span>OPEN FOR SENIOR MOBILE &amp; TECH LEAD ROLES</span>
       </div>
 
       <div className="max-w-3xl mb-12">
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-4">
-          Let’s architect something exceptional.<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-cyan-400 dark:to-indigo-400">
-            Open for Senior Mobile &amp; Lead Roles.
-          </span>
+        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-4">
+          Let’s architect something<br />
+          <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+            exceptional together.
+          </em>
         </h2>
         <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
           Seeking Senior Mobile Architect, Flutter Tech Lead, or Staff Mobile positions. Whether you are scaling an enterprise product, redesigning a multi-platform architecture, or evaluating real-time systems, reach out directly.
@@ -53,9 +51,9 @@ export const Contact: React.FC = () => {
       {/* Direct Contact Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         {/* Email Card */}
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-blue-400 dark:hover:border-cyan-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-sm">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-cyan-950/50 border border-blue-200 dark:border-cyan-500/30 flex items-center justify-center text-blue-600 dark:text-cyan-400 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-cyan-950/50 border border-slate-200 dark:border-cyan-500/30 flex items-center justify-center text-slate-800 dark:text-cyan-400 mb-4">
               <Mail className="w-5 h-5" />
             </div>
             <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase mb-1">Direct Email</div>
@@ -96,9 +94,9 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* Phone Card */}
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-indigo-400 dark:hover:border-indigo-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-sm">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-indigo-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-indigo-950/50 border border-slate-200 dark:border-indigo-500/30 flex items-center justify-center text-slate-800 dark:text-indigo-400 mb-4">
               <Phone className="w-5 h-5" />
             </div>
             <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase mb-1">Direct Phone / Call</div>
@@ -139,9 +137,9 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* LinkedIn Card */}
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-blue-400 dark:hover:border-blue-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-sm">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-blue-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-500/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-blue-950/50 border border-slate-200 dark:border-blue-500/30 flex items-center justify-center text-slate-800 dark:text-blue-400 mb-4">
               <Linkedin className="w-5 h-5" />
             </div>
             <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase mb-1">LinkedIn Network</div>
@@ -170,9 +168,9 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* GitHub Card */}
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-purple-400 dark:hover:border-purple-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-sm">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-purple-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-purple-950/50 border border-slate-200 dark:border-purple-500/30 flex items-center justify-center text-slate-800 dark:text-purple-400 mb-4">
               <Github className="w-5 h-5" />
             </div>
             <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase mb-1">GitHub Repositories</div>
@@ -202,7 +200,7 @@ export const Contact: React.FC = () => {
       </div>
 
       {/* Location & Timezone Bar */}
-      <div className="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-slate-600 dark:text-slate-400 shadow-sm">
+      <div className="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-slate-600 dark:text-slate-400 shadow-xs">
         <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
           <MapPin className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
           <span>Base: Ahmedabad, Gujarat, India (IST / UTC+05:30)</span>

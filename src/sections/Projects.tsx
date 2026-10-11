@@ -18,20 +18,20 @@ export const Projects: React.FC = () => {
     <section
       id="projects"
       aria-label="Selected Production Projects"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
     >
-      {/* Section Marker */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-widest font-semibold">
-          03 — Production Systems &amp; Case Studies ({PROJECTS.length})
-        </span>
-        <div className="h-px bg-blue-500/20 dark:bg-cyan-500/20 flex-1 max-w-[120px]" />
+      {/* Signature Section Marker from Reference */}
+      <div className="section-marker">
+        <span>04 — SELECTED WORK · PROVEN AT SCALE</span>
+        <span>25+ PRODUCTION SYSTEMS DELIVERED</span>
       </div>
 
       <div className="mb-10">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-          Production Systems.<br />
-          <span className="text-slate-500 dark:text-slate-400 font-light">From architecture to store release.</span>
+        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2">
+          Selected Systems &amp;<br />
+          <em className="text-slate-900 dark:text-white font-serif font-normal italic">
+            Case Studies.
+          </em>
         </h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
           Complete showcase of {PROJECTS.length} cross-platform applications, reactive terminals, algorithmic execution engines, and published SDKs delivered throughout 8+ years.
@@ -39,7 +39,7 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Live Algorithmic Systems Telemetry Showcase (PLACED ABOVE PROJECTS) */}
-      <div className="mb-14 p-6 sm:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/40 shadow-sm transition-colors">
+      <div className="mb-14 p-6 sm:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/40 shadow-xs transition-colors">
         <div className="max-w-2xl mb-6">
           <div className="flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-wider mb-2 font-semibold">
             <Terminal className="w-4 h-4" />
@@ -67,7 +67,7 @@ export const Projects: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 dark:bg-slate-900/60 p-1.5 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+        <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 dark:bg-slate-900/60 p-1.5 rounded-xl border border-slate-200 dark:border-white/10 shadow-xs">
           <Filter className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 ml-1.5 mr-1" />
           {CATEGORIES.map((category) => (
             <button
@@ -75,7 +75,7 @@ export const Projects: React.FC = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 ${
                 selectedCategory === category
-                  ? 'bg-blue-600 text-white dark:bg-cyan-500/20 dark:text-cyan-300 font-semibold shadow-sm'
+                  ? 'bg-slate-900 text-white dark:bg-cyan-500/20 dark:text-cyan-300 font-semibold shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-white/5'
               }`}
             >
