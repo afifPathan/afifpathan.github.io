@@ -26,46 +26,6 @@ export const PERSONAL_INFO = {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'buyzaar',
-    title: 'Buyzaar',
-    tagline: 'Full-Stack Hyperlocal Commerce Platform on Flutter Web & Firebase',
-    role: 'Founder & Lead Engineer',
-    period: 'Jan 2025 – Present',
-    category: 'Mobile',
-    featured: true,
-    problem:
-      'Hyperlocal commerce requires seamless mobile-first shopping with instant checkout and real-time order tracking without forcing customers into complex multi-step app installs.',
-    architecture:
-      'Feature-based Clean Architecture separating Presentation (Flutter Material 3), Application (Cubit/BLoC), and Domain/Data layers backed by Cloud Functions and Firestore real-time streams.',
-    contributions: [
-      'Architected and delivered full-stack platform covering customer catalog, cart, WhatsApp-based automated ordering, and authenticated administrative workflows.',
-      'Designed reusable Firebase data/application layers ensuring long-term maintainability and modular state management.',
-      'Implemented real-time order lifecycle tracking, responsive Material 3 UI, and client-side image caching pipeline.',
-      'Integrated Gemini-powered product content generation and GitHub-based product-data automation workflows.',
-    ],
-    technologies: [
-      'Flutter Web',
-      'Dart',
-      'Firebase Auth',
-      'Firestore',
-      'Storage',
-      'Cloud Functions',
-      'Cubit / BLoC',
-      'Gemini AI',
-      'GitHub Actions',
-    ],
-    metrics: 'Production live on Flutter Web with automated WhatsApp pipeline',
-    links: {
-      github: 'https://github.com/afifPathan/Buyzaar',
-      live: 'https://buyzaar-26379.web.app/',
-    },
-    architectureLayers: {
-      presentation: 'Flutter Web (Material 3 Adaptive UI, Cart/Catalog views)',
-      domain: 'Feature-based Use Cases, Order & Cart business entities',
-      data: 'Firestore reactive streams, Cloud Storage caching, Gemini API pipeline',
-    },
-  },
-  {
     id: 'trading-bot-dashboard',
     title: 'Trading Bot Terminal Dashboard',
     tagline: 'Real-Time Observability SPA for Algorithmic Trading Systems',
@@ -139,6 +99,46 @@ export const PROJECTS: Project[] = [
       presentation: 'Real-time Telegram notifications, bot status alerts & health reports',
       domain: 'EMA 9/21, VWAP, Volume confirmation logic, Risk Management Circuit Breakers',
       data: 'Angel One SmartAPI, SQLite local trade journal, live broker reconciliation',
+    },
+  },
+  {
+    id: 'buyzaar',
+    title: 'Buyzaar',
+    tagline: 'Full-Stack Hyperlocal Commerce Platform on Flutter Web & Firebase',
+    role: 'Founder & Lead Engineer',
+    period: 'Jan 2025 – Present',
+    category: 'Mobile',
+    featured: true,
+    problem:
+      'Hyperlocal commerce requires seamless mobile-first shopping with instant checkout and real-time order tracking without forcing customers into complex multi-step app installs.',
+    architecture:
+      'Feature-based Clean Architecture separating Presentation (Flutter Material 3), Application (Cubit/BLoC), and Domain/Data layers backed by Cloud Functions and Firestore real-time streams.',
+    contributions: [
+      'Architected and delivered full-stack platform covering customer catalog, cart, WhatsApp-based automated ordering, and authenticated administrative workflows.',
+      'Designed reusable Firebase data/application layers ensuring long-term maintainability and modular state management.',
+      'Implemented real-time order lifecycle tracking, responsive Material 3 UI, and client-side image caching pipeline.',
+      'Integrated Gemini-powered product content generation and GitHub-based product-data automation workflows.',
+    ],
+    technologies: [
+      'Flutter Web',
+      'Dart',
+      'Firebase Auth',
+      'Firestore',
+      'Storage',
+      'Cloud Functions',
+      'Cubit / BLoC',
+      'Gemini AI',
+      'GitHub Actions',
+    ],
+    metrics: 'Production live on Flutter Web with automated WhatsApp pipeline',
+    links: {
+      github: 'https://github.com/afifPathan/Buyzaar',
+      live: 'https://buyzaar-26379.web.app/',
+    },
+    architectureLayers: {
+      presentation: 'Flutter Web (Material 3 Adaptive UI, Cart/Catalog views)',
+      domain: 'Feature-based Use Cases, Order & Cart business entities',
+      data: 'Firestore reactive streams, Cloud Storage caching, Gemini API pipeline',
     },
   },
   {
