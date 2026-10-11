@@ -50,7 +50,7 @@ export const Snapshot: React.FC = () => {
     <section
       id="snapshot"
       aria-label="Engineering Profile and Summary"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 overflow-x-hidden overflow-x-clip"
     >
       {/* Signature Section Marker from Reference */}
       <div className="section-marker">
@@ -149,11 +149,11 @@ export const Snapshot: React.FC = () => {
       {/* Verified Metrics Counter Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
         <motion.div
-          initial={{ opacity: 0, x: -30, y: 15 }}
+          initial={{ opacity: 0, x: -220, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.12 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono mb-1">
@@ -168,11 +168,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: -15, y: 15 }}
+          initial={{ opacity: 0, x: -120, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.12 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-cyan-400 font-mono mb-1">
@@ -187,11 +187,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 15, y: 15 }}
+          initial={{ opacity: 0, x: 120, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.12 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono mb-1">
@@ -206,11 +206,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30, y: 15 }}
+          initial={{ opacity: 0, x: 220, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.12 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.45, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 font-mono mb-1">
@@ -232,10 +232,10 @@ export const Snapshot: React.FC = () => {
           return (
             <motion.div
               key={pillar.title}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -35 : 35, y: 15 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -220 : 220, y: 20 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: false, amount: 0.15 }}
-              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: false, amount: 0.12 }}
+              transition={{ duration: 0.65, delay: (idx % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-200 shadow-xs"
             >
               <div className="flex items-center gap-3 mb-3">
@@ -263,7 +263,13 @@ export const Snapshot: React.FC = () => {
       </div>
 
       {/* Recognition Card from CV */}
-      <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-950/20 dark:via-slate-900/40 dark:to-slate-900/40 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.12 }}
+        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-950/20 dark:via-slate-900/40 dark:to-slate-900/40 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+      >
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
             <Award className="w-6 h-6" />
@@ -279,7 +285,7 @@ export const Snapshot: React.FC = () => {
         <span className="text-xs font-mono text-slate-600 dark:text-slate-400 px-3 py-1 rounded bg-white dark:bg-black/40 border border-slate-200 dark:border-white/5 self-start sm:self-auto shadow-xs">
           Webclues Infotech (2020)
         </span>
-      </div>
+      </motion.div>
     </section>
   );
 };

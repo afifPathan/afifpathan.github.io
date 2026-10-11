@@ -79,7 +79,7 @@ export const App: React.FC = () => {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="relative min-h-screen bg-[#f4f1e8] dark:bg-[#07090e] text-slate-800 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200">
+    <div className="relative min-h-screen bg-[#f4f1e8] dark:bg-[#07090e] text-slate-800 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200 overflow-x-hidden overflow-x-clip">
       {/* Scroll Progress Bar */}
       <div
         className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 z-50 origin-left"
@@ -107,7 +107,7 @@ export const App: React.FC = () => {
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
       {/* Main Landmark */}
-      <main id="main-content" className="flex-1 w-full">
+      <main id="main-content" className="flex-1 w-full overflow-x-hidden overflow-x-clip">
         <Hero />
         <Snapshot />
         <Philosophy />

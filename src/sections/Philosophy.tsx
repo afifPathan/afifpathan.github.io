@@ -12,7 +12,7 @@ export const Philosophy: React.FC = () => {
     <section
       id="philosophy"
       aria-label="Architecture and Engineering Philosophy"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 overflow-x-hidden overflow-x-clip"
     >
       {/* Signature Section Marker from Reference */}
       <div className="section-marker">
@@ -36,12 +36,24 @@ export const Philosophy: React.FC = () => {
       </div>
 
       {/* Interactive Clean Architecture Diagram Component */}
-      <div className="mb-16">
+      <motion.div
+        initial={{ opacity: 0, x: -220 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.12 }}
+        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-16"
+      >
         <ArchitectureDiagram />
-      </div>
+      </motion.div>
 
       {/* Architectural Principles & Code Snippets Explorer */}
-      <div className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-slate-900/60 shadow-xs">
+      <motion.div
+        initial={{ opacity: 0, x: 220 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.12 }}
+        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-slate-900/60 shadow-xs"
+      >
         <div className="flex items-center gap-2 text-xs font-mono text-indigo-700 dark:text-indigo-400 mb-6 uppercase tracking-wider font-semibold">
           <Terminal className="w-4 h-4" />
           <span>Core Engineering Principles &amp; Verified Implementations</span>
@@ -120,7 +132,7 @@ export const Philosophy: React.FC = () => {
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
+      </motion.div>
     </section>
   );
 };

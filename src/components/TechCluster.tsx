@@ -103,7 +103,13 @@ export const TechCluster: React.FC = () => {
   return (
     <div className="flex flex-col gap-8 w-full">
       {/* Top Interactive Controls Bar: Polished wrapping tabs & sleek search */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 shadow-xs backdrop-blur-md">
+      <motion.div
+        initial={{ opacity: 0, y: -40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.12 }}
+        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 shadow-xs backdrop-blur-md"
+      >
         {/* Category Filter Pills (Wrapping Flex - Zero Overflow/Scrollbar) */}
         <div className="flex flex-wrap items-center gap-2">
           {categories.map((cat) => {
@@ -136,16 +142,16 @@ export const TechCluster: React.FC = () => {
             className="w-full pl-10 pr-4 py-2 text-xs font-mono rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 transition-all"
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Layout: Active Technology HUD Inspector + Interactive Matrix Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column (5 cols): Active Technology HUD Telemetry Console */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -220 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: false, amount: 0.12 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 flex flex-col gap-4"
         >
           <div className="p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl relative overflow-hidden">
@@ -272,10 +278,10 @@ export const TechCluster: React.FC = () => {
                 <motion.div
                   key={skill.name}
                   onClick={() => setActiveSkill(skill)}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20, y: 10 }}
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -160 : 160, y: 15 }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
-                  viewport={{ once: false, amount: 0.15 }}
-                  transition={{ duration: 0.45, delay: (idx % 6) * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                  viewport={{ once: false, amount: 0.12 }}
+                  transition={{ duration: 0.55, delay: (idx % 6) * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -3, transition: { duration: 0.18 } }}
                   whileTap={{ scale: 0.98 }}
                   className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 text-left ${

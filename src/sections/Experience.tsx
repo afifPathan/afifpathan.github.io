@@ -16,7 +16,7 @@ export const Experience: React.FC = () => {
     <section
       id="experience"
       aria-label="Professional Experience Timeline"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 overflow-x-hidden overflow-x-clip"
     >
       {/* Signature Section Marker from Reference */}
       <div className="section-marker">
@@ -41,11 +41,11 @@ export const Experience: React.FC = () => {
         {EXPERIENCES.map((exp, idx) => (
           <motion.article
             key={exp.id}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
+            initial={{ opacity: 0, x: idx % 2 === 0 ? -220 : 220, y: 20 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: false, amount: 0.12 }}
             whileHover={{ x: 4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            transition={{ duration: 0.45, delay: (idx % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.65, delay: (idx % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="relative group"
           >
             {/* Timeline Node Indicator */}

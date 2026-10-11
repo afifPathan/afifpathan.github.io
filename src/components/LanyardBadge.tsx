@@ -22,10 +22,10 @@ export const LanyardBadge: React.FC = () => {
 
   return (
     <motion.div
-      initial={{ y: -80, opacity: 0, rotateZ: -6 }}
+      initial={{ y: -160, opacity: 0, rotateZ: -12 }}
       whileInView={{ y: 0, opacity: 1, rotateZ: 0 }}
-      viewport={{ once: false, amount: 0.15 }}
-      transition={{ type: 'spring', stiffness: 85, damping: 13, mass: 1 }}
+      viewport={{ once: false, amount: 0.12 }}
+      transition={{ type: 'spring', stiffness: 75, damping: 14, mass: 1.2 }}
       className="badge-scene select-none"
       aria-label="Interactive 3D Engineering ID Badge"
     >

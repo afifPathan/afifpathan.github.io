@@ -53,7 +53,7 @@ export const Leadership: React.FC = () => {
     <section
       id="leadership"
       aria-label="Technical Leadership and Standards"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 overflow-x-hidden overflow-x-clip"
     >
       {/* Signature Section Marker from Reference */}
       <div className="section-marker">
@@ -131,10 +131,10 @@ export const Leadership: React.FC = () => {
           return (
             <motion.div
               key={theme.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -220 : 220, y: 20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: false, amount: 0.12 }}
+              transition={{ duration: 0.65, delay: (idx % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-900/60 shadow-xs"
             >
               <div className="flex items-center gap-3 mb-5">

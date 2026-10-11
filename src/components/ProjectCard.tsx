@@ -526,11 +526,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
   return (
     <motion.article
-      initial={{ opacity: 0, x: index % 2 === 0 ? -45 : 45, y: 20 }}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -220 : 220, y: 30 }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: false, amount: 0.15 }}
+      viewport={{ once: false, amount: 0.12 }}
       whileHover={{ y: -6, transition: { duration: 0.22, ease: 'easeOut' } }}
-      transition={{ duration: 0.55, delay: (index % 2) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.65, delay: (index % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className={`rounded-2xl glass-panel border border-slate-300 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-slate-500 dark:hover:border-cyan-500/40 hover:shadow-xl flex flex-col justify-between bg-white/95 dark:bg-slate-900/60 shadow-xs ${
         project.featured ? 'lg:col-span-2' : ''
       }`}

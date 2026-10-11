@@ -43,8 +43,8 @@ export const Hero: React.FC = () => {
           transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
           className="flex whitespace-nowrap text-[clamp(4.5rem,11vw,9.5rem)] font-black uppercase tracking-tight text-slate-900/[0.04] dark:text-white/[0.035] leading-none select-none font-mono"
         >
-          <span className="mr-12">STAFF ARCHITECT · AFIF PATHAN · FLUTTER LEAD · 25+ PRODUCTION SYSTEMS ·</span>
-          <span className="mr-12">STAFF ARCHITECT · AFIF PATHAN · FLUTTER LEAD · 25+ PRODUCTION SYSTEMS ·</span>
+          <span className="mr-12">SENIOR MOBILE ARCHITECT &amp; FLUTTER LEAD · AFIF PATHAN · SOFTWARE ARCHITECT · 25+ SYSTEMS ·</span>
+          <span className="mr-12">SENIOR MOBILE ARCHITECT &amp; FLUTTER LEAD · AFIF PATHAN · SOFTWARE ARCHITECT · 25+ SYSTEMS ·</span>
         </motion.div>
       </div>
 

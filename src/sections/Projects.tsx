@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ProjectCard } from '../components/ProjectCard';
 import { TerminalPreview } from '../components/TerminalPreview';
 import { PROJECTS } from '../data/portfolioData';
@@ -18,7 +19,7 @@ export const Projects: React.FC = () => {
     <section
       id="projects"
       aria-label="Selected Production Projects"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 overflow-x-hidden overflow-x-clip"
     >
       {/* Signature Section Marker from Reference */}
       <div className="section-marker">
@@ -39,7 +40,13 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Live Algorithmic Systems Telemetry Showcase (PLACED ABOVE PROJECTS) */}
-      <div className="mb-14 p-6 sm:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/40 shadow-xs transition-colors">
+      <motion.div
+        initial={{ opacity: 0, x: -220 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.12 }}
+        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-14 p-6 sm:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/40 shadow-xs transition-colors"
+      >
         <div className="max-w-2xl mb-6">
           <div className="flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-cyan-400 uppercase tracking-wider mb-2 font-semibold">
             <Terminal className="w-4 h-4" />
@@ -54,10 +61,16 @@ export const Projects: React.FC = () => {
         </div>
 
         <TerminalPreview />
-      </div>
+      </motion.div>
 
       {/* Category Filters Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 pt-4 border-t border-slate-200 dark:border-white/5">
+      <motion.div
+        initial={{ opacity: 0, x: 220 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.12 }}
+        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 pt-4 border-t border-slate-200 dark:border-white/5"
+      >
         <div>
           <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
             Curated Systems Catalog ({filteredProjects.length})
@@ -83,7 +96,7 @@ export const Projects: React.FC = () => {
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Featured & Additional Projects Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
