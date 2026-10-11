@@ -13,12 +13,12 @@ import { Contact } from './sections/Contact';
 import { useReducedMotion } from './hooks/useReducedMotion';
 
 export const App: React.FC = () => {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
   const prefersReducedMotion = useReducedMotion();
 
-  // Initialize theme from storage or system
+  // Initialize theme from storage or system (default: light)
   useEffect(() => {
     try {
       const savedTheme = typeof window !== 'undefined' && window.localStorage
@@ -29,15 +29,19 @@ export const App: React.FC = () => {
         document.documentElement.classList.toggle('light', savedTheme === 'light');
         document.documentElement.classList.toggle('dark', savedTheme === 'dark');
       } else {
-        document.documentElement.classList.add('dark');
+        setTheme('light');
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
       }
     } catch {
-      document.documentElement.classList.add('dark');
+      setTheme('light');
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
   const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
@@ -75,10 +79,10 @@ export const App: React.FC = () => {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="relative min-h-screen bg-[#07090e] text-slate-100 flex flex-col font-sans transition-colors duration-300">
+    <div className="relative min-h-screen bg-[#f8fafc] dark:bg-[#07090e] text-slate-800 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200">
       {/* Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-500 z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 z-50 origin-left"
         style={{ width: `${scrollProgress}%` }}
         role="progressbar"
         aria-valuenow={Math.round(scrollProgress)}
@@ -90,7 +94,7 @@ export const App: React.FC = () => {
       {/* Subtle Desktop Mouse Glow */}
       {!prefersReducedMotion && (
         <div
-          className="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/[0.04] rounded-full blur-[100px] z-30 transition-transform duration-75 ease-out hidden lg:block"
+          className="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/[0.03] dark:bg-cyan-500/[0.04] rounded-full blur-[100px] z-30 transition-transform duration-75 ease-out hidden lg:block"
           style={{
             left: `${cursorPos.x}px`,
             top: `${cursorPos.y}px`,

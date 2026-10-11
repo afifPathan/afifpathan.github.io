@@ -38,4 +38,12 @@ describe('Afif Pathan Senior Mobile Architect Portfolio', () => {
     const hasResumeLink = resumeLinks.some((link) => link.getAttribute('href') === '/resume.pdf');
     expect(hasResumeLink).toBe(true);
   });
+
+  it('renders 25+ production systems metric and newly added CV projects', () => {
+    render(<App />);
+    expect(screen.getAllByText(/25\+/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Practo Doctor Hub/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Diversified Maintenance/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Smart Gate \(VMS\)/i).length).toBeGreaterThan(0);
+  });
 });

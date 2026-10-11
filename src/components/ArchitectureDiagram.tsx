@@ -9,6 +9,8 @@ interface LayerInfo {
   icon: React.ElementType;
   color: string;
   borderColor: string;
+  lightBorderColor: string;
+  lightBg: string;
   bgGradient: string;
   components: string[];
   description: string;
@@ -21,9 +23,11 @@ const LAYERS: LayerInfo[] = [
     name: 'Presentation Layer',
     badge: 'Cross-Platform UI',
     icon: Layers,
-    color: 'text-cyan-400',
-    borderColor: 'border-cyan-500/40',
-    bgGradient: 'from-cyan-950/30 to-blue-950/20',
+    color: 'text-blue-600 dark:text-cyan-400',
+    borderColor: 'border-blue-500/40 dark:border-cyan-500/40',
+    lightBorderColor: 'border-blue-300',
+    lightBg: 'bg-blue-50/60',
+    bgGradient: 'from-blue-950/30 to-blue-950/20',
     components: [
       'Flutter (iOS, Android, Web targets)',
       'React 18 + Vite Observability SPA',
@@ -43,8 +47,10 @@ const LAYERS: LayerInfo[] = [
     name: 'Application & State Layer',
     badge: 'Reactive Orchestration',
     icon: Cpu,
-    color: 'text-indigo-400',
-    borderColor: 'border-indigo-500/40',
+    color: 'text-indigo-600 dark:text-indigo-400',
+    borderColor: 'border-indigo-500/40 dark:border-indigo-500/40',
+    lightBorderColor: 'border-indigo-300',
+    lightBg: 'bg-indigo-50/60',
     bgGradient: 'from-indigo-950/30 to-violet-950/20',
     components: [
       'BLoC / Cubit State Machines',
@@ -65,8 +71,10 @@ const LAYERS: LayerInfo[] = [
     name: 'Domain Layer (Pure Core)',
     badge: 'Enterprise Business Rules',
     icon: ShieldCheck,
-    color: 'text-emerald-400',
-    borderColor: 'border-emerald-500/40',
+    color: 'text-emerald-600 dark:text-emerald-400',
+    borderColor: 'border-emerald-500/40 dark:border-emerald-500/40',
+    lightBorderColor: 'border-emerald-300',
+    lightBg: 'bg-emerald-50/60',
     bgGradient: 'from-emerald-950/30 to-teal-950/20',
     components: [
       'Pure Business Entities & Value Objects',
@@ -87,8 +95,10 @@ const LAYERS: LayerInfo[] = [
     name: 'Data & Infrastructure Layer',
     badge: 'Cloud & Local Stores',
     icon: Database,
-    color: 'text-purple-400',
-    borderColor: 'border-purple-500/40',
+    color: 'text-purple-600 dark:text-purple-400',
+    borderColor: 'border-purple-500/40 dark:border-purple-500/40',
+    lightBorderColor: 'border-purple-300',
+    lightBg: 'bg-purple-50/60',
     bgGradient: 'from-purple-950/30 to-pink-950/20',
     components: [
       'Firebase (Firestore, Storage, Cloud Functions)',
@@ -111,27 +121,27 @@ export const ArchitectureDiagram: React.FC = () => {
   const activeLayer = LAYERS.find((l) => l.id === selectedLayerId) || LAYERS[2];
 
   return (
-    <div className="w-full glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden border border-white/10 shadow-2xl">
+    <div className="w-full glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-lg bg-white/95 dark:bg-[#0c101c]/90">
       {/* Background ambient lighting */}
-      <div className="absolute -top-32 -right-32 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-80 h-80 bg-blue-500/10 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b border-white/10 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b border-slate-200 dark:border-white/10 gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-400">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 font-semibold">
             <Terminal className="w-3.5 h-3.5" />
             <span>Interactive Architecture Blueprint</span>
           </div>
-          <h3 className="text-xl md:text-2xl font-bold text-white mt-1">
-            Enterprise Clean Architecture & System Boundary Model
+          <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mt-1">
+            Enterprise Clean Architecture &amp; System Boundary Model
           </h3>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
             Click on any architectural stratum to inspect its boundaries, dependency directions, and invariants.
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-full border border-white/10 text-xs font-mono text-slate-300 self-start md:self-auto">
-          <ArrowDownUp className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+        <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900/80 px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 self-start md:self-auto">
+          <ArrowDownUp className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 animate-pulse" />
           <span>Dependency Inversion: Outward → Inward</span>
         </div>
       </div>
@@ -151,8 +161,8 @@ export const ArchitectureDiagram: React.FC = () => {
                 onClick={() => setSelectedLayerId(layer.id)}
                 className={`cursor-pointer rounded-xl p-4 transition-all duration-300 border relative ${
                   isSelected
-                    ? `${layer.borderColor} bg-gradient-to-r ${layer.bgGradient} shadow-lg ring-1 ring-cyan-500/20`
-                    : 'border-white/5 bg-slate-900/40 hover:border-white/20 hover:bg-slate-900/70'
+                    ? `${layer.lightBorderColor} dark:${layer.borderColor} ${layer.lightBg} dark:bg-gradient-to-r dark:${layer.bgGradient} shadow-md ring-1 ring-blue-500/20`
+                    : 'border-slate-200 dark:border-white/5 bg-slate-50/70 dark:bg-slate-900/40 hover:border-slate-300 dark:hover:border-white/20 hover:bg-slate-100 dark:hover:bg-slate-900/70'
                 }`}
               >
                 {/* Visual Data Flow Indicator */}
@@ -161,20 +171,20 @@ export const ArchitectureDiagram: React.FC = () => {
                     <div
                       className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
                         isSelected
-                          ? `bg-slate-950/80 ${layer.borderColor} ${layer.color}`
-                          : 'bg-slate-800/50 border-white/10 text-slate-400'
+                          ? `bg-white dark:bg-slate-950/80 ${layer.lightBorderColor} dark:${layer.borderColor} ${layer.color}`
+                          : 'bg-white dark:bg-slate-800/50 border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400'
                       }`}
                     >
                       <IconComponent className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono text-slate-500">0{index + 1}</span>
-                        <h4 className={`font-semibold text-sm md:text-base ${isSelected ? 'text-white' : 'text-slate-300'}`}>
+                        <span className="text-xs font-mono text-slate-400">0{index + 1}</span>
+                        <h4 className={`font-semibold text-sm md:text-base ${isSelected ? 'text-slate-900 dark:text-white font-bold' : 'text-slate-700 dark:text-slate-300'}`}>
                           {layer.name}
                         </h4>
                       </div>
-                      <span className="text-xs text-slate-400">{layer.badge}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">{layer.badge}</span>
                     </div>
                   </div>
 
@@ -182,8 +192,8 @@ export const ArchitectureDiagram: React.FC = () => {
                     <span
                       className={`text-[11px] font-mono px-2 py-0.5 rounded border ${
                         isSelected
-                          ? 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30'
-                          : 'bg-slate-800/50 text-slate-400 border-white/5'
+                          ? 'bg-blue-100 dark:bg-cyan-500/10 text-blue-700 dark:text-cyan-300 border-blue-300 dark:border-cyan-500/30 font-semibold'
+                          : 'bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-white/5'
                       }`}
                     >
                       {isSelected ? 'INSPECTING' : 'VIEW'}
@@ -192,11 +202,11 @@ export const ArchitectureDiagram: React.FC = () => {
                 </div>
 
                 {/* Sub-component Chips */}
-                <div className="mt-3 pt-3 border-t border-white/5 flex flex-wrap gap-1.5">
+                <div className="mt-3 pt-3 border-t border-slate-200/60 dark:border-white/5 flex flex-wrap gap-1.5">
                   {layer.components.map((comp) => (
                     <span
                       key={comp}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-black/40 text-slate-300 border border-white/5"
+                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-white dark:bg-black/40 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
                     >
                       {comp}
                     </span>
@@ -216,27 +226,27 @@ export const ArchitectureDiagram: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className={`p-6 rounded-xl border ${activeLayer.borderColor} bg-slate-950/70 relative`}
+              className={`p-6 rounded-xl border ${activeLayer.lightBorderColor} dark:${activeLayer.borderColor} bg-slate-50/80 dark:bg-slate-950/70 relative shadow-sm`}
             >
               <div className="flex items-center justify-between mb-4">
-                <span className={`text-xs font-mono font-medium px-2.5 py-1 rounded-full border ${activeLayer.borderColor} ${activeLayer.color} bg-black/40`}>
+                <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-full border ${activeLayer.lightBorderColor} dark:${activeLayer.borderColor} ${activeLayer.color} bg-white dark:bg-black/40`}>
                   {activeLayer.badge}
                 </span>
-                <span className="text-xs font-mono text-slate-500">LAYER CONTRACT</span>
+                <span className="text-xs font-mono text-slate-400">LAYER CONTRACT</span>
               </div>
 
-              <h4 className="text-lg font-bold text-white mb-2">{activeLayer.name}</h4>
-              <p className="text-sm text-slate-300 leading-relaxed mb-5">
+              <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{activeLayer.name}</h4>
+              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-5">
                 {activeLayer.description}
               </p>
 
               <div className="space-y-3">
-                <h5 className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                  Architectural Invariants & Best Practices:
+                <h5 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+                  Architectural Invariants &amp; Best Practices:
                 </h5>
                 <ul className="space-y-2">
                   {activeLayer.principles.map((p, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-xs text-slate-300">
+                    <li key={idx} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
                       <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${activeLayer.color}`} />
                       <span>{p}</span>
                     </li>
@@ -244,9 +254,9 @@ export const ArchitectureDiagram: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
                 <span>Production Evidence:</span>
-                <span className="text-cyan-400">Degreed · Buyzaar · Trading Bot</span>
+                <span className="text-blue-600 dark:text-cyan-400 font-semibold">Degreed · Buyzaar · Trading Bot</span>
               </div>
             </motion.div>
           </AnimatePresence>
