@@ -40,10 +40,10 @@ export const Education: React.FC = () => {
             {EDUCATION_DATA.map((edu, idx) => (
               <motion.div
                 key={edu.degree}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: idx * 0.1 }}
+                initial={{ opacity: 0, x: -35, y: 15 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: false, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 hover:border-slate-500 dark:hover:border-cyan-500/30 transition-all flex items-start gap-4 bg-white/95 dark:bg-slate-900/60 shadow-xs flex-1"
               >
                 <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400 shrink-0">
@@ -79,7 +79,13 @@ export const Education: React.FC = () => {
 
           <div className="space-y-4 flex-1 flex flex-col justify-between">
             {/* Award Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/40 dark:from-amber-950/20 dark:to-slate-900/60 border border-amber-300 dark:border-amber-500/20 shadow-xs flex-1 flex flex-col justify-between">
+            <motion.div
+              initial={{ opacity: 0, x: 35, y: 15 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: false, amount: 0.15 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/40 dark:from-amber-950/20 dark:to-slate-900/60 border border-amber-300 dark:border-amber-500/20 shadow-xs flex-1 flex flex-col justify-between"
+            >
               <div>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
@@ -103,10 +109,16 @@ export const Education: React.FC = () => {
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>Awarded for NewsPod Architectural Excellence (2020)</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Languages Card */}
-            <div className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 bg-white/95 dark:bg-slate-900/60 shadow-xs flex-1 flex flex-col justify-between">
+            <motion.div
+              initial={{ opacity: 0, x: 35, y: 15 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: false, amount: 0.15 }}
+              transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 bg-white/95 dark:bg-slate-900/60 shadow-xs flex-1 flex flex-col justify-between"
+            >
               <div>
                 <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-semibold">
                   <Globe2 className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
@@ -130,7 +142,7 @@ export const Education: React.FC = () => {
               <div className="mt-3 text-[11px] font-mono text-slate-500">
                 Primary Working Language: English (Professional Full Working Proficiency)
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

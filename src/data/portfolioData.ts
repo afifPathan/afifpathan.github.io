@@ -15,7 +15,7 @@ export const PERSONAL_INFO = {
   productionPlatforms: '25+',
   photo: '/profile.jpg',
   summary:
-    '8+ years of software engineering excellence, including 6+ years architecting production-grade cross-platform platforms and 25+ production systems. Specializing in enterprise Clean Architecture & SOLID, deterministic BLoC/Cubit & Riverpod state machines, real-time WebSocket telemetry & WebRTC teleconsultation, offline-first SQLite/Hive engines, Python algorithmic trading daemons (FastAPI & Angel One SmartAPI), and Gemini & OpenAI automation across EdTech, InsurTech, e-commerce, healthcare & telemedicine, algorithmic fintech, enterprise facility geofencing, hardware POS access control, audio streaming, and automotive telematics.',
+    '8+ years of software engineering excellence, including 6+ years architecting production-grade cross-platform platforms and 25+ production systems. Specializing in enterprise Clean Architecture & SOLID, deterministic BLoC/Cubit & Riverpod state machines, real-time WebSocket telemetry & WebRTC teleconsultation, offline-first SQLite/Hive engines, Python algorithmic trading daemons (FastAPI & Angel One SmartAPI), and AI Automation (Google Antigravity, OpenAI Codex, Gemini & Claude) across EdTech, InsurTech, e-commerce, healthcare & telemedicine, algorithmic fintech, enterprise facility geofencing, hardware POS access control, audio streaming, and automotive telematics.',
   languages: ['English', 'Hindi', 'Gujarati', 'Urdu'],
   award: {
     title: 'Rising Star Award (2020)',
@@ -759,6 +759,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     name: 'AI & Full-Stack Systems',
     description: 'Modern AI-driven workflows, trading bots, and web telemetry',
     skills: [
+      { name: 'AI Automation & Agents', level: 'Agentic Workflows', context: 'Google Antigravity, OpenAI Codex, autonomous multi-step execution & tool orchestration' },
+      { name: 'Google Antigravity & Codex', level: 'Production Tooling', context: 'Agentic workflows, Antigravity SDK, Codex reasoning & Cursor AI integration' },
       { name: 'Gemini, OpenAI & Claude', level: 'AI Integration', context: 'Prompt engineering, content pipelines, LLM-assisted data generation' },
       { name: 'AI-Assisted Workflows', level: 'Daily Practice', context: 'Cursor, GitHub Copilot, synthetic test generation & rapid prototyping' },
       { name: 'FastAPI & Python Daemons', level: 'Backend Microservices', context: 'Sub-second REST APIs, Angel One SmartAPI, risk circuit breakers' },

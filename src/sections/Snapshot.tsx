@@ -149,11 +149,11 @@ export const Snapshot: React.FC = () => {
       {/* Verified Metrics Counter Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, x: -30, y: 15 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.4, delay: 0.05 }}
+          transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono mb-1">
@@ -168,11 +168,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, x: -15, y: 15 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-cyan-400 font-mono mb-1">
@@ -187,11 +187,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, x: 15, y: 15 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.4, delay: 0.15 }}
+          transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono mb-1">
@@ -206,11 +206,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, x: 30, y: 15 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-xs"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 font-mono mb-1">
@@ -232,10 +232,10 @@ export const Snapshot: React.FC = () => {
           return (
             <motion.div
               key={pillar.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -35 : 35, y: 15 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: false, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-200 shadow-xs"
             >
               <div className="flex items-center gap-3 mb-3">

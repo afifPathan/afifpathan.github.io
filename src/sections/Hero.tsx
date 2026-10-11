@@ -49,59 +49,49 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Main Hero Content Grid */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10 flex-1 my-auto">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center relative z-10 flex-1 my-auto py-4">
         {/* Left Column: Big Role Headline, Name Signature & Senior Positioning */}
         <div className="lg:col-span-7 flex flex-col justify-center">
-          {/* Status Eyebrow Note */}
+          {/* Status & Identity Header Bar */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-300/90 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 w-fit mb-4 shadow-2xs backdrop-blur-sm"
+            className="flex flex-wrap items-center gap-3 mb-6"
           >
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span className="font-semibold text-slate-900 dark:text-white">Senior Mobile Architect</span>
-            <span className="text-slate-300 dark:text-slate-700">|</span>
-            <span className="text-slate-600 dark:text-slate-400">Flutter Tech Lead</span>
-            <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">|</span>
-            <span className="text-emerald-700 dark:text-emerald-400 font-medium hidden sm:inline">
-              Available for Remote / Advisory
-            </span>
+            {/* Availability Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-800 dark:text-emerald-300 backdrop-blur-sm shadow-2xs">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="font-semibold">Available for Remote &amp; Architecture Advisory</span>
+            </div>
+
+            {/* Verified Identity Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-2xs">
+              <span className="font-bold text-slate-900 dark:text-white">Afif Pathan</span>
+              <span className="text-slate-300 dark:text-slate-700">·</span>
+              <span className="text-slate-500 dark:text-slate-400">8+ Years in Production · 25+ Systems</span>
+            </div>
           </motion.div>
 
-          {/* Executive Name Badge */}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="flex items-center gap-2.5 mb-2.5"
-          >
-            <span className="px-2.5 py-0.5 rounded bg-blue-600/10 dark:bg-cyan-500/15 border border-blue-600/20 dark:border-cyan-500/25 text-xs font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-cyan-300">
-              Afif Pathan
-            </span>
-            <span className="text-slate-400 text-xs font-mono">/</span>
-            <span className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase tracking-widest font-semibold">
-              8+ Years in Production · 25+ Systems
-            </span>
-          </motion.div>
-
-          {/* Primary Editorial Heading: ROLE BIG & FANCY */}
+          {/* Primary Editorial Heading: SENIOR MOBILE ARCHITECT & FLUTTER LEAD */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6"
           >
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-3">
-              Staff / Senior <em className="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-300">Mobile Architect.</em>
+              Senior Mobile Architect &amp;{' '}
+              <em className="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-300">
+                Flutter Lead.
+              </em>
             </h1>
 
-            <div className="text-lg sm:text-2xl font-bold tracking-tight text-blue-700 dark:text-cyan-400 font-mono mb-4 flex items-center gap-2 flex-wrap">
-              <span>Flutter Tech Lead</span>
-              <span className="text-slate-400">·</span>
-              <span className="text-slate-700 dark:text-slate-300 font-semibold">Software Architect</span>
+            <div className="text-base sm:text-xl font-bold tracking-tight text-slate-700 dark:text-slate-300 font-mono">
+              Software Architect
             </div>
           </motion.div>
 
@@ -112,51 +102,56 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 mb-6"
           >
-            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-2xs">
-              Cross-Platform Systems
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+              ✦ Cross-Platform Systems
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-2xs">
-              Enterprise Clean Architecture
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+              ✦ Enterprise Clean Architecture
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-2xs">
-              FastAPI &amp; Algorithmic Trading
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+              ✦ FastAPI &amp; Trading Daemons
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/5 font-medium shadow-2xs">
-              Gemini, OpenAI &amp; Claude AI
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+              ✦ Google Antigravity &amp; Codex
+            </span>
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+              ✦ AI Agentic Automation
             </span>
           </motion.div>
 
-          {/* Positioning Statement: Comprehensive verified wording with all domains */}
-          <motion.p
+          {/* Positioning Statement Card: Generous Padding & Elegant Framing */}
+          <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl font-normal"
+            className="p-5 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 border-l-4 border-l-blue-600 dark:border-l-cyan-400 shadow-xs mb-8"
           >
-            <span className="text-slate-900 dark:text-white font-semibold">
-              8+ years of software engineering excellence
-            </span>
-            , including{' '}
-            <span className="text-slate-900 dark:text-white font-semibold">
-              6+ years architecting production-grade cross-platform platforms
-            </span>{' '}
-            and{' '}
-            <span className="text-blue-700 dark:text-cyan-400 font-semibold">
-              {PERSONAL_INFO.productionPlatforms} production systems
-            </span>
-            . Specializing in enterprise{' '}
-            <span className="text-blue-700 dark:text-cyan-400 font-medium">Clean Architecture &amp; SOLID</span>
-            , deterministic{' '}
-            <span className="text-indigo-600 dark:text-indigo-300 font-medium">
-              BLoC/Cubit &amp; Riverpod state machines
-            </span>
-            , real-time{' '}
-            <span className="text-slate-900 dark:text-white font-medium">
-              WebSocket telemetry &amp; WebRTC teleconsultation
-            </span>
-            , offline-first SQLite/Hive engines, Python algorithmic trading daemons (FastAPI &amp; Angel One SmartAPI), and{' '}
-            <span className="text-blue-700 dark:text-cyan-400 font-medium">Gemini &amp; OpenAI automation</span> across EdTech, InsurTech, e-commerce, healthcare &amp; telemedicine, algorithmic fintech, enterprise facility geofencing, hardware POS access control, audio streaming, and automotive telematics.
-          </motion.p>
+            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+              <span className="text-slate-900 dark:text-white font-semibold">
+                8+ years of software engineering excellence
+              </span>
+              , including{' '}
+              <span className="text-slate-900 dark:text-white font-semibold">
+                6+ years architecting production-grade cross-platform platforms
+              </span>{' '}
+              and{' '}
+              <span className="text-blue-700 dark:text-cyan-400 font-semibold">
+                {PERSONAL_INFO.productionPlatforms} production systems
+              </span>
+              . Specializing in enterprise{' '}
+              <span className="text-blue-700 dark:text-cyan-400 font-medium">Clean Architecture &amp; SOLID</span>
+              , deterministic{' '}
+              <span className="text-indigo-600 dark:text-indigo-300 font-medium">
+                BLoC/Cubit &amp; Riverpod state machines
+              </span>
+              , real-time{' '}
+              <span className="text-slate-900 dark:text-white font-medium">
+                WebSocket telemetry &amp; WebRTC teleconsultation
+              </span>
+              , offline-first SQLite/Hive engines, Python/FastAPI algorithmic trading daemons, and{' '}
+              <span className="text-blue-700 dark:text-cyan-400 font-medium">AI Automation (Google Antigravity, OpenAI Codex, Gemini &amp; Claude)</span> across EdTech, InsurTech, e-commerce, healthcare &amp; telemedicine, algorithmic fintech, enterprise facility geofencing, hardware POS access control, audio streaming, and automotive telematics.
+            </p>
+          </motion.div>
 
           {/* Action CTAs with Micro-Interactions */}
           <motion.div
@@ -169,7 +164,7 @@ export const Hero: React.FC = () => {
               href="#projects"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-mono text-xs font-semibold text-white bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-100 dark:text-[#07090e] transition-all duration-200 shadow-md"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-mono text-xs font-semibold text-white bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-100 dark:text-[#0e121d] transition-all duration-200 shadow-md cursor-pointer"
             >
               <span>Explore 25+ Systems &amp; Work</span>
               <ArrowRight className="w-4 h-4" />
@@ -180,7 +175,7 @@ export const Hero: React.FC = () => {
               download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-white/10 hover:border-slate-500 shadow-2xs transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-white/10 hover:border-slate-500 shadow-2xs transition-all duration-200 cursor-pointer"
             >
               <Download className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
               <span>Download Verified CV</span>
@@ -189,19 +184,19 @@ export const Hero: React.FC = () => {
             <motion.a
               href="#contact"
               whileHover={{ x: 3 }}
-              className="inline-flex items-center gap-1.5 px-4 py-3.5 rounded-xl font-mono text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-3.5 rounded-xl font-mono text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
             >
               <span>Initiate Contact</span>
               <span>↗</span>
             </motion.a>
           </motion.div>
 
-          {/* Direct Verified Channels */}
+          {/* Direct Verified Channels in Dedicated Pill Bar */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="pt-5 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-5 text-xs font-mono text-slate-600 dark:text-slate-400"
+            className="p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-slate-600 dark:text-slate-400 shadow-xs"
           >
             <span className="text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
               Direct Channels:

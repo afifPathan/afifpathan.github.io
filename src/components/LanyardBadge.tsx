@@ -21,7 +21,14 @@ export const LanyardBadge: React.FC = () => {
   };
 
   return (
-    <div className="badge-scene select-none" aria-label="Interactive 3D Engineering ID Badge">
+    <motion.div
+      initial={{ y: -80, opacity: 0, rotateZ: -6 }}
+      whileInView={{ y: 0, opacity: 1, rotateZ: 0 }}
+      viewport={{ once: false, amount: 0.15 }}
+      transition={{ type: 'spring', stiffness: 85, damping: 13, mass: 1 }}
+      className="badge-scene select-none"
+      aria-label="Interactive 3D Engineering ID Badge"
+    >
       {/* Lanyard Cord SVG Ribbon */}
       <svg
         className="badge-cord pointer-events-none"
@@ -94,7 +101,7 @@ export const LanyardBadge: React.FC = () => {
               <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200 dark:border-white/10 text-[10px] font-mono">
                 <div className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>STAFF ID PASS</span>
+                  <span>VERIFIED ARCHITECT CREDENTIAL</span>
                 </div>
                 <span className="text-slate-400 dark:text-slate-500 font-mono tracking-wider">#AP-89412</span>
               </div>
@@ -112,7 +119,7 @@ export const LanyardBadge: React.FC = () => {
             {/* Identity Information: Cleanly Positioned Below Photo */}
             <div className="my-1.5 text-center flex flex-col items-center">
               <span className="inline-block px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/60 text-[9px] font-mono font-bold tracking-wider mb-1">
-                STAFF ARCHITECT
+                PRINCIPAL / SENIOR ARCHITECT
               </span>
               <h2 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 {PERSONAL_INFO.name}
@@ -200,6 +207,6 @@ export const LanyardBadge: React.FC = () => {
           </div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };

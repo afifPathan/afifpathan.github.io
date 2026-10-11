@@ -17,7 +17,7 @@ interface FlatSkill {
   deployedSystems: string;
 }
 
-// Map each skill to rich architecture metadata
+// Map each skill to rich architecture metadata with 100% safe badges
 const ALL_SKILLS: FlatSkill[] = SKILL_CATEGORIES.flatMap((category, catIdx) => {
   const colors = [
     'from-sky-500 to-blue-600',
@@ -30,11 +30,21 @@ const ALL_SKILLS: FlatSkill[] = SKILL_CATEGORIES.flatMap((category, catIdx) => {
   const color = colors[catIdx % colors.length];
 
   return category.skills.map((skill) => {
-    const words = skill.name.replace(/[^a-zA-Z0-9 ]/g, '').split(' ');
-    const badge =
-      words.length > 1
-        ? (words[0][0] + words[1][0]).toUpperCase()
-        : skill.name.slice(0, 2).toUpperCase();
+    // Clean string from non-alphanumeric and split into valid words
+    const words = skill.name
+      .replace(/[^a-zA-Z0-9]/g, ' ')
+      .trim()
+      .split(/\s+/)
+      .filter((w) => Boolean(w) && w.length > 0);
+
+    let badge = 'AP';
+    if (words.length > 1 && words[0] && words[1]) {
+      badge = (words[0][0] + words[1][0]).toUpperCase();
+    } else if (words.length === 1 && words[0].length >= 2) {
+      badge = words[0].slice(0, 2).toUpperCase();
+    } else if (words.length === 1 && words[0].length === 1) {
+      badge = (words[0][0] + 'X').toUpperCase();
+    }
 
     // Contextual systems where Afif deployed this
     let deployedSystems = 'Cross-platform mobile & system architectures';
@@ -44,13 +54,15 @@ const ALL_SKILLS: FlatSkill[] = SKILL_CATEGORIES.flatMap((category, catIdx) => {
       deployedSystems = 'Degreed · Buyzaar · Diversified Maintenance';
     } else if (skill.name.includes('FastAPI') || skill.name.includes('Python') || skill.name.includes('SmartAPI')) {
       deployedSystems = 'Swing Stock Trading Bot · NSE Algorithmic Daemons';
+    } else if (skill.name.includes('Antigravity') || skill.name.includes('Codex') || skill.name.includes('Automation')) {
+      deployedSystems = 'Agentic Multi-Step Pipelines · Codex Codebase Workflows';
     } else if (skill.name.includes('WebSocket')) {
       deployedSystems = 'Trading Bot Terminal Dashboard · Real-Time Telemetry';
     } else if (skill.name.includes('WebRTC')) {
       deployedSystems = 'Practo Doctor Hub · Teleconsultation Video Engine';
     } else if (skill.name.includes('Firebase')) {
       deployedSystems = 'Buyzaar Web · ProHOff · BBC Connect';
-    } else if (skill.name.includes('Gemini') || skill.name.includes('OpenAI')) {
+    } else if (skill.name.includes('Gemini') || skill.name.includes('OpenAI') || skill.name.includes('Claude')) {
       deployedSystems = 'Buyzaar Catalog Automation · AI Synthesis Pipelines';
     } else if (skill.name.includes('SQLite') || skill.name.includes('Offline')) {
       deployedSystems = 'NewsPod · Diversified · Kaizen Dental';
@@ -90,10 +102,10 @@ export const TechCluster: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-8 w-full">
-      {/* Top Interactive Controls Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-white/10 shadow-sm backdrop-blur-md">
-        {/* Category Filter Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+      {/* Top Interactive Controls Bar: Polished wrapping tabs & sleek search */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 shadow-xs backdrop-blur-md">
+        {/* Category Filter Pills (Wrapping Flex - Zero Overflow/Scrollbar) */}
+        <div className="flex flex-wrap items-center gap-2">
           {categories.map((cat) => {
             const isSelected = selectedCategory === cat;
             return (
@@ -104,7 +116,7 @@ export const TechCluster: React.FC = () => {
                 className={`px-3.5 py-1.5 rounded-xl font-mono text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                   isSelected
                     ? 'bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 shadow-md scale-[1.02]'
-                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300'
+                    : 'bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300'
                 }`}
               >
                 {cat}
@@ -113,15 +125,15 @@ export const TechCluster: React.FC = () => {
           })}
         </div>
 
-        {/* Search Input Bar */}
-        <div className="relative min-w-[240px] max-w-xs">
-          <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+        {/* Polished Search Input Bar */}
+        <div className="relative w-full lg:w-72 shrink-0">
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search technologies..."
-            className="w-full pl-9 pr-3 py-1.5 text-xs font-mono rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400"
+            className="w-full pl-10 pr-4 py-2 text-xs font-mono rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 transition-all"
           />
         </div>
       </div>
@@ -129,7 +141,13 @@ export const TechCluster: React.FC = () => {
       {/* Main Layout: Active Technology HUD Inspector + Interactive Matrix Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column (5 cols): Active Technology HUD Telemetry Console */}
-        <div className="lg:col-span-5 flex flex-col gap-4">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-5 flex flex-col gap-4"
+        >
           <div className="p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl relative overflow-hidden">
             {/* Ambient Corner Flare */}
             <div className="absolute top-0 right-0 w-44 h-44 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -213,7 +231,7 @@ export const TechCluster: React.FC = () => {
 
           {/* Quick Stats Ticker */}
           <div className="grid grid-cols-3 gap-3">
-            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center">
+            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center shadow-xs">
               <div className="text-xl font-bold text-slate-900 dark:text-white font-mono">
                 {ALL_SKILLS.length}+
               </div>
@@ -221,7 +239,7 @@ export const TechCluster: React.FC = () => {
                 Mastered
               </div>
             </div>
-            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center">
+            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center shadow-xs">
               <div className="text-xl font-bold text-blue-600 dark:text-cyan-400 font-mono">
                 25+
               </div>
@@ -229,7 +247,7 @@ export const TechCluster: React.FC = () => {
                 Platforms
               </div>
             </div>
-            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center">
+            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center shadow-xs">
               <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 font-mono">
                 0%
               </div>
@@ -238,7 +256,7 @@ export const TechCluster: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column (7 cols): Bento Matrix of Interactive Technical Mastery Cards */}
         <div className="lg:col-span-7 flex flex-col gap-3">
@@ -248,13 +266,17 @@ export const TechCluster: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[640px] overflow-y-auto pr-1">
-            {filteredSkills.map((skill) => {
+            {filteredSkills.map((skill, idx) => {
               const isActive = activeSkill.name === skill.name;
               return (
                 <motion.div
                   key={skill.name}
                   onClick={() => setActiveSkill(skill)}
-                  whileHover={{ y: -2 }}
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20, y: 10 }}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: false, amount: 0.15 }}
+                  transition={{ duration: 0.45, delay: (idx % 6) * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -3, transition: { duration: 0.18 } }}
                   whileTap={{ scale: 0.98 }}
                   className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 text-left ${
                     isActive
