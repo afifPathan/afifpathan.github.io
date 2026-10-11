@@ -25,12 +25,18 @@ export const Experience: React.FC = () => {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2"
+        >
           Where I've engineered<br />
           <em className="text-slate-900 dark:text-white font-serif font-normal italic">
             lasting impact.
           </em>
-        </h2>
+        </motion.h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
           8+ years of engineering leadership across high-growth startups and global enterprise platforms in India and the United States.
         </p>
@@ -41,11 +47,11 @@ export const Experience: React.FC = () => {
         {EXPERIENCES.map((exp, idx) => (
           <motion.article
             key={exp.id}
-            initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+            initial={{ opacity: 0, x: idx % 2 === 0 ? -120 : 120 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.05 }}
+            viewport={{ once: false, amount: 0.08 }}
             whileHover={{ x: 4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            transition={{ duration: 0.38, delay: (idx % 2) * 0.05, ease: 'easeOut' }}
+            transition={{ duration: 0.4, delay: (idx % 2) * 0.04, ease: [0.16, 1, 0.3, 1] }}
             className="relative group transform-gpu"
           >
             {/* Timeline Node Indicator */}

@@ -21,12 +21,18 @@ export const Philosophy: React.FC = () => {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-4">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-4"
+        >
           Engineering Principles &amp;<br />
           <em className="text-slate-900 dark:text-white font-serif font-normal italic">
             System Boundaries.
           </em>
-        </h2>
+        </motion.h2>
         <div className="text-sm font-mono text-blue-700 dark:text-cyan-400 font-semibold mb-2">
           Enterprise Clean Architecture &amp; System Boundary Model
         </div>
@@ -35,23 +41,23 @@ export const Philosophy: React.FC = () => {
         </p>
       </div>
 
-      {/* Interactive Clean Architecture Diagram Component */}
+      {/* Interactive Clean Architecture Diagram Component: Fast Repeat Swipe from Left */}
       <motion.div
-        initial={{ opacity: 0, x: -60 }}
+        initial={{ opacity: 0, x: -110 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.05 }}
-        transition={{ duration: 0.38, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.08 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="mb-16 transform-gpu"
       >
         <ArchitectureDiagram />
       </motion.div>
 
-      {/* Architectural Principles & Code Snippets Explorer */}
+      {/* Architectural Principles & Code Snippets Explorer: Fast Repeat Swipe from Right */}
       <motion.div
-        initial={{ opacity: 0, x: 60 }}
+        initial={{ opacity: 0, x: 110 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.05 }}
-        transition={{ duration: 0.38, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.08 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-xl transform-gpu"
       >
         <div className="flex items-center gap-2 text-xs font-mono text-indigo-700 dark:text-indigo-400 mb-6 uppercase tracking-wider font-semibold">

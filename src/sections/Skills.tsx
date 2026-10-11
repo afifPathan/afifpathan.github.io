@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { TechCluster } from '../components/TechCluster';
 
 export const Skills: React.FC = () => {
@@ -15,12 +16,18 @@ export const Skills: React.FC = () => {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-3">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-3"
+        >
           Tools &amp; Technologies I've<br />
           <em className="text-slate-900 dark:text-white font-serif font-normal italic">
             mastered.
           </em>
-        </h2>
+        </motion.h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
           An interactive physical device view of my production arsenal across mobile client runtimes, enterprise architectural patterns, deterministic reactive state machines, cloud infrastructure, and algorithmic trading daemons.
         </p>

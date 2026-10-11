@@ -24,8 +24,8 @@ export const LanyardBadge: React.FC = () => {
     <motion.div
       initial={{ y: -60, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.05 }}
-      transition={{ duration: 0.45, ease: 'easeOut' }}
+      viewport={{ once: false, amount: 0.1 }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       className="badge-scene select-none"
       aria-label="Interactive 3D Engineering ID Badge"
     >

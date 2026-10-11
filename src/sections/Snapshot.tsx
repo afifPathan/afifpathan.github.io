@@ -62,19 +62,31 @@ export const Snapshot: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
         {/* Left Side: Large Name & Vertical Quick Links */}
         <div className="lg:col-span-5 space-y-6">
-          <h2 className="text-5xl sm:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[0.95]">
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="text-5xl sm:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[0.95]"
+          >
             Hi, I'm<br />
             <em className="text-slate-900 dark:text-white font-serif font-normal italic">
               Afif.
             </em>
-          </h2>
+          </motion.h2>
 
           <p className="text-sm font-mono text-slate-500 dark:text-slate-400">
             Senior Mobile Architect · Flutter Lead · Ahmedabad, India
           </p>
 
-          {/* Quick Action Link Pills */}
-          <div className="flex flex-wrap lg:flex-col gap-2 pt-2">
+          {/* Quick Action Link Pills: Fast Swipe from Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -70 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap lg:flex-col gap-2 pt-2 transform-gpu"
+          >
             <a
               href="/resume.pdf"
               download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
@@ -123,11 +135,17 @@ export const Snapshot: React.FC = () => {
               </span>
               <ArrowUpRight className="w-3 h-3 text-slate-400" />
             </a>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Right Side: Editorial Pull Quote & Deep Narrative */}
-        <div className="lg:col-span-7 space-y-6">
+        {/* Right Side: Editorial Pull Quote & Deep Narrative (Swipe from Right) */}
+        <motion.div
+          initial={{ opacity: 0, x: 70 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-7 space-y-6 transform-gpu"
+        >
           <blockquote className="p-6 rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border-l-4 border-amber-600 dark:border-amber-400 text-lg sm:text-xl font-serif italic text-slate-900 dark:text-slate-100 leading-snug">
             "Architecture isn't just about writing code that works today. It's about engineering resilient state machines, strict domain boundaries, and zero-leak pipelines so teams can scale without regressions."
           </blockquote>
@@ -143,17 +161,17 @@ export const Snapshot: React.FC = () => {
               Beyond mobile, I engineer automated <strong>Python &amp; FastAPI algorithmic trading daemons</strong> interfacing with <strong>Angel One SmartAPI</strong>, real-time WebSocket telemetry dashboards on React 18, and production-grade <strong>Gemini, OpenAI, Claude, and LLM automation workflows</strong>.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Verified Metrics Counter Cards */}
+      {/* Verified Metrics Counter Cards: Fast Repeat Swipe from Left/Right */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: false, amount: 0.08 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.35, delay: 0.04, ease: 'easeOut' }}
+          transition={{ duration: 0.38, delay: 0.02, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/40 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono mb-1">
@@ -168,11 +186,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: -25 }}
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: false, amount: 0.08 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.35, delay: 0.08, ease: 'easeOut' }}
+          transition={{ duration: 0.38, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-cyan-400 font-mono mb-1">
@@ -187,11 +205,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 25 }}
+          initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: false, amount: 0.08 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.35, delay: 0.12, ease: 'easeOut' }}
+          transition={{ duration: 0.38, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono mb-1">
@@ -206,11 +224,11 @@ export const Snapshot: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: false, amount: 0.08 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.35, delay: 0.16, ease: 'easeOut' }}
+          transition={{ duration: 0.38, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 font-mono mb-1">
@@ -225,17 +243,17 @@ export const Snapshot: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Architectural Pillars Grid */}
+      {/* Architectural Pillars Grid: Fast Alternate Swipe */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {SNAPSHOT_PILLARS.map((pillar, idx) => {
           const IconComp = pillar.icon;
           return (
             <motion.div
               key={pillar.title}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -110 : 110 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 0.38, delay: (idx % 2) * 0.05, ease: 'easeOut' }}
+              viewport={{ once: false, amount: 0.08 }}
+              transition={{ duration: 0.4, delay: (idx % 2) * 0.04, ease: [0.16, 1, 0.3, 1] }}
               className="p-6 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/60 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-200 shadow-md hover:shadow-lg transform-gpu"
             >
               <div className="flex items-center gap-3 mb-3">
@@ -267,8 +285,8 @@ export const Snapshot: React.FC = () => {
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.12 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-950/20 dark:via-slate-900/40 dark:to-slate-900/40 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+        transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+        className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-950/20 dark:via-slate-900/40 dark:to-slate-900/40 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transform-gpu"
       >
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">

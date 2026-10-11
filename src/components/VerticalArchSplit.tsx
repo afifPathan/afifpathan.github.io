@@ -23,16 +23,16 @@ export const VerticalArchSplit: React.FC<VerticalArchSplitProps> = ({
   flipSides = false,
   className = '',
 }) => {
-  // Color palette definitions
-  // Side A (Light Yellow): Warm ivory sunshine
+  // Color palette definitions: Light Blue & Light Purple
+  // Side A (Light Blue): Soft sky crystalline blue
   // Side B (Light Purple): Lavender pastel
   const leftColorClass = flipSides
-    ? 'fill-[#faf5ff] dark:fill-[#131427]' // Purple on left
-    : 'fill-[#fefce8] dark:fill-[#0d111b]'; // Yellow on left
+    ? 'fill-[#faf5ff] dark:fill-[#141327]' // Purple on left
+    : 'fill-[#f0f9ff] dark:fill-[#0d1322]'; // Light Blue on left
 
   const containerBgClass = flipSides
-    ? 'bg-[#fefce8] dark:bg-[#0d111b]' // Yellow on right
-    : 'bg-[#faf5ff] dark:bg-[#131427]'; // Purple on right
+    ? 'bg-[#f0f9ff] dark:bg-[#0d1322]' // Light Blue on right
+    : 'bg-[#faf5ff] dark:bg-[#141327]'; // Purple on right
 
   const filterId = `arch-blend-shadow-${variant}-${flipSides ? 'f' : 'n'}`;
 
@@ -141,8 +141,8 @@ export const VerticalArchSplit: React.FC<VerticalArchSplitProps> = ({
               dx={flipSides ? '-12' : '12'}
               dy="0"
               stdDeviation="18"
-              floodColor={flipSides ? '#eab308' : '#8b5cf6'}
-              floodOpacity="0.22"
+              floodColor={flipSides ? '#0284c7' : '#8b5cf6'}
+              floodOpacity="0.18"
             />
             {/* Secondary volumetric ambient shadow */}
             <feDropShadow

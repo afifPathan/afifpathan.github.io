@@ -104,10 +104,10 @@ export const TechCluster: React.FC = () => {
     <div className="flex flex-col gap-8 w-full">
       {/* Top Interactive Controls Bar: Polished wrapping tabs & sleek search */}
       <motion.div
-        initial={{ opacity: 0, y: -40 }}
+        initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.12 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 shadow-xs backdrop-blur-md"
       >
         {/* Category Filter Pills (Wrapping Flex - Zero Overflow/Scrollbar) */}
@@ -146,12 +146,12 @@ export const TechCluster: React.FC = () => {
 
       {/* Main Layout: Active Technology HUD Inspector + Interactive Matrix Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column (5 cols): Active Technology HUD Telemetry Console */}
+        {/* Left Column (5 cols): Active Technology HUD Telemetry Console (Fast Repeat Swipe from Left) */}
         <motion.div
-          initial={{ opacity: 0, x: -70 }}
+          initial={{ opacity: 0, x: -110 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.38, ease: 'easeOut' }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 flex flex-col gap-4 transform-gpu"
         >
           <div className="p-6 rounded-3xl bg-slate-800 text-white border border-slate-700 shadow-xl relative overflow-hidden">
@@ -278,10 +278,10 @@ export const TechCluster: React.FC = () => {
                 <motion.div
                   key={skill.name}
                   onClick={() => setActiveSkill(skill)}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -90 : 90 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.05 }}
-                  transition={{ duration: 0.35, delay: (idx % 4) * 0.03, ease: 'easeOut' }}
+                  viewport={{ once: false, amount: 0.08 }}
+                  transition={{ duration: 0.36, delay: (idx % 4) * 0.03, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -3, transition: { duration: 0.15 } }}
                   whileTap={{ scale: 0.98 }}
                   className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 text-left transform-gpu backdrop-blur-md ${

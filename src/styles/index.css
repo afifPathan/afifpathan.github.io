@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #fefce8;
+  --bg-primary: #f0f9ff;
   --bg-secondary: #faf5ff;
-  --bg-tertiary: #fef9c3;
-  --color-cream: #fefce8;
-  --color-yellow: #fefce8;
+  --bg-tertiary: #e0f2fe;
+  --color-cream: #f0f9ff;
+  --color-yellow: #f0f9ff;
+  --color-blue: #f0f9ff;
   --color-purple: #faf5ff;
   --color-ink: #0f172a;
   --color-amber: #d97706;

@@ -17,19 +17,25 @@ export const Education: React.FC = () => {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2"
+        >
           Academic foundation &amp;<br />
           <em className="text-slate-900 dark:text-white font-serif font-normal italic">
             credentials.
           </em>
-        </h2>
+        </motion.h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
           Verified academic degrees in Information Technology paired with formal industry awards and multilingual communication capabilities.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-        {/* Left Column: Academic Degrees */}
+        {/* Left Column: Academic Degrees (Fast Repeat Swipe from Left) */}
         <div className="flex flex-col justify-between space-y-4">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-cyan-400 mb-1">
             <GraduationCap className="w-4 h-4" />
@@ -40,10 +46,10 @@ export const Education: React.FC = () => {
             {EDUCATION_DATA.map((edu, idx) => (
               <motion.div
                 key={edu.degree}
-                initial={{ opacity: 0, x: -60 }}
+                initial={{ opacity: 0, x: -110 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.05 }}
-                transition={{ duration: 0.38, delay: idx * 0.05, ease: 'easeOut' }}
+                viewport={{ once: false, amount: 0.08 }}
+                transition={{ duration: 0.4, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="p-6 rounded-2xl glass-panel border border-slate-300/70 dark:border-white/10 hover:border-slate-500 dark:hover:border-cyan-500/30 transition-all flex items-start gap-4 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl flex-1 transform-gpu"
               >
                 <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400 shrink-0">
@@ -70,7 +76,7 @@ export const Education: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Industry Honors & Languages */}
+        {/* Right Column: Industry Honors & Languages (Fast Repeat Swipe from Right) */}
         <div className="flex flex-col justify-between space-y-4">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-1">
             <Award className="w-4 h-4" />
@@ -80,10 +86,10 @@ export const Education: React.FC = () => {
           <div className="space-y-4 flex-1 flex flex-col justify-between">
             {/* Award Card */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: 110 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 0.38, ease: 'easeOut' }}
+              viewport={{ once: false, amount: 0.08 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="p-6 rounded-2xl bg-amber-50/40 dark:bg-amber-950/20 backdrop-blur-md border border-amber-300/70 dark:border-amber-500/20 shadow-md flex-1 flex flex-col justify-between transform-gpu"
             >
               <div>
@@ -113,10 +119,10 @@ export const Education: React.FC = () => {
 
             {/* Languages Card */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: 110 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 0.38, delay: 0.06, ease: 'easeOut' }}
+              viewport={{ once: false, amount: 0.08 }}
+              transition={{ duration: 0.4, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
               className="p-6 rounded-2xl glass-panel border border-slate-300/70 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md flex-1 flex flex-col justify-between transform-gpu"
             >
               <div>

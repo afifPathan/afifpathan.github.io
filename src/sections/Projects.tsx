@@ -28,23 +28,29 @@ export const Projects: React.FC = () => {
       </div>
 
       <div className="mb-10">
-        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2"
+        >
           Selected Systems &amp;<br />
           <em className="text-slate-900 dark:text-white font-serif font-normal italic">
             Case Studies.
           </em>
-        </h2>
+        </motion.h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
           Complete showcase of {PROJECTS.length} cross-platform applications, reactive terminals, algorithmic execution engines, and published SDKs delivered throughout 8+ years.
         </p>
       </div>
 
-      {/* Live Algorithmic Systems Telemetry Showcase (PLACED ABOVE PROJECTS) */}
+      {/* Live Algorithmic Systems Telemetry Showcase (PLACED ABOVE PROJECTS): Fast Repeat Swipe from Left */}
       <motion.div
-        initial={{ opacity: 0, x: -60 }}
+        initial={{ opacity: 0, x: -110 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.05 }}
-        transition={{ duration: 0.38, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.08 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="mb-14 p-6 sm:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-800/60 shadow-xs transition-colors transform-gpu"
       >
         <div className="max-w-2xl mb-6">
@@ -63,12 +69,12 @@ export const Projects: React.FC = () => {
         <TerminalPreview />
       </motion.div>
 
-      {/* Category Filters Bar */}
+      {/* Category Filters Bar: Fast Repeat Swipe from Right */}
       <motion.div
-        initial={{ opacity: 0, x: 60 }}
+        initial={{ opacity: 0, x: 110 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.05 }}
-        transition={{ duration: 0.38, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.08 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 pt-4 border-t border-slate-200 dark:border-white/5 transform-gpu"
       >
         <div>

@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
     <section
       id="hero"
       aria-label="Introduction and Senior Engineering Profile"
-      className="relative min-h-[96vh] flex flex-col justify-between pt-28 pb-8 px-4 sm:px-6 lg:px-8 bg-blueprint-grid overflow-hidden"
+      className="relative min-h-[96vh] flex flex-col justify-between pt-20 sm:pt-22 pb-8 px-4 sm:px-6 lg:px-8 bg-blueprint-grid overflow-hidden"
     >
       {/* Ambient Lighting Cones */}
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-500/[0.06] dark:bg-cyan-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
@@ -48,18 +48,19 @@ export const Hero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Main Hero Content Grid */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center relative z-10 flex-1 my-auto py-4">
-        {/* Left Column: Big Role Headline, Senior Positioning & Channels (Headline Moved Up) */}
-        <div className="lg:col-span-7 flex flex-col justify-center">
-          {/* Primary Editorial Heading: SENIOR MOBILE ARCHITECT & FLUTTER LEAD (Moved Up to Top) */}
+      {/* Main Hero Content Grid (Top Aligned to Elevate Headline to Maximum Height) */}
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start relative z-10 flex-1 mt-2 mb-auto py-2">
+        {/* Left Column: Big Role Headline, Senior Positioning & Channels (Headline Placed Right at Top) */}
+        <div className="lg:col-span-7 flex flex-col justify-start">
+          {/* Primary Editorial Heading: SENIOR MOBILE ARCHITECT & FLUTTER LEAD (Cinematic Blur-Scale Reveal) */}
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 pt-1"
+            initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-5 pt-0"
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-3">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2.5">
               Senior Mobile Architect &amp;{' '}
               <em className="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-300">
                 Flutter Lead.
@@ -71,12 +72,13 @@ export const Hero: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Specialization Chips Bar */}
+          {/* Specialization Chips Bar: Fast Swipe from Left */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 mb-6"
+            initial={{ opacity: 0, x: -70 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 mb-6 transform-gpu"
           >
             <span className="px-3 py-1.5 rounded-xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 font-medium shadow-sm">
               ✦ Cross-Platform Systems
@@ -95,12 +97,13 @@ export const Hero: React.FC = () => {
             </span>
           </motion.div>
 
-          {/* Positioning Statement Card: Transparent with Shadow & Backdrop Blur */}
+          {/* Positioning Statement Card: Fast Swipe from Left with Shadow & Blur */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="p-5 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/70 dark:border-white/10 border-l-4 border-l-blue-600 dark:border-l-cyan-400 shadow-md mb-8"
+            initial={{ opacity: 0, x: -90 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+            className="p-5 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/70 dark:border-white/10 border-l-4 border-l-blue-600 dark:border-l-cyan-400 shadow-md mb-8 transform-gpu"
           >
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
               <span className="text-slate-900 dark:text-white font-semibold">
@@ -129,12 +132,13 @@ export const Hero: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Action CTAs with Micro-Interactions */}
+          {/* Action CTAs with Micro-Interactions: Fast Swipe from Bottom */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="flex flex-wrap items-center gap-3.5 mb-8"
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center gap-3.5 mb-8 transform-gpu"
           >
             <motion.a
               href="#projects"
@@ -167,12 +171,13 @@ export const Hero: React.FC = () => {
             </motion.a>
           </motion.div>
 
-          {/* Direct Verified Channels in Dedicated Pill Bar: Transparent with Shadow */}
+          {/* Direct Verified Channels in Dedicated Pill Bar: Fast Swipe from Bottom */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-4 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/70 dark:border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-slate-600 dark:text-slate-400 shadow-md"
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="p-4 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/70 dark:border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-slate-600 dark:text-slate-400 shadow-md transform-gpu"
           >
             <span className="text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
               Direct Channels:
@@ -205,17 +210,18 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Status & Identity Header Bar (Moved to Right Side) + 3D Lanyard ID Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center relative"
-        >
-          {/* Status & Identity Header Bar: Moved to Right Side */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2.5 mb-6 w-full">
+        {/* Right Column: Status & Identity Header Bar (Strictly Right-Aligned) + 3D Lanyard ID Badge */}
+        <div className="lg:col-span-5 flex flex-col items-end justify-start relative w-full">
+          {/* Status & Identity Header Bar: Strictly Right-Aligned across all breakpoints */}
+          <motion.div
+            initial={{ opacity: 0, x: 70 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-end justify-end gap-2.5 mb-6 w-full transform-gpu"
+          >
             {/* Availability Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-800 dark:text-emerald-300 backdrop-blur-md shadow-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-800 dark:text-emerald-300 backdrop-blur-md shadow-md shrink-0">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -224,15 +230,15 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Verified Identity Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-md shrink-0">
               <span className="font-bold text-slate-900 dark:text-white">Afif Pathan</span>
               <span className="text-slate-300 dark:text-slate-700">·</span>
               <span className="text-slate-500 dark:text-slate-400">8+ Years in Production · 25+ Systems</span>
             </div>
-          </div>
+          </motion.div>
 
           <LanyardBadge />
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom Scroll Cue & Continuous Marquee Ticker */}

@@ -62,20 +62,32 @@ export const Leadership: React.FC = () => {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-2"
+        >
           Milestones that<br />
           <em className="text-slate-900 dark:text-white font-serif font-normal italic">
             moved things forward.
           </em>
-        </h2>
+        </motion.h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
           A Senior Architect delivers more than individual features: they establish sustainable engineering practices, guardrails, and architectural integrity across the entire team.
         </p>
       </div>
 
-      {/* Proud Moments Milestone Cards from Reference */}
+      {/* Proud Moments Milestone Cards: Fast Repeat Swipe */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.02, ease: [0.16, 1, 0.3, 1] }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md transform-gpu"
+        >
           <div className="text-3xl sm:text-5xl font-black font-mono text-slate-900 dark:text-white mb-2">
             {PERSONAL_INFO.yearsTotal}
           </div>
@@ -85,9 +97,15 @@ export const Leadership: React.FC = () => {
           <p className="text-xs text-slate-500 dark:text-slate-400">
             From native Java on Android to Staff Cross-Platform Architect.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md transform-gpu"
+        >
           <div className="text-3xl sm:text-5xl font-black font-mono text-blue-600 dark:text-cyan-400 mb-2">
             {PERSONAL_INFO.productionPlatforms}
           </div>
@@ -97,9 +115,15 @@ export const Leadership: React.FC = () => {
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Delivered for global enterprise and high-growth startups.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md transform-gpu"
+        >
           <div className="text-3xl sm:text-5xl font-black font-mono text-indigo-600 dark:text-indigo-400 mb-2">
             {PERSONAL_INFO.yearsMobile}
           </div>
@@ -109,9 +133,15 @@ export const Leadership: React.FC = () => {
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Designing 60-120fps compiled mobile and web client platforms.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.11, ease: [0.16, 1, 0.3, 1] }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md transform-gpu"
+        >
           <div className="text-3xl sm:text-5xl font-black font-mono text-emerald-600 dark:text-emerald-400 mb-2">
             100%
           </div>
@@ -121,20 +151,20 @@ export const Leadership: React.FC = () => {
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Every metric backed by production deployments and real users.
           </p>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Leadership Themes Grid */}
+      {/* Leadership Themes Grid: Fast Alternate Swipe */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {LEADERSHIP_THEMES.map((theme, idx) => {
           const IconComp = theme.icon;
           return (
             <motion.div
               key={theme.title}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -120 : 120 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 0.38, delay: (idx % 2) * 0.05, ease: 'easeOut' }}
+              viewport={{ once: false, amount: 0.08 }}
+              transition={{ duration: 0.4, delay: (idx % 2) * 0.04, ease: [0.16, 1, 0.3, 1] }}
               className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl transform-gpu"
             >
               <div className="flex items-center gap-3 mb-5">

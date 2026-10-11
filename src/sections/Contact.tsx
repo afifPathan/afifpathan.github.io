@@ -38,25 +38,31 @@ export const Contact: React.FC = () => {
       </div>
 
       <div className="max-w-3xl mb-12">
-        <h2 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-4">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-4"
+        >
           Let’s architect something<br />
           <em className="text-slate-900 dark:text-white font-serif font-normal italic">
             exceptional together.
           </em>
-        </h2>
+        </motion.h2>
         <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
           Seeking Senior Mobile Architect, Flutter Tech Lead, or Staff Mobile positions. Whether you are scaling an enterprise product, redesigning a multi-platform architecture, or evaluating real-time systems, reach out directly.
         </p>
       </div>
 
-      {/* Direct Contact Cards Grid */}
+      {/* Direct Contact Cards Grid: Fast Repeat Swipe */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         {/* Email Card */}
         <motion.div
-          initial={{ opacity: 0, x: -60, y: 15 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.38, delay: 0.03, ease: 'easeOut' }}
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.02, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl transform-gpu"
         >
           <div>
@@ -102,10 +108,10 @@ export const Contact: React.FC = () => {
 
         {/* Phone Card */}
         <motion.div
-          initial={{ opacity: 0, x: -30, y: 15 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.38, delay: 0.06, ease: 'easeOut' }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-indigo-500/40 transition-colors bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl transform-gpu"
         >
           <div>
@@ -151,10 +157,10 @@ export const Contact: React.FC = () => {
 
         {/* LinkedIn Card */}
         <motion.div
-          initial={{ opacity: 0, x: 30, y: 15 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.38, delay: 0.09, ease: 'easeOut' }}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-blue-500/40 transition-colors bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl transform-gpu"
         >
           <div>
@@ -188,10 +194,10 @@ export const Contact: React.FC = () => {
 
         {/* GitHub Card */}
         <motion.div
-          initial={{ opacity: 0, x: 60, y: 15 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.38, delay: 0.12, ease: 'easeOut' }}
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.08 }}
+          transition={{ duration: 0.38, delay: 0.11, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-purple-500/40 transition-colors bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl transform-gpu"
         >
           <div>
@@ -226,10 +232,10 @@ export const Contact: React.FC = () => {
 
       {/* Location & Timezone Bar */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.05 }}
-        transition={{ duration: 0.38, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.08 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="p-6 rounded-2xl bg-white/35 dark:bg-slate-800/35 backdrop-blur-md border border-slate-200/60 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-slate-600 dark:text-slate-400 shadow-md transform-gpu"
       >
         <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
