@@ -10,7 +10,7 @@ import { Skills } from './sections/Skills';
 import { Leadership } from './sections/Leadership';
 import { Education } from './sections/Education';
 import { Contact } from './sections/Contact';
-import { ArchTransition } from './components/ArchTransition';
+import { VerticalArchSplit } from './components/VerticalArchSplit';
 import { useReducedMotion } from './hooks/useReducedMotion';
 
 export const App: React.FC = () => {
@@ -107,133 +107,79 @@ export const App: React.FC = () => {
       {/* Header */}
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
-      {/* Main Landmark: Alternating Light Yellow & Light Purple with Touching Architectural Arches */}
+      {/* Main Landmark: Vertical Split (Light Yellow & Light Purple) with Random Architectural Arch at Every Page */}
       <main id="main-content" className="flex-1 w-full overflow-x-hidden overflow-x-clip">
-        {/* Section 01: Hero (Warm Sunshine Light Yellow) */}
-        <div className="w-full bg-[#fefce8] dark:bg-[#0c0f17] relative">
-          <Hero />
-        </div>
+        {/* Section 01: Hero (Vertical Split: Left Yellow, Right Purple with Classical Roman Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="roman" flipSides={false} />
+          <div className="relative z-10">
+            <Hero />
+          </div>
+        </section>
 
-        {/* Arch 01: Roman Classical Vault (Hero [Yellow] -> Snapshot [Purple]) */}
-        <ArchTransition
-          variant="roman"
-          upperBgClass="bg-[#fefce8] dark:bg-[#0c0f17]"
-          archFillClass="fill-[#faf5ff] dark:fill-[#121422]"
-          strokeClass="text-purple-400/25 dark:text-cyan-400/25"
-          label="ARCH·01 CLASSICAL VAULT"
-        />
+        {/* Section 02: Snapshot (Vertical Split: Left Purple, Right Yellow with Gothic Pointed Lancet Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="cathedral" flipSides={true} />
+          <div className="relative z-10">
+            <Snapshot />
+          </div>
+        </section>
 
-        {/* Section 02: Snapshot (Pastel Lavender Light Purple) */}
-        <div className="w-full bg-[#faf5ff] dark:bg-[#121422] relative">
-          <Snapshot />
-        </div>
+        {/* Section 03: Philosophy (Vertical Split: Left Yellow, Right Purple with Venetian Ogee S-Curve Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="ogee" flipSides={false} />
+          <div className="relative z-10">
+            <Philosophy />
+          </div>
+        </section>
 
-        {/* Arch 02: Gothic Pointed Lancet (Snapshot [Purple] -> Philosophy [Yellow]) */}
-        <ArchTransition
-          variant="cathedral"
-          upperBgClass="bg-[#faf5ff] dark:bg-[#121422]"
-          archFillClass="fill-[#fffdf0] dark:fill-[#0d111b]"
-          strokeClass="text-amber-500/25 dark:text-purple-400/25"
-          label="ARCH·02 GOTHIC LANCET"
-        />
+        {/* Section 04: Projects & Systems Showcase (Vertical Split: Left Purple, Right Yellow with Parabolic Catenary Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="parabolic" flipSides={true} />
+          <div className="relative z-10">
+            <Projects />
+          </div>
+        </section>
 
-        {/* Section 03: Philosophy (Warm Sunshine Light Yellow) */}
-        <div className="w-full bg-[#fffdf0] dark:bg-[#0d111b] relative">
-          <Philosophy />
-        </div>
+        {/* Section 05: Experience Timeline (Vertical Split: Left Yellow, Right Purple with Trefoil Arcade Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="trefoil" flipSides={false} />
+          <div className="relative z-10">
+            <Experience />
+          </div>
+        </section>
 
-        {/* Arch 03: Parabolic Compression Catenary (Philosophy [Yellow] -> Projects [Purple]) */}
-        <ArchTransition
-          variant="parabolic"
-          upperBgClass="bg-[#fffdf0] dark:bg-[#0d111b]"
-          archFillClass="fill-[#f8f5ff] dark:fill-[#131524]"
-          strokeClass="text-purple-400/25 dark:text-cyan-400/25"
-          label="ARCH·03 PARABOLIC CATENARY"
-        />
+        {/* Section 06: Skills / Arsenal Matrix (Vertical Split: Left Purple, Right Yellow with Moorish Keyhole Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="horseshoe" flipSides={true} />
+          <div className="relative z-10">
+            <Skills />
+          </div>
+        </section>
 
-        {/* Section 04: Projects & Systems Showcase (Pastel Lavender Light Purple) */}
-        <div className="w-full bg-[#f8f5ff] dark:bg-[#131524] relative">
-          <Projects />
-        </div>
+        {/* Section 07: Leadership & Milestones (Vertical Split: Left Yellow, Right Purple with Art Deco Stepped Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="stepped" flipSides={false} />
+          <div className="relative z-10">
+            <Leadership />
+          </div>
+        </section>
 
-        {/* Arch 04: Venetian Ogee S-Curve (Projects [Purple] -> Experience [Yellow]) */}
-        <ArchTransition
-          variant="ogee"
-          upperBgClass="bg-[#f8f5ff] dark:bg-[#131524]"
-          archFillClass="fill-[#fefce8] dark:fill-[#0d121c]"
-          strokeClass="text-amber-500/25 dark:text-purple-400/25"
-          label="ARCH·04 VENETIAN OGEE"
-        />
+        {/* Section 08: Education & Honors (Vertical Split: Left Purple, Right Yellow with Compression Vault Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="vault" flipSides={true} />
+          <div className="relative z-10">
+            <Education />
+          </div>
+        </section>
 
-        {/* Section 05: Experience Timeline (Warm Sunshine Light Yellow) */}
-        <div className="w-full bg-[#fefce8] dark:bg-[#0d121c] relative">
-          <Experience />
-        </div>
-
-        {/* Arch 05: Trefoil Multi-Lobe Arcade (Experience [Yellow] -> Skills [Purple]) */}
-        <ArchTransition
-          variant="trefoil"
-          upperBgClass="bg-[#fefce8] dark:bg-[#0d121c]"
-          archFillClass="fill-[#faf5ff] dark:fill-[#121422]"
-          strokeClass="text-purple-400/25 dark:text-cyan-400/25"
-          label="ARCH·05 TREFOIL ARCADE"
-        />
-
-        {/* Section 06: Skills / Arsenal Matrix (Pastel Lavender Light Purple) */}
-        <div className="w-full bg-[#faf5ff] dark:bg-[#121422] relative">
-          <Skills />
-        </div>
-
-        {/* Arch 06: Moorish Keyhole Horseshoe (Skills [Purple] -> Leadership [Yellow]) */}
-        <ArchTransition
-          variant="horseshoe"
-          upperBgClass="bg-[#faf5ff] dark:bg-[#121422]"
-          archFillClass="fill-[#fffdf0] dark:fill-[#0d111b]"
-          strokeClass="text-amber-500/25 dark:text-purple-400/25"
-          label="ARCH·06 MOORISH KEYHOLE"
-        />
-
-        {/* Section 07: Leadership & Milestones (Warm Sunshine Light Yellow) */}
-        <div className="w-full bg-[#fffdf0] dark:bg-[#0d111b] relative">
-          <Leadership />
-        </div>
-
-        {/* Arch 07: Art Deco Tiered Stepped Arch (Leadership [Yellow] -> Education [Purple]) */}
-        <ArchTransition
-          variant="stepped"
-          upperBgClass="bg-[#fffdf0] dark:bg-[#0d111b]"
-          archFillClass="fill-[#f8f5ff] dark:fill-[#131524]"
-          strokeClass="text-purple-400/25 dark:text-cyan-400/25"
-          label="ARCH·07 ART DECO STEPPED"
-        />
-
-        {/* Section 08: Education & Honors (Pastel Lavender Light Purple) */}
-        <div className="w-full bg-[#f8f5ff] dark:bg-[#131524] relative">
-          <Education />
-        </div>
-
-        {/* Arch 08: Segmental Compression Vault (Education [Purple] -> Contact [Yellow]) */}
-        <ArchTransition
-          variant="vault"
-          upperBgClass="bg-[#f8f5ff] dark:bg-[#131524]"
-          archFillClass="fill-[#fefce8] dark:fill-[#0d121c]"
-          strokeClass="text-amber-500/25 dark:text-purple-400/25"
-          label="ARCH·08 COMPRESSION VAULT"
-        />
-
-        {/* Section 09: Contact & Channels (Flowing Dual Blend Light Yellow into Light Purple) */}
-        <div className="w-full bg-gradient-to-b from-[#fefce8] via-[#faf5ff] to-[#f3e8ff] dark:from-[#0d121c] dark:via-[#111424] dark:to-[#16182a] relative">
-          <Contact />
-        </div>
-
-        {/* Arch 09: Structural Foundation Arch (Contact [Light Purple] -> Footer [Lavender-Slate Grey]) */}
-        <ArchTransition
-          variant="foundation"
-          upperBgClass="bg-[#f3e8ff] dark:bg-[#16182a]"
-          archFillClass="fill-[#f0ecf7] dark:fill-[#0f1420]"
-          strokeClass="text-purple-400/25 dark:text-cyan-400/25"
-          label="ARCH·09 STRUCTURAL GROUND"
-        />
+        {/* Section 09: Contact & Channels (Vertical Split: Left Yellow, Right Purple with Grand Concentric Portal Arch) */}
+        <section className="w-full relative overflow-hidden">
+          <VerticalArchSplit variant="portal" flipSides={false} />
+          <div className="relative z-10">
+            <Contact />
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
