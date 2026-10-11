@@ -143,12 +143,12 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               <span>↓</span>
             </a>
 
-            {/* Contact CTA */}
+            {/* Connect CTA */}
             <a
               href="#contact"
               className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-white bg-slate-800 hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 transition-colors shadow-2xs"
             >
-              <span>Contact</span>
+              <span>Connect</span>
               <ArrowUpRight className="w-3 h-3" />
             </a>
 

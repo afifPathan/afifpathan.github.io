@@ -42,7 +42,7 @@ export const VerticalArchSplit: React.FC<VerticalArchSplitProps> = ({
       case 'roman':
         return (
           <path
-            d="M 0,0 L 0,1000 L 500,1000 L 500,780 C 500,780 620,680 620,500 C 620,320 500,220 500,220 L 500,0 Z"
+            d="M 0,0 L 0,1000 L 580,1000 C 580,780 720,680 720,500 C 720,320 580,220 580,0 Z"
             className={leftColorClass}
             filter={`url(#${filterId})`}
           />
