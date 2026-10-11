@@ -8,7 +8,7 @@ export const Education: React.FC = () => {
     <section
       id="education"
       aria-label="Education, Recognition and Languages"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 overflow-x-hidden overflow-x-clip"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-x-hidden overflow-x-clip"
     >
       {/* Signature Section Marker from Reference */}
       <div className="section-marker">
@@ -40,13 +40,13 @@ export const Education: React.FC = () => {
             {EDUCATION_DATA.map((edu, idx) => (
               <motion.div
                 key={edu.degree}
-                initial={{ opacity: 0, x: -220, y: 20 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: false, amount: 0.12 }}
-                transition={{ duration: 0.65, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 hover:border-slate-500 dark:hover:border-cyan-500/30 transition-all flex items-start gap-4 bg-white/95 dark:bg-slate-900/60 shadow-xs flex-1"
+                initial={{ opacity: 0, x: -60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.05 }}
+                transition={{ duration: 0.38, delay: idx * 0.05, ease: 'easeOut' }}
+                className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 hover:border-slate-500 dark:hover:border-cyan-500/30 transition-all flex items-start gap-4 bg-white/95 dark:bg-slate-800/60 shadow-xs flex-1 transform-gpu"
               >
-                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400 shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400 shrink-0">
                   <GraduationCap className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
@@ -80,11 +80,11 @@ export const Education: React.FC = () => {
           <div className="space-y-4 flex-1 flex flex-col justify-between">
             {/* Award Card */}
             <motion.div
-              initial={{ opacity: 0, x: 220, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: false, amount: 0.12 }}
-              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/40 dark:from-amber-950/20 dark:to-slate-900/60 border border-amber-300 dark:border-amber-500/20 shadow-xs flex-1 flex flex-col justify-between"
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ duration: 0.38, ease: 'easeOut' }}
+              className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/40 dark:from-amber-950/20 dark:to-slate-800/60 border border-amber-300 dark:border-amber-500/20 shadow-xs flex-1 flex flex-col justify-between transform-gpu"
             >
               <div>
                 <div className="flex items-center gap-3 mb-3">
@@ -113,11 +113,11 @@ export const Education: React.FC = () => {
 
             {/* Languages Card */}
             <motion.div
-              initial={{ opacity: 0, x: 220, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: false, amount: 0.12 }}
-              transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 bg-white/95 dark:bg-slate-900/60 shadow-xs flex-1 flex flex-col justify-between"
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ duration: 0.38, delay: 0.06, ease: 'easeOut' }}
+              className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 bg-white/95 dark:bg-slate-800/60 shadow-xs flex-1 flex flex-col justify-between transform-gpu"
             >
               <div>
                 <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-semibold">
@@ -131,7 +131,7 @@ export const Education: React.FC = () => {
                   {PERSONAL_INFO.languages.map((lang) => (
                     <span
                       key={lang}
-                      className="px-3.5 py-1.5 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-slate-200 font-medium"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-slate-200 font-medium"
                     >
                       {lang}
                     </span>

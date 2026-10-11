@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full border-t border-slate-300 dark:border-white/10 bg-[#ede8dc] dark:bg-[#06080e] pt-16 pb-12 px-4 sm:px-6 lg:px-8 text-slate-700 dark:text-slate-300 transition-colors overflow-x-hidden overflow-x-clip">
+    <footer className="w-full border-t border-slate-300 dark:border-white/10 bg-[#f0ecf7] dark:bg-[#0f1420] pt-16 pb-12 px-4 sm:px-6 lg:px-8 text-slate-700 dark:text-slate-300 transition-colors overflow-x-hidden overflow-x-clip">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-300/80 dark:border-white/10 items-start">
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
 
               <a
                 href="#contact"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold text-white bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold text-white bg-slate-800 hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 transition-colors shadow-2xs"
               >
                 <span>Initiate Contact</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -167,7 +167,7 @@ export const Footer: React.FC = () => {
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white text-slate-800 dark:text-slate-200 transition-colors shadow-2xs"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white text-slate-800 dark:text-slate-200 transition-colors shadow-2xs"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />

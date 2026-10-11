@@ -122,7 +122,7 @@ export const ArchitectureDiagram: React.FC = () => {
   const activeLayer = LAYERS.find((l) => l.id === selectedLayerId) || LAYERS[2];
 
   return (
-    <div className="w-full glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-lg bg-white/95 dark:bg-[#0c101c]/90">
+    <div className="w-full glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-lg bg-white/95 dark:bg-slate-800/90">
       {/* Background ambient lighting */}
       <div className="absolute -top-32 -right-32 w-80 h-80 bg-blue-500/10 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -141,7 +141,7 @@ export const ArchitectureDiagram: React.FC = () => {
             Click on any architectural stratum to inspect its boundaries, dependency directions, and invariants.
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900/80 px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 self-start md:self-auto">
+        <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 self-start md:self-auto">
           <ArrowDownUp className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 animate-pulse" />
           <span>Dependency Inversion: Outward → Inward</span>
         </div>
@@ -163,7 +163,7 @@ export const ArchitectureDiagram: React.FC = () => {
                 className={`cursor-pointer rounded-xl p-4 transition-all duration-300 border relative ${
                   isSelected
                     ? `${layer.lightBorderColor} dark:${layer.borderColor} ${layer.lightBg} dark:bg-gradient-to-r dark:${layer.bgGradient} shadow-md ring-1 ring-blue-500/20`
-                    : 'border-slate-200 dark:border-white/5 bg-slate-50/70 dark:bg-slate-900/40 hover:border-slate-300 dark:hover:border-white/20 hover:bg-slate-100 dark:hover:bg-slate-900/70'
+                    : 'border-slate-200 dark:border-white/5 bg-slate-50/70 dark:bg-slate-800/40 hover:border-slate-300 dark:hover:border-white/20 hover:bg-slate-100 dark:hover:bg-slate-800/70'
                 }`}
               >
                 {/* Visual Data Flow Indicator */}
@@ -172,7 +172,7 @@ export const ArchitectureDiagram: React.FC = () => {
                     <div
                       className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
                         isSelected
-                          ? `bg-white dark:bg-slate-950/80 ${layer.lightBorderColor} dark:${layer.borderColor} ${layer.color}`
+                          ? `bg-white dark:bg-slate-800/80 ${layer.lightBorderColor} dark:${layer.borderColor} ${layer.color}`
                           : 'bg-white dark:bg-slate-800/50 border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400'
                       }`}
                     >
@@ -207,7 +207,7 @@ export const ArchitectureDiagram: React.FC = () => {
                   {layer.components.map((comp) => (
                     <span
                       key={comp}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-white dark:bg-black/40 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
+                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
                     >
                       {comp}
                     </span>
@@ -227,10 +227,10 @@ export const ArchitectureDiagram: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className={`p-6 rounded-xl border ${activeLayer.lightBorderColor} dark:${activeLayer.borderColor} bg-slate-50/80 dark:bg-slate-950/70 relative shadow-sm`}
+              className={`p-6 rounded-xl border ${activeLayer.lightBorderColor} dark:${activeLayer.borderColor} bg-slate-50/80 dark:bg-slate-800/70 relative shadow-sm`}
             >
               <div className="flex items-center justify-between mb-4">
-                <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-full border ${activeLayer.lightBorderColor} dark:${activeLayer.borderColor} ${activeLayer.color} bg-white dark:bg-black/40`}>
+                <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-full border ${activeLayer.lightBorderColor} dark:${activeLayer.borderColor} ${activeLayer.color} bg-white dark:bg-slate-800`}>
                   {activeLayer.badge}
                 </span>
                 <span className="text-xs font-mono text-slate-400">LAYER CONTRACT</span>

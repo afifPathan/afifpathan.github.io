@@ -53,12 +53,12 @@ const renderDeviceMockup = (project: Project) => {
           <span className="w-2 h-2 rounded-full bg-rose-500" />
           <span className="w-2 h-2 rounded-full bg-amber-500" />
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-black/40 text-[7px] font-mono text-cyan-300 truncate">
+          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-slate-900/60 text-[7px] font-mono text-cyan-300 truncate">
             dashboard.nseswingtrading.dpdns.org
           </div>
         </div>
         {/* Live Terminal UI */}
-        <div className="p-2.5 bg-slate-950 text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
+        <div className="p-2.5 bg-slate-800 text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="text-emerald-400 font-bold flex items-center gap-1">
@@ -95,11 +95,11 @@ const renderDeviceMockup = (project: Project) => {
           <span className="w-2 h-2 rounded-full bg-rose-500" />
           <span className="w-2 h-2 rounded-full bg-amber-500" />
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-white dark:bg-black/40 text-[7px] font-mono text-slate-700 dark:text-slate-300 truncate">
+          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 text-[7px] font-mono text-slate-700 dark:text-slate-300 truncate">
             buyzaar-26379.web.app
           </div>
         </div>
-        <div className="p-2.5 bg-gradient-to-b from-sky-950 via-slate-900 to-slate-950 text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
+        <div className="p-2.5 bg-gradient-to-b from-sky-950 via-slate-800 to-slate-900 text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="font-bold text-cyan-400 flex items-center gap-1">
@@ -131,12 +131,12 @@ const renderDeviceMockup = (project: Project) => {
     return (
       <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
         {/* Dynamic Island */}
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-black">
-          <div className="w-14 h-3 bg-black rounded-full flex items-center justify-center border border-white/10">
+        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
+          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
           </div>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-[#0a192f] via-slate-900 to-[#172a45] text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-[#0a192f] via-slate-800 to-[#172a45] text-white font-mono text-[9px]">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="text-cyan-400 font-bold flex items-center gap-1">
@@ -168,18 +168,18 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('camera') || pid.includes('roadzen')) {
     return (
       <div className="device-terminal hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-black px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
+        <div className="bg-slate-800 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
           <span className="flex items-center gap-1"><Camera className="w-2.5 h-2.5" /> rz_camera</span>
           <span className="text-emerald-400">pub.dev</span>
         </div>
-        <div className="p-2.5 bg-black text-white font-mono text-[8px] h-[175px] flex flex-col justify-between relative">
+        <div className="p-2.5 bg-slate-800 text-white font-mono text-[8px] h-[175px] flex flex-col justify-between relative">
           <div className="absolute inset-2 border border-dashed border-cyan-400/40 rounded pointer-events-none" />
           <div className="text-center my-auto relative z-10">
             <div className="text-cyan-400 font-bold text-[10px]">[ VEHICLE DETECTED ]</div>
             <div className="text-[7px] text-slate-300 mt-1">Bounding Box: 98.4% Confidence</div>
             <div className="text-emerald-400 text-[7px] mt-0.5">60 FPS Isolated Stream</div>
           </div>
-          <div className="p-1.5 rounded-lg bg-cyan-400 text-black text-[7px] text-center font-bold z-10">
+          <div className="p-1.5 rounded-lg bg-cyan-400 text-slate-900 text-[7px] text-center font-bold z-10">
             Capture High-Res Image
           </div>
         </div>
@@ -192,8 +192,8 @@ const renderDeviceMockup = (project: Project) => {
     return (
       <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
         {/* Top Punch-Hole Camera */}
-        <div className="pt-1.5 pb-1 flex justify-center bg-slate-950">
-          <span className="w-2.5 h-2.5 rounded-full bg-black ring-1 ring-white/20" />
+        <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
+          <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
         </div>
         <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-purple-950 via-indigo-950 to-slate-900 text-white font-mono text-[9px]">
           <div>
@@ -226,11 +226,11 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('trading-bot') || pid.includes('swing')) {
     return (
       <div className="device-terminal hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-950 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
+        <div className="bg-slate-800 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
           <span>systemd://nse-bot</span>
           <span className="text-emerald-400">ACTIVE</span>
         </div>
-        <div className="p-2.5 bg-[#090e17] text-emerald-400 font-mono text-[8px] h-[175px] flex flex-col justify-between">
+        <div className="p-2.5 bg-slate-800 text-emerald-400 font-mono text-[8px] h-[175px] flex flex-col justify-between">
           <div className="space-y-1">
             <div className="text-slate-400">[09:15:00] Angel One SmartAPI Feed Verified</div>
             <div className="text-cyan-400">[09:20:05] FastAPI Daemon: 50 Symbols Active</div>
@@ -252,12 +252,12 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('practo')) {
     return (
       <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-black">
-          <div className="w-14 h-3 bg-black rounded-full flex items-center justify-center border border-white/10">
+        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
+          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           </div>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-teal-950 via-slate-900 to-cyan-950 text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-teal-950 via-slate-800 to-cyan-950 text-white font-mono text-[9px]">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="text-teal-300 font-bold flex items-center gap-1">
@@ -283,10 +283,10 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('diversified')) {
     return (
       <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 flex justify-center bg-slate-950">
-          <span className="w-2.5 h-2.5 rounded-full bg-black ring-1 ring-white/20" />
+        <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
+          <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-amber-950 via-slate-900 to-zinc-950 text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-amber-950 via-slate-800 to-zinc-950 text-white font-mono text-[9px]">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="text-amber-400 font-bold flex items-center gap-1">
@@ -312,11 +312,11 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('kaizen')) {
     return (
       <div className="device-tablet hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-900 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-teal-300 font-mono">
+        <div className="bg-slate-800 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-teal-300 font-mono">
           <span className="flex items-center gap-1"><Calendar className="w-2.5 h-2.5" /> Kaizen Dental Clinic</span>
           <span className="text-slate-400">Ohio, USA</span>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[145px] bg-gradient-to-r from-emerald-950 via-teal-950 to-slate-900 text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[145px] bg-gradient-to-r from-emerald-950 via-teal-950 to-slate-800 text-white font-mono text-[9px]">
           <div>
             <div className="text-[7px] text-teal-400 font-bold uppercase">PATIENT VISIT #9842</div>
             <div className="font-bold text-[9px] text-white mt-0.5">Oral Exam &amp; Hygiene Cleaning</div>
@@ -335,11 +335,11 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('smart-gate')) {
     return (
       <div className="device-pos hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-900 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
+        <div className="bg-slate-800 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
           <span>Sunmi POS / VMS</span>
           <span className="text-emerald-400">READY</span>
         </div>
-        <div className="p-2.5 bg-gradient-to-b from-cyan-950 via-slate-900 to-black text-white font-mono text-[8px] h-[175px] flex flex-col justify-between">
+        <div className="p-2.5 bg-gradient-to-b from-cyan-950 via-slate-800 to-slate-900 text-white font-mono text-[8px] h-[175px] flex flex-col justify-between">
           <div className="p-1.5 rounded bg-white/5 border border-white/10 text-center">
             <div className="text-xs">💳</div>
             <div className="text-[8px] text-cyan-300 font-bold mt-0.5">MiFare RFID Tap</div>
@@ -357,8 +357,8 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('road-roaders')) {
     return (
       <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 flex justify-center bg-slate-950">
-          <span className="w-2.5 h-2.5 rounded-full bg-black ring-1 ring-white/20" />
+        <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
+          <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
         </div>
         <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-rose-950 via-slate-900 to-stone-900 text-white font-mono text-[9px]">
           <div>
@@ -386,7 +386,7 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('tajweed')) {
     return (
       <div className="device-tablet hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-900 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-amber-300 font-mono">
+        <div className="bg-slate-800 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-amber-300 font-mono">
           <span>Tajweed Audio Lesson</span>
           <span className="text-slate-400">Lesson 04</span>
         </div>
@@ -408,12 +408,12 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('prohoff')) {
     return (
       <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-black">
-          <div className="w-14 h-3 bg-black rounded-full flex items-center justify-center border border-white/10">
+        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
+          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
           </div>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-blue-950 via-indigo-950 to-slate-900 text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-blue-950 via-indigo-950 to-slate-800 text-white font-mono text-[9px]">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="text-indigo-400 font-bold flex items-center gap-1">
@@ -439,12 +439,12 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('mamta')) {
     return (
       <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-black">
-          <div className="w-14 h-3 bg-black rounded-full flex items-center justify-center border border-white/10">
+        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
+          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-pink-400" />
           </div>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-pink-950 via-purple-950 to-slate-900 text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-pink-950 via-purple-950 to-slate-800 text-white font-mono text-[9px]">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="text-pink-300 font-bold">Mamta Textiles</span>
@@ -473,11 +473,11 @@ const renderDeviceMockup = (project: Project) => {
   if (pid.includes('bbc')) {
     return (
       <div className="device-tablet hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-900 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-blue-300 font-mono">
+        <div className="bg-slate-800 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-blue-300 font-mono">
           <span>BBC Connect Enterprise</span>
           <span className="text-slate-400">B2B Platform</span>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[145px] bg-gradient-to-r from-blue-900 via-slate-900 to-zinc-900 text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[145px] bg-gradient-to-r from-blue-900 via-slate-800 to-zinc-900 text-white font-mono text-[9px]">
           <div>
             <div className="text-[7px] text-blue-300 font-bold uppercase">COMMUNITY TASK BOARD</div>
             <div className="font-bold text-[9px] text-white mt-0.5">Synchronized Multi-Tenant Directory</div>
@@ -497,8 +497,8 @@ const renderDeviceMockup = (project: Project) => {
   // 16. Yelli -> Android Flagship (Academic Amber & Navy Gradient)
   return (
     <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
-      <div className="pt-1.5 pb-1 flex justify-center bg-slate-950">
-        <span className="w-2.5 h-2.5 rounded-full bg-black ring-1 ring-white/20" />
+      <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
+        <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
       </div>
       <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-yellow-950 via-amber-900 to-slate-900 text-white font-mono text-[9px]">
         <div>
@@ -526,14 +526,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
   return (
     <motion.article
-      initial={{ opacity: 0, x: index % 2 === 0 ? -220 : 220, y: 30 }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: false, amount: 0.12 }}
-      whileHover={{ y: -6, transition: { duration: 0.22, ease: 'easeOut' } }}
-      transition={{ duration: 0.65, delay: (index % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className={`rounded-2xl glass-panel border border-slate-300 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-slate-500 dark:hover:border-cyan-500/40 hover:shadow-xl flex flex-col justify-between bg-white/95 dark:bg-slate-900/60 shadow-xs ${
+      initial={{ opacity: 0, x: index % 2 === 0 ? -70 : 70 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      whileHover={{ y: -5, transition: { duration: 0.2, ease: 'easeOut' } }}
+      transition={{ duration: 0.38, delay: (index % 2) * 0.05, ease: 'easeOut' }}
+      className={`rounded-2xl glass-panel border border-slate-300 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-slate-500 dark:hover:border-cyan-500/40 hover:shadow-xl flex flex-col justify-between bg-white/95 dark:bg-slate-800/60 shadow-xs transform-gpu ${
         project.featured ? 'lg:col-span-2' : ''
       }`}
+      style={{ willChange: 'transform, opacity' }}
     >
       <div className="p-6 md:p-8">
         {/* Top Header & Tilted Device Layout */}
@@ -575,7 +576,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
         {/* Architecture Note: ONLY ON FLAGSHIP / DEEP-DIVE PROJECTS (Addresses User Point 11) */}
         {isFlagshipArch && project.architecture && (
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-white/5 mb-5 text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-white/5 mb-5 text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
             <div className="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-mono font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Architecture &amp; System Design:</span>
@@ -617,7 +618,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="mt-3 p-4 rounded-xl bg-slate-900 text-slate-200 border border-blue-500/30 text-xs space-y-2 font-mono overflow-hidden shadow-inner"
+                  className="mt-3 p-4 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 text-xs space-y-2 font-mono overflow-hidden shadow-inner"
                 >
                   <div>
                     <span className="text-cyan-400 font-semibold">[Presentation]: </span>
@@ -642,7 +643,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
+              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
             >
               {tech}
             </span>
@@ -651,7 +652,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       </div>
 
       {/* Card Footer: Verified External Links */}
-      <div className="px-6 md:px-8 py-4 bg-slate-50 dark:bg-slate-950/60 border-t border-slate-200 dark:border-white/5 flex flex-wrap items-center justify-between gap-3">
+      <div className="px-6 md:px-8 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-white/5 flex flex-wrap items-center justify-between gap-3">
         {project.metrics ? (
           <span className="text-xs font-mono text-slate-600 dark:text-slate-400">
             {project.metrics}

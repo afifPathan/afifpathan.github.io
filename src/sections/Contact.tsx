@@ -26,7 +26,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       aria-label="Contact Information and Direct Channels"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 relative overflow-x-hidden overflow-x-clip"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-x-hidden overflow-x-clip"
     >
       {/* Ambient background light */}
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 dark:bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -53,11 +53,11 @@ export const Contact: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         {/* Email Card */}
         <motion.div
-          initial={{ opacity: 0, x: -220, y: 20 }}
+          initial={{ opacity: 0, x: -60, y: 15 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.12 }}
-          transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.38, delay: 0.03, ease: 'easeOut' }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/95 dark:bg-slate-800/60 shadow-xs transform-gpu"
         >
           <div>
             <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-cyan-950/50 border border-slate-200 dark:border-cyan-500/30 flex items-center justify-center text-slate-800 dark:text-cyan-400 mb-4">
@@ -102,11 +102,11 @@ export const Contact: React.FC = () => {
 
         {/* Phone Card */}
         <motion.div
-          initial={{ opacity: 0, x: -120, y: 20 }}
+          initial={{ opacity: 0, x: -30, y: 15 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.12 }}
-          transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-indigo-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.38, delay: 0.06, ease: 'easeOut' }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-indigo-500/40 transition-colors bg-white/95 dark:bg-slate-800/60 shadow-xs transform-gpu"
         >
           <div>
             <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-indigo-950/50 border border-slate-200 dark:border-indigo-500/30 flex items-center justify-center text-slate-800 dark:text-indigo-400 mb-4">
@@ -151,11 +151,11 @@ export const Contact: React.FC = () => {
 
         {/* LinkedIn Card */}
         <motion.div
-          initial={{ opacity: 0, x: 120, y: 20 }}
+          initial={{ opacity: 0, x: 30, y: 15 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.12 }}
-          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-blue-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.38, delay: 0.09, ease: 'easeOut' }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-blue-500/40 transition-colors bg-white/95 dark:bg-slate-800/60 shadow-xs transform-gpu"
         >
           <div>
             <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-blue-950/50 border border-slate-200 dark:border-blue-500/30 flex items-center justify-center text-slate-800 dark:text-blue-400 mb-4">
@@ -188,11 +188,11 @@ export const Contact: React.FC = () => {
 
         {/* GitHub Card */}
         <motion.div
-          initial={{ opacity: 0, x: 220, y: 20 }}
+          initial={{ opacity: 0, x: 60, y: 15 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: false, amount: 0.12 }}
-          transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-purple-500/40 transition-colors bg-white/95 dark:bg-slate-900/60 shadow-xs"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.38, delay: 0.12, ease: 'easeOut' }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 flex flex-col justify-between group hover:border-slate-400 dark:hover:border-purple-500/40 transition-colors bg-white/95 dark:bg-slate-800/60 shadow-xs transform-gpu"
         >
           <div>
             <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-purple-950/50 border border-slate-200 dark:border-purple-500/30 flex items-center justify-center text-slate-800 dark:text-purple-400 mb-4">
@@ -226,11 +226,11 @@ export const Contact: React.FC = () => {
 
       {/* Location & Timezone Bar */}
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.12 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        className="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-slate-600 dark:text-slate-400 shadow-xs"
+        viewport={{ once: true, amount: 0.05 }}
+        transition={{ duration: 0.38, ease: 'easeOut' }}
+        className="p-6 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-slate-600 dark:text-slate-400 shadow-xs transform-gpu"
       >
         <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
           <MapPin className="w-4 h-4 text-blue-600 dark:text-cyan-400" />

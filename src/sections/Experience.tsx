@@ -16,7 +16,7 @@ export const Experience: React.FC = () => {
     <section
       id="experience"
       aria-label="Professional Experience Timeline"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5 overflow-x-hidden overflow-x-clip"
+      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-x-hidden overflow-x-clip"
     >
       {/* Signature Section Marker from Reference */}
       <div className="section-marker">
@@ -41,17 +41,17 @@ export const Experience: React.FC = () => {
         {EXPERIENCES.map((exp, idx) => (
           <motion.article
             key={exp.id}
-            initial={{ opacity: 0, x: idx % 2 === 0 ? -220 : 220, y: 20 }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: false, amount: 0.12 }}
+            initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.05 }}
             whileHover={{ x: 4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            transition={{ duration: 0.65, delay: (idx % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="relative group"
+            transition={{ duration: 0.38, delay: (idx % 2) * 0.05, ease: 'easeOut' }}
+            className="relative group transform-gpu"
           >
             {/* Timeline Node Indicator */}
-            <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-[#07090e] border-2 border-blue-600 dark:border-cyan-400 group-hover:bg-blue-600 dark:group-hover:bg-cyan-400 transition-colors shadow-xs" />
+            <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-slate-800 border-2 border-blue-600 dark:border-cyan-400 group-hover:bg-blue-600 dark:group-hover:bg-cyan-400 transition-colors shadow-xs" />
 
-            <div className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-900/60 shadow-xs">
+            <div className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-800/60 shadow-xs">
               {/* Header Bar */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
                 <div>
@@ -76,7 +76,7 @@ export const Experience: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-2 self-start md:self-auto">
-                  <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300">
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300">
                     <Calendar className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
                     <span>{exp.period}</span>
                   </span>
@@ -106,7 +106,7 @@ export const Experience: React.FC = () => {
                 {exp.technologies.map((t) => (
                   <span
                     key={t}
-                    className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-slate-100 dark:bg-black/40 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
+                    className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
                   >
                     {t}
                   </span>

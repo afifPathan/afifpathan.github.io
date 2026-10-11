@@ -69,7 +69,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Verified Identity Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-2xs">
               <span className="font-bold text-slate-900 dark:text-white">Afif Pathan</span>
               <span className="text-slate-300 dark:text-slate-700">·</span>
               <span className="text-slate-500 dark:text-slate-400">8+ Years in Production · 25+ Systems</span>
@@ -102,19 +102,19 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 mb-6"
           >
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
               ✦ Cross-Platform Systems
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
               ✦ Enterprise Clean Architecture
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
               ✦ FastAPI &amp; Trading Daemons
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
               ✦ Google Antigravity &amp; Codex
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-900 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
               ✦ AI Agentic Automation
             </span>
           </motion.div>
@@ -124,7 +124,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-5 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 border-l-4 border-l-blue-600 dark:border-l-cyan-400 shadow-xs mb-8"
+            className="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 border-l-4 border-l-blue-600 dark:border-l-cyan-400 shadow-xs mb-8"
           >
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
               <span className="text-slate-900 dark:text-white font-semibold">
@@ -175,7 +175,7 @@ export const Hero: React.FC = () => {
               download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-white/10 hover:border-slate-500 shadow-2xs transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-300 dark:border-white/10 hover:border-slate-500 shadow-2xs transition-all duration-200 cursor-pointer"
             >
               <Download className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
               <span>Download Verified CV</span>
@@ -196,7 +196,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-slate-600 dark:text-slate-400 shadow-xs"
+            className="p-4 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200/90 dark:border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-slate-600 dark:text-slate-400 shadow-xs"
           >
             <span className="text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
               Direct Channels:
@@ -254,7 +254,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Continuous Marquee Ticker */}
-        <div className="overflow-hidden py-2 bg-slate-100/70 dark:bg-slate-900/50 rounded-xl border border-slate-200/80 dark:border-white/5 select-none">
+        <div className="overflow-hidden py-2 bg-slate-100/70 dark:bg-slate-800/50 rounded-xl border border-slate-200/80 dark:border-white/5 select-none">
           <motion.div
             animate={{ x: ['0%', '-50%'] }}
             transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}

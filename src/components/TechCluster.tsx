@@ -148,13 +148,13 @@ export const TechCluster: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column (5 cols): Active Technology HUD Telemetry Console */}
         <motion.div
-          initial={{ opacity: 0, x: -220 }}
+          initial={{ opacity: 0, x: -70 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.12 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 flex flex-col gap-4"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.38, ease: 'easeOut' }}
+          className="lg:col-span-5 flex flex-col gap-4 transform-gpu"
         >
-          <div className="p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl relative overflow-hidden">
+          <div className="p-6 rounded-3xl bg-slate-800 text-white border border-slate-700 shadow-xl relative overflow-hidden">
             {/* Ambient Corner Flare */}
             <div className="absolute top-0 right-0 w-44 h-44 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -278,16 +278,16 @@ export const TechCluster: React.FC = () => {
                 <motion.div
                   key={skill.name}
                   onClick={() => setActiveSkill(skill)}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -160 : 160, y: 15 }}
-                  whileInView={{ opacity: 1, x: 0, y: 0 }}
-                  viewport={{ once: false, amount: 0.12 }}
-                  transition={{ duration: 0.55, delay: (idx % 6) * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -3, transition: { duration: 0.18 } }}
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.05 }}
+                  transition={{ duration: 0.35, delay: (idx % 4) * 0.03, ease: 'easeOut' }}
+                  whileHover={{ y: -3, transition: { duration: 0.15 } }}
                   whileTap={{ scale: 0.98 }}
-                  className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 text-left ${
+                  className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 text-left transform-gpu ${
                     isActive
                       ? 'bg-blue-50/80 dark:bg-slate-800/90 border-blue-500 dark:border-cyan-400 shadow-md ring-2 ring-blue-500/20 dark:ring-cyan-400/20'
-                      : 'bg-white/80 hover:bg-slate-50/90 dark:bg-slate-900/70 dark:hover:bg-slate-800/70 border-slate-200 dark:border-white/10 shadow-xs'
+                      : 'bg-white/80 hover:bg-slate-50/90 dark:bg-slate-800/70 dark:hover:bg-slate-700/70 border-slate-200 dark:border-white/10 shadow-xs'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">

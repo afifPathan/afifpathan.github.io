@@ -22,10 +22,10 @@ export const LanyardBadge: React.FC = () => {
 
   return (
     <motion.div
-      initial={{ y: -160, opacity: 0, rotateZ: -12 }}
-      whileInView={{ y: 0, opacity: 1, rotateZ: 0 }}
-      viewport={{ once: false, amount: 0.12 }}
-      transition={{ type: 'spring', stiffness: 75, damping: 14, mass: 1.2 }}
+      initial={{ y: -60, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.45, ease: 'easeOut' }}
       className="badge-scene select-none"
       aria-label="Interactive 3D Engineering ID Badge"
     >
@@ -38,13 +38,13 @@ export const LanyardBadge: React.FC = () => {
         aria-hidden="true"
       >
         <path
-          d="M 160 0 C 130 20, 110 50, 160 80"
+          d="M 160 0 C 130 18, 110 42, 160 66"
           stroke="rgba(0,0,0,0.12)"
           strokeWidth="6"
           strokeLinecap="round"
         />
         <path
-          d="M 160 0 C 135 25, 115 55, 160 80"
+          d="M 160 0 C 135 22, 115 46, 160 66"
           stroke="#0f172a"
           strokeWidth="4"
           strokeLinecap="round"
@@ -53,7 +53,7 @@ export const LanyardBadge: React.FC = () => {
         {/* Metal Clip Ring */}
         <rect
           x="152"
-          y="74"
+          y="60"
           width="16"
           height="12"
           rx="3"
@@ -61,7 +61,7 @@ export const LanyardBadge: React.FC = () => {
           stroke="#475569"
           strokeWidth="1.5"
         />
-        <circle cx="160" cy="80" r="3" fill="#1e293b" />
+        <circle cx="160" cy="66" r="3" fill="#1e293b" />
       </svg>
 
       {/* 3D Physical Badge Container */}
@@ -107,7 +107,7 @@ export const LanyardBadge: React.FC = () => {
               </div>
 
               {/* Portrait Photo: Dedicated Frame with ZERO overlapping text */}
-              <div className="w-full h-[145px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-slate-800 shadow-inner">
+              <div className="w-full h-[132px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-slate-800 shadow-inner">
                 <img
                   src="/profile.jpg"
                   alt="Afif Pathan - Senior Mobile Architect"
@@ -132,14 +132,14 @@ export const LanyardBadge: React.FC = () => {
               </div>
             </div>
 
-            {/* Barcode & Flip Hint Footer */}
-            <div className="pt-1.5 border-t border-slate-200 dark:border-white/10">
+            {/* Barcode & Flip Hint Footer - Guaranteed Full Clearance */}
+            <div className="pt-2 pb-1 border-t border-slate-200 dark:border-white/10 shrink-0">
               {/* Simulated Barcode */}
-              <div className="flex items-center justify-center gap-[2px] h-3.5 opacity-70 dark:opacity-60 mb-1" aria-hidden="true">
+              <div className="flex items-center justify-center gap-[2px] h-4 opacity-75 dark:opacity-70 mb-1" aria-hidden="true">
                 {[3, 1, 4, 1, 2, 5, 2, 1, 4, 2, 1, 3, 2, 4, 1, 3, 2, 1, 4, 2, 3, 1].map((w, i) => (
                   <span
                     key={i}
-                    className="h-full bg-slate-900 dark:bg-slate-200 inline-block"
+                    className="h-full bg-slate-800 dark:bg-slate-200 inline-block"
                     style={{ width: `${w}px` }}
                   />
                 ))}
@@ -164,21 +164,21 @@ export const LanyardBadge: React.FC = () => {
 
               {/* Metrics Grid */}
               <div className="grid grid-cols-2 gap-1.5 my-2 text-center font-mono">
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10">
+                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
                   <div className="text-xl font-extrabold text-cyan-400">8+</div>
-                  <div className="text-[8px] text-slate-400 uppercase">Years Eng.</div>
+                  <div className="text-[8px] text-slate-300 uppercase">Years Eng.</div>
                 </div>
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10">
+                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
                   <div className="text-xl font-extrabold text-amber-400">25+</div>
-                  <div className="text-[8px] text-slate-400 uppercase">Systems Built</div>
+                  <div className="text-[8px] text-slate-300 uppercase">Systems Built</div>
                 </div>
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10">
+                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
                   <div className="text-xl font-extrabold text-indigo-400">6+</div>
-                  <div className="text-[8px] text-slate-400 uppercase">Cross-Platform</div>
+                  <div className="text-[8px] text-slate-300 uppercase">Cross-Platform</div>
                 </div>
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10">
+                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
                   <div className="text-xl font-extrabold text-emerald-400">60-120</div>
-                  <div className="text-[8px] text-slate-400 uppercase">FPS Engine</div>
+                  <div className="text-[8px] text-slate-300 uppercase">FPS Engine</div>
                 </div>
               </div>
 

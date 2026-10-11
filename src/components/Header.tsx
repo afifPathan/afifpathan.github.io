@@ -146,7 +146,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
             {/* Contact CTA */}
             <a
               href="#contact"
-              className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-white bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 transition-colors shadow-2xs"
+              className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-white bg-slate-800 hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 transition-colors shadow-2xs"
             >
               <span>Contact</span>
               <ArrowUpRight className="w-3 h-3" />
@@ -216,7 +216,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-mono font-bold text-white bg-slate-900 dark:text-slate-950 dark:bg-white"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-mono font-bold text-white bg-slate-800 dark:text-slate-950 dark:bg-white"
               >
                 <span>Initiate Contact</span>
                 <ArrowUpRight className="w-4 h-4" />

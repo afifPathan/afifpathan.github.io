@@ -6,9 +6,9 @@ export const TerminalPreview: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'bot' | 'telemetry' | 'circuit'>('bot');
 
   return (
-    <div className="w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-slate-50/90 dark:bg-[#06080d] shadow-lg font-mono text-xs transition-colors">
+    <div className="w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-slate-50/90 dark:bg-[#1e2538] shadow-lg font-mono text-xs transition-colors">
       {/* Terminal Title Bar */}
-      <div className="bg-slate-100/90 dark:bg-[#0b0e17] px-4 py-3 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
+      <div className="bg-slate-100/90 dark:bg-[#283248] px-4 py-3 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-rose-500/80" />
           <div className="w-3 h-3 rounded-full bg-amber-500/80" />
@@ -19,7 +19,7 @@ export const TerminalPreview: React.FC = () => {
         </div>
 
         {/* Tab Controls */}
-        <div className="flex items-center gap-1 bg-white dark:bg-black/50 p-1 rounded-lg border border-slate-200 dark:border-white/5 shadow-xs">
+        <div className="flex items-center gap-1 bg-white dark:bg-slate-700/60 p-1 rounded-lg border border-slate-200 dark:border-white/5 shadow-xs">
           <button
             onClick={() => setActiveTab('bot')}
             className={`px-2.5 py-1 rounded text-[11px] transition-colors font-medium ${
@@ -59,7 +59,7 @@ export const TerminalPreview: React.FC = () => {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-5 bg-white dark:bg-[#06080d] text-slate-700 dark:text-slate-300 min-h-[260px] flex flex-col justify-between transition-colors">
+      <div className="p-5 bg-white dark:bg-[#1e2538] text-slate-700 dark:text-slate-300 min-h-[260px] flex flex-col justify-between transition-colors">
         {activeTab === 'bot' && (
           <motion.div
             initial={{ opacity: 0 }}

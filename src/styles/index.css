@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-tertiary: #e2e8f0;
-  --color-cream: #f8fafc;
+  --bg-primary: #fefce8;
+  --bg-secondary: #faf5ff;
+  --bg-tertiary: #fef9c3;
+  --color-cream: #fefce8;
+  --color-yellow: #fefce8;
+  --color-purple: #faf5ff;
   --color-ink: #0f172a;
   --color-amber: #d97706;
   --line: rgba(15, 23, 42, 0.08);
@@ -14,7 +16,7 @@
   --card-border: rgba(15, 23, 42, 0.08);
   --accent-cyan: #0284c7;
   --accent-electric: #0369a1;
-  --accent-violet: #4f46e5;
+  --accent-violet: #7c3aed;
   --accent-emerald: #10b981;
   --text-primary: #0f172a;
   --text-secondary: #334155;
@@ -25,18 +27,20 @@
 }
 
 html.dark {
-  --bg-primary: #0e121d;
-  --bg-secondary: #141926;
-  --bg-tertiary: #1c2335;
-  --color-cream: #0e121d;
+  --bg-primary: #0f1420;
+  --bg-secondary: #141829;
+  --bg-tertiary: #1c2236;
+  --color-cream: #0f1420;
+  --color-yellow: #0f1420;
+  --color-purple: #141829;
   --color-ink: #f8fafc;
   --color-amber: #f59e0b;
   --line: rgba(255, 255, 255, 0.08);
-  --card-bg: rgba(20, 25, 38, 0.95);
+  --card-bg: rgba(30, 41, 59, 0.85);
   --card-border: rgba(255, 255, 255, 0.09);
   --accent-cyan: #38bdf8;
   --accent-electric: #0ea5e9;
-  --accent-violet: #818cf8;
+  --accent-violet: #a855f7;
   --accent-emerald: #34d399;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
@@ -140,7 +144,7 @@ html.dark .hero-ghost {
 .badge-scene {
   width: 320px;
   max-width: 100%;
-  height: 420px;
+  height: 440px;
   margin: auto;
   position: relative;
 }
@@ -158,11 +162,11 @@ html.dark .hero-ghost {
 .badge-body {
   perspective: 1200px;
   cursor: pointer;
-  width: 220px;
-  height: 310px;
+  width: 224px;
+  height: 368px;
   position: absolute;
-  top: 48px;
-  left: calc(50% - 110px);
+  top: 10px;
+  left: calc(50% - 112px);
 }
 
 .badge-flip {
@@ -197,8 +201,8 @@ html.dark .badge-flip {
 }
 
 html.dark .badge-face {
-  background: #111726;
-  border-color: rgba(255, 255, 255, 0.12);
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .badge-front {
@@ -206,7 +210,7 @@ html.dark .badge-face {
 }
 
 .badge-back {
-  background: #0f172a;
+  background: #1e293b;
   color: #f8fafc;
   text-align: left;
   align-items: flex-start;
@@ -215,7 +219,7 @@ html.dark .badge-face {
 }
 
 html.dark .badge-back {
-  background: #0d121f;
+  background: #1e293b;
   color: #f8fafc;
 }
 
@@ -232,7 +236,7 @@ html.dark .badge-back {
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 html.dark .device-iphone {
-  background: #0e121d;
+  background: #1e293b;
   border-color: #334155;
   box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 14px 20px 28px rgba(0, 0, 0, 0.4);
 }
@@ -253,7 +257,7 @@ html.dark .device-iphone {
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 html.dark .device-android {
-  background: #0e121d;
+  background: #1e293b;
   border-color: #475569;
   box-shadow: -5px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 26px rgba(0, 0, 0, 0.4);
 }
@@ -274,7 +278,7 @@ html.dark .device-android {
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 html.dark .device-tablet {
-  background: #0e121d;
+  background: #1e293b;
   border-color: #334155;
   box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 14px 20px 28px rgba(0, 0, 0, 0.4);
 }
@@ -295,7 +299,7 @@ html.dark .device-tablet {
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 html.dark .device-browser {
-  background: #0e121d;
+  background: #1e293b;
   border-color: #334155;
   box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 14px 20px 26px rgba(0, 0, 0, 0.4);
 }
@@ -305,8 +309,8 @@ html.dark .device-browser {
 
 /* Device Model 5: Smart POS & Access Control Terminal */
 .device-pos {
-  background: #0a0d14;
-  border: 4px solid #1e293b;
+  background: #1e293b;
+  border: 4px solid #334155;
   border-radius: 18px;
   width: 185px;
   position: relative;
@@ -316,7 +320,8 @@ html.dark .device-browser {
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 html.dark .device-pos {
-  border-color: #334155;
+  background: #1e293b;
+  border-color: #475569;
   box-shadow: 5px 8px 0px rgba(0, 0, 0, 0.7), 12px 18px 25px rgba(0, 0, 0, 0.5);
 }
 .device-pos:hover {
@@ -325,8 +330,8 @@ html.dark .device-pos {
 
 /* Device Model 6: Server Daemon & SDK Terminal */
 .device-terminal {
-  background: #080b11;
-  border: 3px solid #1e293b;
+  background: #1e293b;
+  border: 3px solid #334155;
   border-radius: 14px;
   width: 205px;
   position: relative;
@@ -336,7 +341,8 @@ html.dark .device-pos {
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 html.dark .device-terminal {
-  border-color: #334155;
+  background: #1e293b;
+  border-color: #475569;
   box-shadow: -5px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 24px rgba(0, 0, 0, 0.4);
 }
 .device-terminal:hover {
@@ -357,7 +363,7 @@ html.dark .device-terminal {
 }
 
 html.dark .mini-phone {
-  background: #090d16;
+  background: #1e293b;
   border-color: #334155;
   box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.7), 15px 20px 30px rgba(0, 0, 0, 0.5);
 }
@@ -380,7 +386,7 @@ html.dark .mini-phone {
 }
 
 html.dark .mini-browser {
-  background: #090d16;
+  background: #1e293b;
   border-color: #334155;
   box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 24px rgba(0, 0, 0, 0.4);
 }
@@ -391,8 +397,8 @@ html.dark .mini-browser {
 
 /* Mini SDK / Hardware Terminal Mockup */
 .mini-sdk {
-  background: #090d16;
-  border: 3px solid #1e293b;
+  background: #1e293b;
+  border: 3px solid #334155;
   border-radius: 14px;
   width: 195px;
   position: relative;
@@ -403,7 +409,8 @@ html.dark .mini-browser {
 }
 
 html.dark .mini-sdk {
-  border-color: #334155;
+  background: #1e293b;
+  border-color: #475569;
   box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 24px rgba(0, 0, 0, 0.4);
 }
 
