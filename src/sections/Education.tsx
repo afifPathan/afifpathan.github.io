@@ -44,7 +44,7 @@ export const Education: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.05 }}
                 transition={{ duration: 0.38, delay: idx * 0.05, ease: 'easeOut' }}
-                className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 hover:border-slate-500 dark:hover:border-cyan-500/30 transition-all flex items-start gap-4 bg-white/95 dark:bg-slate-800/60 shadow-xs flex-1 transform-gpu"
+                className="p-6 rounded-2xl glass-panel border border-slate-300/70 dark:border-white/10 hover:border-slate-500 dark:hover:border-cyan-500/30 transition-all flex items-start gap-4 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl flex-1 transform-gpu"
               >
                 <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400 shrink-0">
                   <GraduationCap className="w-6 h-6" />
@@ -84,7 +84,7 @@ export const Education: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.38, ease: 'easeOut' }}
-              className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/40 dark:from-amber-950/20 dark:to-slate-800/60 border border-amber-300 dark:border-amber-500/20 shadow-xs flex-1 flex flex-col justify-between transform-gpu"
+              className="p-6 rounded-2xl bg-amber-50/40 dark:bg-amber-950/20 backdrop-blur-md border border-amber-300/70 dark:border-amber-500/20 shadow-md flex-1 flex flex-col justify-between transform-gpu"
             >
               <div>
                 <div className="flex items-center gap-3 mb-3">
@@ -117,7 +117,7 @@ export const Education: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.38, delay: 0.06, ease: 'easeOut' }}
-              className="p-6 rounded-2xl glass-panel border border-slate-300 dark:border-white/10 bg-white/95 dark:bg-slate-800/60 shadow-xs flex-1 flex flex-col justify-between transform-gpu"
+              className="p-6 rounded-2xl glass-panel border border-slate-300/70 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md flex-1 flex flex-col justify-between transform-gpu"
             >
               <div>
                 <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-semibold">

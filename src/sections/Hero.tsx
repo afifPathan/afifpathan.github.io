@@ -50,38 +50,14 @@ export const Hero: React.FC = () => {
 
       {/* Main Hero Content Grid */}
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center relative z-10 flex-1 my-auto py-4">
-        {/* Left Column: Big Role Headline, Name Signature & Senior Positioning */}
+        {/* Left Column: Big Role Headline, Senior Positioning & Channels (Headline Moved Up) */}
         <div className="lg:col-span-7 flex flex-col justify-center">
-          {/* Status & Identity Header Bar */}
+          {/* Primary Editorial Heading: SENIOR MOBILE ARCHITECT & FLUTTER LEAD (Moved Up to Top) */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-3 mb-6"
-          >
-            {/* Availability Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-800 dark:text-emerald-300 backdrop-blur-sm shadow-2xs">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span className="font-semibold">Available for Remote &amp; Architecture Advisory</span>
-            </div>
-
-            {/* Verified Identity Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-2xs">
-              <span className="font-bold text-slate-900 dark:text-white">Afif Pathan</span>
-              <span className="text-slate-300 dark:text-slate-700">·</span>
-              <span className="text-slate-500 dark:text-slate-400">8+ Years in Production · 25+ Systems</span>
-            </div>
-          </motion.div>
-
-          {/* Primary Editorial Heading: SENIOR MOBILE ARCHITECT & FLUTTER LEAD */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 pt-1"
           >
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-3">
               Senior Mobile Architect &amp;{' '}
@@ -99,32 +75,32 @@ export const Hero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 mb-6"
           >
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 font-medium shadow-sm">
               ✦ Cross-Platform Systems
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 font-medium shadow-sm">
               ✦ Enterprise Clean Architecture
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 font-medium shadow-sm">
               ✦ FastAPI &amp; Trading Daemons
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 font-medium shadow-sm">
               ✦ Google Antigravity &amp; Codex
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-medium shadow-2xs">
+            <span className="px-3 py-1.5 rounded-xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 font-medium shadow-sm">
               ✦ AI Agentic Automation
             </span>
           </motion.div>
 
-          {/* Positioning Statement Card: Generous Padding & Elegant Framing */}
+          {/* Positioning Statement Card: Transparent with Shadow & Backdrop Blur */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 border-l-4 border-l-blue-600 dark:border-l-cyan-400 shadow-xs mb-8"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="p-5 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/70 dark:border-white/10 border-l-4 border-l-blue-600 dark:border-l-cyan-400 shadow-md mb-8"
           >
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
               <span className="text-slate-900 dark:text-white font-semibold">
@@ -191,12 +167,12 @@ export const Hero: React.FC = () => {
             </motion.a>
           </motion.div>
 
-          {/* Direct Verified Channels in Dedicated Pill Bar */}
+          {/* Direct Verified Channels in Dedicated Pill Bar: Transparent with Shadow */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-4 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200/90 dark:border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-slate-600 dark:text-slate-400 shadow-xs"
+            className="p-4 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/70 dark:border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-slate-600 dark:text-slate-400 shadow-md"
           >
             <span className="text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
               Direct Channels:
@@ -229,13 +205,32 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Signature Interactive 3D Lanyard ID Badge */}
+        {/* Right Column: Status & Identity Header Bar (Moved to Right Side) + 3D Lanyard ID Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 flex flex-col items-center justify-center relative"
+          className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center relative"
         >
+          {/* Status & Identity Header Bar: Moved to Right Side */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2.5 mb-6 w-full">
+            {/* Availability Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-800 dark:text-emerald-300 backdrop-blur-md shadow-md">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="font-semibold">Available for Remote &amp; Architecture Advisory</span>
+            </div>
+
+            {/* Verified Identity Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-md">
+              <span className="font-bold text-slate-900 dark:text-white">Afif Pathan</span>
+              <span className="text-slate-300 dark:text-slate-700">·</span>
+              <span className="text-slate-500 dark:text-slate-400">8+ Years in Production · 25+ Systems</span>
+            </div>
+          </div>
+
           <LanyardBadge />
         </motion.div>
       </div>

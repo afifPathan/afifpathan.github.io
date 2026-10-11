@@ -531,7 +531,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       viewport={{ once: true, amount: 0.05 }}
       whileHover={{ y: -5, transition: { duration: 0.2, ease: 'easeOut' } }}
       transition={{ duration: 0.38, delay: (index % 2) * 0.05, ease: 'easeOut' }}
-      className={`rounded-2xl glass-panel border border-slate-300 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-slate-500 dark:hover:border-cyan-500/40 hover:shadow-xl flex flex-col justify-between bg-white/95 dark:bg-slate-800/60 shadow-xs transform-gpu ${
+      className={`rounded-2xl glass-panel border border-slate-300/70 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-slate-500 dark:hover:border-cyan-500/40 hover:shadow-2xl flex flex-col justify-between bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-lg transform-gpu ${
         project.featured ? 'lg:col-span-2' : ''
       }`}
       style={{ willChange: 'transform, opacity' }}

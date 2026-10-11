@@ -52,7 +52,7 @@ export const Philosophy: React.FC = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.38, ease: 'easeOut' }}
-        className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-slate-800/60 shadow-xs transform-gpu"
+        className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-xl transform-gpu"
       >
         <div className="flex items-center gap-2 text-xs font-mono text-indigo-700 dark:text-indigo-400 mb-6 uppercase tracking-wider font-semibold">
           <Terminal className="w-4 h-4" />
@@ -67,10 +67,10 @@ export const Philosophy: React.FC = () => {
               <button
                 key={principle.title}
                 onClick={() => setSelectedPrincipleIndex(idx)}
-                className={`p-4 rounded-xl text-left transition-all duration-200 border flex flex-col justify-between ${
+                className={`p-4 rounded-xl text-left transition-all duration-200 border flex flex-col justify-between backdrop-blur-md shadow-sm ${
                   isSelected
-                    ? 'bg-blue-50 dark:bg-cyan-500/10 border-blue-400 dark:border-cyan-500/40 shadow-xs'
-                    : 'bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20'
+                    ? 'bg-blue-50/80 dark:bg-cyan-500/20 border-blue-400 dark:border-cyan-500/40 shadow-md'
+                    : 'bg-white/40 dark:bg-slate-800/40 border-slate-200/60 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -111,22 +111,22 @@ export const Philosophy: React.FC = () => {
                 {activePrinciple.description}
               </p>
 
-              <div className="pt-4 border-t border-slate-200 dark:border-white/5 flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400">
+              <div className="pt-4 border-t border-slate-200/60 dark:border-white/5 flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400">
                 <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>Enforced in production at Degreed, Buyzaar &amp; Roadzen</span>
               </div>
             </div>
 
             {/* Code Snippet Column */}
-            <div className="lg:col-span-7 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#1e2538] shadow-xs transition-colors">
-              <div className="bg-slate-100/90 dark:bg-[#283248] px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs font-mono">
+            <div className="lg:col-span-7 rounded-xl overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-white/30 dark:bg-[#1e2538]/40 backdrop-blur-md shadow-md transition-colors">
+              <div className="bg-white/50 dark:bg-[#283248]/50 px-4 py-2.5 border-b border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
                   <Code className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
                   <span className="font-semibold">architectural_pattern.dart / .py</span>
                 </div>
                 <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-medium">Production Snippet</span>
               </div>
-              <pre className="p-4 sm:p-5 text-xs font-mono text-slate-800 dark:text-slate-200 overflow-x-auto leading-relaxed bg-white/90 dark:bg-[#1e2538] transition-colors">
+              <pre className="p-4 sm:p-5 text-xs font-mono text-slate-800 dark:text-slate-200 overflow-x-auto leading-relaxed bg-white/20 dark:bg-[#1e2538]/20 transition-colors">
                 <code>{activePrinciple.codeSnippet}</code>
               </pre>
             </div>

@@ -75,7 +75,7 @@ export const Leadership: React.FC = () => {
 
       {/* Proud Moments Milestone Cards from Reference */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-800/60 shadow-xs">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
           <div className="text-3xl sm:text-5xl font-black font-mono text-slate-900 dark:text-white mb-2">
             {PERSONAL_INFO.yearsTotal}
           </div>
@@ -87,7 +87,7 @@ export const Leadership: React.FC = () => {
           </p>
         </div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-800/60 shadow-xs">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
           <div className="text-3xl sm:text-5xl font-black font-mono text-blue-600 dark:text-cyan-400 mb-2">
             {PERSONAL_INFO.productionPlatforms}
           </div>
@@ -99,7 +99,7 @@ export const Leadership: React.FC = () => {
           </p>
         </div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-800/60 shadow-xs">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
           <div className="text-3xl sm:text-5xl font-black font-mono text-indigo-600 dark:text-indigo-400 mb-2">
             {PERSONAL_INFO.yearsMobile}
           </div>
@@ -111,7 +111,7 @@ export const Leadership: React.FC = () => {
           </p>
         </div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-800/60 shadow-xs">
+        <div className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md">
           <div className="text-3xl sm:text-5xl font-black font-mono text-emerald-600 dark:text-emerald-400 mb-2">
             100%
           </div>
@@ -135,7 +135,7 @@ export const Leadership: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.38, delay: (idx % 2) * 0.05, ease: 'easeOut' }}
-              className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-800/60 shadow-xs transform-gpu"
+              className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl transform-gpu"
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700/80 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400">

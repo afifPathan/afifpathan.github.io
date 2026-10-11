@@ -122,7 +122,7 @@ export const ArchitectureDiagram: React.FC = () => {
   const activeLayer = LAYERS.find((l) => l.id === selectedLayerId) || LAYERS[2];
 
   return (
-    <div className="w-full glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-lg bg-white/95 dark:bg-slate-800/90">
+    <div className="w-full glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden border border-slate-200/60 dark:border-white/10 shadow-xl bg-white/35 dark:bg-slate-800/35 backdrop-blur-md">
       {/* Background ambient lighting */}
       <div className="absolute -top-32 -right-32 w-80 h-80 bg-blue-500/10 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />

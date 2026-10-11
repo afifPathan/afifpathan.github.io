@@ -237,7 +237,7 @@ export const TechCluster: React.FC = () => {
 
           {/* Quick Stats Ticker */}
           <div className="grid grid-cols-3 gap-3">
-            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 text-center shadow-md">
               <div className="text-xl font-bold text-slate-900 dark:text-white font-mono">
                 {ALL_SKILLS.length}+
               </div>
@@ -245,7 +245,7 @@ export const TechCluster: React.FC = () => {
                 Mastered
               </div>
             </div>
-            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 text-center shadow-md">
               <div className="text-xl font-bold text-blue-600 dark:text-cyan-400 font-mono">
                 25+
               </div>
@@ -253,7 +253,7 @@ export const TechCluster: React.FC = () => {
                 Platforms
               </div>
             </div>
-            <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-center shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/60 dark:border-white/10 text-center shadow-md">
               <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 font-mono">
                 0%
               </div>
@@ -284,10 +284,10 @@ export const TechCluster: React.FC = () => {
                   transition={{ duration: 0.35, delay: (idx % 4) * 0.03, ease: 'easeOut' }}
                   whileHover={{ y: -3, transition: { duration: 0.15 } }}
                   whileTap={{ scale: 0.98 }}
-                  className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 text-left transform-gpu ${
+                  className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 text-left transform-gpu backdrop-blur-md ${
                     isActive
-                      ? 'bg-blue-50/80 dark:bg-slate-800/90 border-blue-500 dark:border-cyan-400 shadow-md ring-2 ring-blue-500/20 dark:ring-cyan-400/20'
-                      : 'bg-white/80 hover:bg-slate-50/90 dark:bg-slate-800/70 dark:hover:bg-slate-700/70 border-slate-200 dark:border-white/10 shadow-xs'
+                      ? 'bg-blue-50/70 dark:bg-slate-800/80 border-blue-500 dark:border-cyan-400 shadow-lg ring-2 ring-blue-500/20 dark:ring-cyan-400/20'
+                      : 'bg-white/40 hover:bg-white/60 dark:bg-slate-800/40 dark:hover:bg-slate-700/60 border-slate-200/60 dark:border-white/10 shadow-sm hover:shadow-md'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">

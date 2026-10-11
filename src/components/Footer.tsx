@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full border-t border-slate-300 dark:border-white/10 bg-[#f0ecf7] dark:bg-[#0f1420] pt-16 pb-12 px-4 sm:px-6 lg:px-8 text-slate-700 dark:text-slate-300 transition-colors overflow-x-hidden overflow-x-clip">
+    <footer className="w-full border-t border-slate-300/60 dark:border-white/10 bg-white/40 dark:bg-[#0f1420]/60 backdrop-blur-md pt-16 pb-12 px-4 sm:px-6 lg:px-8 text-slate-700 dark:text-slate-300 transition-colors overflow-x-hidden overflow-x-clip">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-300/80 dark:border-white/10 items-start">

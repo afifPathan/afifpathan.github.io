@@ -51,7 +51,7 @@ export const Experience: React.FC = () => {
             {/* Timeline Node Indicator */}
             <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-slate-800 border-2 border-blue-600 dark:border-cyan-400 group-hover:bg-blue-600 dark:group-hover:bg-cyan-400 transition-colors shadow-xs" />
 
-            <div className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/95 dark:bg-slate-800/60 shadow-xs">
+            <div className="p-6 md:p-8 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/30 transition-all duration-300 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md hover:shadow-xl">
               {/* Header Bar */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
                 <div>

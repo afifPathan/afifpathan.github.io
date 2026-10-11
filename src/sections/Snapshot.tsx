@@ -154,7 +154,7 @@ export const Snapshot: React.FC = () => {
           viewport={{ once: true, amount: 0.05 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.35, delay: 0.04, ease: 'easeOut' }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/40 transition-colors bg-white/90 dark:bg-slate-800/60 shadow-xs transform-gpu"
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 dark:hover:border-cyan-500/40 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono mb-1">
             {PERSONAL_INFO.yearsTotal}
@@ -173,7 +173,7 @@ export const Snapshot: React.FC = () => {
           viewport={{ once: true, amount: 0.05 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.35, delay: 0.08, ease: 'easeOut' }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-800/60 shadow-xs transform-gpu"
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-cyan-400 font-mono mb-1">
             {PERSONAL_INFO.yearsMobile}
@@ -192,7 +192,7 @@ export const Snapshot: React.FC = () => {
           viewport={{ once: true, amount: 0.05 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.35, delay: 0.12, ease: 'easeOut' }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-800/60 shadow-xs transform-gpu"
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono mb-1">
             {PERSONAL_INFO.productionPlatforms}
@@ -211,7 +211,7 @@ export const Snapshot: React.FC = () => {
           viewport={{ once: true, amount: 0.05 }}
           whileHover={{ y: -5, transition: { duration: 0.2 } }}
           transition={{ duration: 0.35, delay: 0.16, ease: 'easeOut' }}
-          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-slate-400 transition-colors bg-white/90 dark:bg-slate-800/60 shadow-xs transform-gpu"
+          className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 hover:border-slate-400 transition-all bg-white/35 dark:bg-slate-800/30 backdrop-blur-md shadow-md hover:shadow-lg transform-gpu"
         >
           <div className="text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 font-mono mb-1">
             100%
@@ -236,7 +236,7 @@ export const Snapshot: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.38, delay: (idx % 2) * 0.05, ease: 'easeOut' }}
-              className="p-6 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-200 shadow-xs transform-gpu"
+              className="p-6 rounded-2xl bg-white/35 dark:bg-slate-800/30 backdrop-blur-md border border-slate-200/60 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-200 shadow-md hover:shadow-lg transform-gpu"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-cyan-400">

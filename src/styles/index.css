@@ -12,7 +12,7 @@
   --color-ink: #0f172a;
   --color-amber: #d97706;
   --line: rgba(15, 23, 42, 0.08);
-  --card-bg: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.40);
   --card-border: rgba(15, 23, 42, 0.08);
   --accent-cyan: #0284c7;
   --accent-electric: #0369a1;
@@ -36,7 +36,7 @@ html.dark {
   --color-ink: #f8fafc;
   --color-amber: #f59e0b;
   --line: rgba(255, 255, 255, 0.08);
-  --card-bg: rgba(30, 41, 59, 0.85);
+  --card-bg: rgba(30, 41, 59, 0.35);
   --card-border: rgba(255, 255, 255, 0.09);
   --accent-cyan: #38bdf8;
   --accent-electric: #0ea5e9;
@@ -429,15 +429,15 @@ html.dark .mini-sdk {
 
 /* Reference Grid and Glass Panels */
 .glass-panel {
-  background-color: var(--card-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background-color: var(--card-bg) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
-  box-shadow: 0 4px 20px -2px rgba(16, 23, 42, 0.05);
+  box-shadow: 0 10px 30px -5px rgba(16, 23, 42, 0.08), 0 4px 10px -2px rgba(16, 23, 42, 0.04);
 }
 
 html.dark .glass-panel {
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 14px 35px -8px rgba(0, 0, 0, 0.55), 0 4px 12px -2px rgba(0, 0, 0, 0.3);
 }
 
 /* Custom Scrollbar */
