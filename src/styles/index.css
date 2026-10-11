@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #f4f1e8;
-  --bg-secondary: #fcfaf4;
-  --bg-tertiary: #ede8dc;
-  --color-cream: #f4f1e8;
-  --color-ink: #10172a;
-  --color-amber: #a96212;
-  --line: rgba(16, 23, 42, 0.08);
-  --card-bg: #fcfaf4;
-  --card-border: rgba(16, 23, 42, 0.09);
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-tertiary: #e2e8f0;
+  --color-cream: #f8fafc;
+  --color-ink: #0f172a;
+  --color-amber: #d97706;
+  --line: rgba(15, 23, 42, 0.08);
+  --card-bg: #ffffff;
+  --card-border: rgba(15, 23, 42, 0.08);
   --accent-cyan: #0284c7;
   --accent-electric: #0369a1;
   --accent-violet: #4f46e5;
-  --accent-emerald: #16a34a;
-  --text-primary: #10172a;
+  --accent-emerald: #10b981;
+  --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -25,19 +25,19 @@
 }
 
 html.dark {
-  --bg-primary: #07090e;
-  --bg-secondary: #0d111a;
-  --bg-tertiary: #131926;
-  --color-cream: #07090e;
+  --bg-primary: #0e121d;
+  --bg-secondary: #141926;
+  --bg-tertiary: #1c2335;
+  --color-cream: #0e121d;
   --color-ink: #f8fafc;
   --color-amber: #f59e0b;
   --line: rgba(255, 255, 255, 0.08);
-  --card-bg: rgba(13, 17, 26, 0.9);
-  --card-border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(20, 25, 38, 0.95);
+  --card-border: rgba(255, 255, 255, 0.09);
   --accent-cyan: #38bdf8;
   --accent-electric: #0ea5e9;
   --accent-violet: #818cf8;
-  --accent-emerald: #10b981;
+  --accent-emerald: #34d399;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -186,8 +186,8 @@ html.dark .badge-flip {
 .badge-face {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  background: #fcfaf4;
-  border: 1px solid rgba(16, 23, 42, 0.12);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: 14px;
   display: flex;
   flex-direction: column;
@@ -197,7 +197,7 @@ html.dark .badge-flip {
 }
 
 html.dark .badge-face {
-  background: #0f1422;
+  background: #111726;
   border-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -206,8 +206,8 @@ html.dark .badge-face {
 }
 
 .badge-back {
-  background: #10172a;
-  color: #f4f1e8;
+  background: #0f172a;
+  color: #f8fafc;
   text-align: left;
   align-items: flex-start;
   padding: 24px 18px;
@@ -215,8 +215,132 @@ html.dark .badge-face {
 }
 
 html.dark .badge-back {
-  background: #090d16;
+  background: #0d121f;
   color: #f8fafc;
+}
+
+/* Device Model 1: iPhone 16 Pro (Dynamic Island) */
+.device-iphone {
+  background: #ffffff;
+  border: 4px solid #1e293b;
+  border-radius: 28px;
+  width: 172px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 8px 0px rgba(30, 41, 59, 0.25), 14px 20px 28px rgba(15, 23, 42, 0.12);
+  transform: rotate(5deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+html.dark .device-iphone {
+  background: #0e121d;
+  border-color: #334155;
+  box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 14px 20px 28px rgba(0, 0, 0, 0.4);
+}
+.device-iphone:hover {
+  transform: rotate(0deg) scale(1.04);
+}
+
+/* Device Model 2: Android Flagship (Top Punch-Hole) */
+.device-android {
+  background: #ffffff;
+  border: 4px solid #334155;
+  border-radius: 22px;
+  width: 168px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: -5px 8px 0px rgba(30, 41, 59, 0.22), 12px 18px 26px rgba(15, 23, 42, 0.12);
+  transform: rotate(-4deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+html.dark .device-android {
+  background: #0e121d;
+  border-color: #475569;
+  box-shadow: -5px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 26px rgba(0, 0, 0, 0.4);
+}
+.device-android:hover {
+  transform: rotate(0deg) scale(1.04);
+}
+
+/* Device Model 3: Tablet Pro Landscape */
+.device-tablet {
+  background: #ffffff;
+  border: 4px solid #1e293b;
+  border-radius: 18px;
+  width: 230px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 8px 0px rgba(30, 41, 59, 0.25), 14px 20px 28px rgba(15, 23, 42, 0.12);
+  transform: rotate(3deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+html.dark .device-tablet {
+  background: #0e121d;
+  border-color: #334155;
+  box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 14px 20px 28px rgba(0, 0, 0, 0.4);
+}
+.device-tablet:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* Device Model 4: Desktop Web Browser */
+.device-browser {
+  background: #ffffff;
+  border: 3px solid #1e293b;
+  border-radius: 14px;
+  width: 220px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 8px 0px rgba(30, 41, 59, 0.25), 14px 20px 26px rgba(15, 23, 42, 0.12);
+  transform: rotate(-3deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+html.dark .device-browser {
+  background: #0e121d;
+  border-color: #334155;
+  box-shadow: 6px 8px 0px rgba(0, 0, 0, 0.6), 14px 20px 26px rgba(0, 0, 0, 0.4);
+}
+.device-browser:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* Device Model 5: Smart POS & Access Control Terminal */
+.device-pos {
+  background: #0a0d14;
+  border: 4px solid #1e293b;
+  border-radius: 18px;
+  width: 185px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 5px 8px 0px rgba(30, 41, 59, 0.3), 12px 18px 25px rgba(15, 23, 42, 0.15);
+  transform: rotate(4deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+html.dark .device-pos {
+  border-color: #334155;
+  box-shadow: 5px 8px 0px rgba(0, 0, 0, 0.7), 12px 18px 25px rgba(0, 0, 0, 0.5);
+}
+.device-pos:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* Device Model 6: Server Daemon & SDK Terminal */
+.device-terminal {
+  background: #080b11;
+  border: 3px solid #1e293b;
+  border-radius: 14px;
+  width: 205px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: -5px 8px 0px rgba(30, 41, 59, 0.25), 12px 18px 24px rgba(15, 23, 42, 0.12);
+  transform: rotate(-3deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+html.dark .device-terminal {
+  border-color: #334155;
+  box-shadow: -5px 8px 0px rgba(0, 0, 0, 0.6), 12px 18px 24px rgba(0, 0, 0, 0.4);
+}
+.device-terminal:hover {
+  transform: rotate(0deg) scale(1.03);
 }
 
 /* Reference Mini Phone Device Mockups on Project Cards */
@@ -294,22 +418,6 @@ html.dark .mini-sdk {
   border-radius: 2px;
   margin: 6px auto 4px;
   display: block;
-}
-
-/* Reference Interactive Smartphone Toolkit */
-.skill-phone {
-  background: #fdfcf9;
-  border: 6px solid #1e293b;
-  border-radius: 36px;
-  box-shadow: 0 25px 60px rgba(16, 23, 42, 0.16);
-  overflow: hidden;
-  position: relative;
-}
-
-html.dark .skill-phone {
-  background: #0a0e1a;
-  border-color: #334155;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
 }
 
 /* Reference Grid and Glass Panels */

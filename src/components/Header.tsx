@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
 
       {/* Floating Centered Pill Header (exact yaseenmuhammed.com look) */}
       <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 pointer-events-none px-3 sm:px-4 flex justify-center">
-        <div className="pill-nav pointer-events-auto flex items-center justify-between gap-2 sm:gap-3 px-3 py-1.5 sm:py-2 rounded-full border border-slate-300/80 dark:border-white/10 bg-[#fcfaf4]/92 dark:bg-[#0d111a]/92 backdrop-blur-xl shadow-lg max-w-5xl transition-all duration-300">
+        <div className="pill-nav pointer-events-auto flex items-center justify-between gap-2 sm:gap-3 px-3 py-1.5 sm:py-2 rounded-full border border-slate-200/90 dark:border-white/10 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-lg max-w-5xl transition-all duration-300">
           {/* Identity Monogram / Scrolled Avatar */}
           <a
             href="#hero"
