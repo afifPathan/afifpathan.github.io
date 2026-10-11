@@ -23,11 +23,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.4, delay: (index % 6) * 0.08 }}
-      className={`rounded-2xl glass-panel border border-slate-200 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-blue-400 dark:hover:border-cyan-500/30 hover:shadow-lg flex flex-col justify-between bg-white/95 dark:bg-slate-900/60 shadow-sm ${
+      viewport={{ once: true, margin: '-40px' }}
+      whileHover={{ y: -6, transition: { duration: 0.22, ease: 'easeOut' } }}
+      transition={{ duration: 0.5, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className={`rounded-2xl glass-panel border border-slate-200 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-blue-400 dark:hover:border-cyan-500/40 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-cyan-500/5 flex flex-col justify-between bg-white/95 dark:bg-slate-900/60 shadow-sm ${
         project.featured ? 'lg:col-span-2' : ''
       }`}
     >

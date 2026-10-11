@@ -41,10 +41,11 @@ export const Experience: React.FC = () => {
         {EXPERIENCES.map((exp, idx) => (
           <motion.article
             key={exp.id}
-            initial={{ opacity: 0, x: -15 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.4, delay: idx * 0.08 }}
+            viewport={{ once: true, margin: '-40px' }}
+            whileHover={{ x: 4, transition: { duration: 0.2, ease: 'easeOut' } }}
+            transition={{ duration: 0.45, delay: (idx % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="relative group"
           >
             {/* Timeline Node Indicator */}

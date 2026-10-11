@@ -71,7 +71,14 @@ export const Snapshot: React.FC = () => {
 
       {/* Verified Metrics Counter Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-blue-500/30 dark:hover:border-cyan-500/30 transition-colors bg-white/90 dark:bg-slate-900/40">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+          transition={{ duration: 0.4, delay: 0.05 }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-cyan-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+        >
           <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-cyan-400 font-mono mb-1">
             {PERSONAL_INFO.yearsTotal}
           </div>
@@ -81,9 +88,16 @@ export const Snapshot: React.FC = () => {
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
             Delivering software across mobile, web, backend &amp; systems since 2017.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-colors bg-white/90 dark:bg-slate-900/40">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-indigo-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+        >
           <div className="text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 font-mono mb-1">
             {PERSONAL_INFO.yearsMobile}
           </div>
@@ -93,9 +107,16 @@ export const Snapshot: React.FC = () => {
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
             Architecting production Flutter &amp; Android platforms for global users.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-emerald-500/30 transition-colors bg-white/90 dark:bg-slate-900/40">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+          transition={{ duration: 0.4, delay: 0.15 }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-emerald-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+        >
           <div className="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono mb-1">
             {PERSONAL_INFO.productionPlatforms}
           </div>
@@ -105,9 +126,16 @@ export const Snapshot: React.FC = () => {
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
             Delivered across e-commerce, EdTech, insurance, healthcare &amp; fintech.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-purple-500/30 transition-colors bg-white/90 dark:bg-slate-900/40">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 hover:border-purple-500/40 transition-colors bg-white/90 dark:bg-slate-900/40 shadow-sm"
+        >
           <div className="text-3xl sm:text-4xl font-extrabold text-purple-600 dark:text-purple-400 font-mono mb-1">
             100%
           </div>
@@ -117,7 +145,7 @@ export const Snapshot: React.FC = () => {
           <p className="text-[11px] text-slate-600 dark:text-slate-400">
             Zero fabricated numbers or unsupported claims. Authentic production evidence.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Pillars Grid */}

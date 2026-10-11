@@ -21,6 +21,7 @@ const NAV_ITEMS = [
 export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const activeSection = useScrollSpy(
     NAV_ITEMS.map((item) => item.id),
     120
@@ -29,8 +30,10 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      setScrolledPastHero(window.scrollY > 240);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -43,28 +46,65 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/90 dark:bg-[#07090e]/85 backdrop-blur-md border-b border-slate-200 dark:border-white/10 py-3 shadow-sm'
-            : 'bg-transparent py-5'
+            ? 'bg-white/85 dark:bg-[#07090e]/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 py-2.5 shadow-sm'
+            : 'bg-transparent py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Monogram Brand */}
+          {/* Scroll-Responsive Brand: Minimal Monogram at Top -> Docked Photo & Name on Scroll */}
           <a
             href="#hero"
-            className="group flex items-center gap-2.5 font-mono font-bold tracking-tight text-lg"
+            className="group flex items-center gap-2.5"
             aria-label="Afif Pathan - Back to top"
           >
-            <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-slate-900 border border-blue-200 dark:border-cyan-500/30 flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-cyan-400 transition-colors shadow-sm">
-              <span className="text-blue-600 dark:text-cyan-400 font-bold">AP</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-semibold tracking-normal text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-300 transition-colors">
-                Afif Pathan
-              </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-normal hidden sm:inline">
-                Senior Mobile Architect
-              </span>
-            </div>
+            <AnimatePresence mode="wait">
+              {!scrolledPastHero ? (
+                <motion.div
+                  key="top-monogram"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.15 } }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  className="flex items-center gap-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-cyan-500/30 flex items-center justify-center font-mono font-bold text-slate-900 dark:text-cyan-400 text-xs shadow-xs group-hover:border-blue-500 dark:group-hover:border-cyan-400 group-hover:text-blue-600 transition-colors">
+                    <span>AP</span>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-slate-400 dark:text-slate-500">
+                    <span>/</span>
+                    <span className="group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
+                      portfolio
+                    </span>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="scrolled-identity"
+                  initial={{ opacity: 0, x: -16, scale: 0.92 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -16, scale: 0.92, transition: { duration: 0.15 } }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+                  className="flex items-center gap-2.5"
+                >
+                  <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-blue-600 dark:border-cyan-400 shadow-md shrink-0">
+                    <img
+                      src="/profile.jpg"
+                      alt="Afif Pathan"
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border border-white dark:border-slate-900" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-cyan-300 transition-colors">
+                      Afif Pathan
+                    </span>
+                    <span className="text-[10px] text-blue-600 dark:text-cyan-400 font-mono hidden sm:inline leading-tight font-medium">
+                      Senior Mobile Architect
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </a>
 
           {/* Desktop Navigation Pill */}

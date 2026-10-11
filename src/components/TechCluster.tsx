@@ -52,9 +52,10 @@ export const TechCluster: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           {selectedCategory.skills.map((skill) => (
-            <div
+            <motion.div
               key={skill.name}
-              className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-white/5 hover:border-blue-400 dark:hover:border-cyan-500/30 hover:bg-white dark:hover:bg-slate-900/90 transition-all duration-200 group shadow-sm hover:shadow-md"
+              whileHover={{ x: 3, transition: { duration: 0.15 } }}
+              className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-white/5 hover:border-blue-400 dark:hover:border-cyan-500/30 hover:bg-white dark:hover:bg-slate-900/90 transition-all duration-200 group shadow-sm hover:shadow-md cursor-default"
             >
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2">
@@ -70,7 +71,7 @@ export const TechCluster: React.FC = () => {
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed pl-4 border-l border-slate-200 dark:border-white/10">
                 {skill.context}
               </p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </AnimatePresence>

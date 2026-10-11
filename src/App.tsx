@@ -18,16 +18,16 @@ export const App: React.FC = () => {
   const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
   const prefersReducedMotion = useReducedMotion();
 
-  // Initialize theme from storage or system (default: light)
+  // Initialize theme from storage or system (strictly default: light)
   useEffect(() => {
     try {
       const savedTheme = typeof window !== 'undefined' && window.localStorage
-        ? (window.localStorage.getItem('ap-theme') as 'dark' | 'light' | null)
+        ? (window.localStorage.getItem('ap-portfolio-theme-v2') as 'dark' | 'light' | null)
         : null;
-      if (savedTheme) {
-        setTheme(savedTheme);
-        document.documentElement.classList.toggle('light', savedTheme === 'light');
-        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+      if (savedTheme === 'dark') {
+        setTheme('dark');
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
       } else {
         setTheme('light');
         document.documentElement.classList.add('light');
@@ -45,7 +45,7 @@ export const App: React.FC = () => {
     setTheme(nextTheme);
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
-        window.localStorage.setItem('ap-theme', nextTheme);
+        window.localStorage.setItem('ap-portfolio-theme-v2', nextTheme);
       }
     } catch {
       // Ignore storage errors in restricted contexts
@@ -79,7 +79,7 @@ export const App: React.FC = () => {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] dark:bg-[#07090e] text-slate-800 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200">
+    <div className="relative min-h-screen bg-white dark:bg-[#07090e] text-slate-800 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200">
       {/* Scroll Progress Bar */}
       <div
         className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 z-50 origin-left"
