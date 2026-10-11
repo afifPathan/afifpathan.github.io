@@ -15,7 +15,7 @@ export const PERSONAL_INFO = {
   productionPlatforms: '25+',
   photo: '/profile.jpg',
   summary:
-    'Senior mobile architect and Flutter specialist with 8+ years of software engineering experience, including 6+ years delivering production-grade cross-platform applications. Proven track record architecting scalable solutions across e-commerce, EdTech, insurance, healthcare, fintech and AI-enabled products. Expertise in Clean Architecture, SOLID principles, BLoC/Cubit/Riverpod, Firebase, REST/GraphQL APIs, native Android and CI/CD pipelines. Adept at technical leadership, AI-assisted development workflows, Web3 integrations and real-time system design.',
+    'Senior Mobile Architect and Flutter specialist with 8+ years of software engineering excellence, including 6+ years delivering production-grade cross-platform platforms and 25+ production systems. Proven track record architecting scalable solutions across e-commerce, EdTech, healthcare, commercial facilities, insurance, hardware IoT, and algorithmic trading. Expertise in Clean Architecture, SOLID principles, BLoC/Cubit & Riverpod, WebRTC audio/video teleconsultation, real-time WebSocket telemetry, background GPS geofencing, POS hardware integration (RFID/thermal printing), offline-first SQLite/Hive caching, Python algorithmic daemons, and Gemini AI workflows.',
   languages: ['English', 'Hindi', 'Gujarati', 'Urdu'],
   award: {
     title: 'Rising Star Award (2020)',

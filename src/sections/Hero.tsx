@@ -113,15 +113,38 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl font-normal"
+            className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl font-normal"
           >
-            {PERSONAL_INFO.yearsTotal} of software engineering excellence, including{' '}
             <span className="text-slate-900 dark:text-white font-semibold">
-              {PERSONAL_INFO.yearsMobile} delivering production-grade cross-platform platforms
+              8+ years of software engineering excellence
+            </span>
+            , including{' '}
+            <span className="text-slate-900 dark:text-white font-semibold">
+              6+ years architecting production-grade cross-platform platforms
             </span>{' '}
-            and <span className="text-blue-700 dark:text-cyan-300 font-semibold">{PERSONAL_INFO.productionPlatforms} production systems</span>.
-            Specializing in enterprise <span className="text-blue-700 dark:text-cyan-300 font-medium">Clean Architecture</span>, deterministic{' '}
-            <span className="text-indigo-600 dark:text-indigo-300 font-medium">BLoC/Cubit state machines</span>, real-time WebSocket telemetry, and AI-enabled workflows across EdTech, e-commerce, healthcare, and algorithmic trading.
+            and{' '}
+            <span className="text-blue-700 dark:text-cyan-300 font-semibold">
+              {PERSONAL_INFO.productionPlatforms} production systems
+            </span>
+            . Specializing in enterprise{' '}
+            <span className="text-blue-700 dark:text-cyan-300 font-medium">Clean Architecture &amp; SOLID</span>
+            , deterministic{' '}
+            <span className="text-indigo-600 dark:text-indigo-300 font-medium">
+              BLoC/Cubit &amp; Riverpod state machines
+            </span>
+            , real-time{' '}
+            <span className="text-slate-900 dark:text-white font-medium">
+              WebSocket telemetry &amp; WebRTC audio/video teleconsultation
+            </span>
+            , automated{' '}
+            <span className="text-slate-900 dark:text-white font-medium">
+              background GPS geofencing &amp; telematics
+            </span>
+            , POS hardware integration (thermal receipt printing &amp; MiFare RFID), offline-first reconciliation (SQLite/Hive), Python algorithmic trading daemons, and{' '}
+            <span className="text-blue-700 dark:text-cyan-300 font-medium">
+              Gemini AI automation
+            </span>{' '}
+            across EdTech, e-commerce, healthcare, commercial facilities, and algorithmic fintech.
           </motion.p>
 
           {/* Action CTAs with Micro-Interactions */}
