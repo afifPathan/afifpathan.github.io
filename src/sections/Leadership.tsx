@@ -143,13 +143,13 @@ export const Leadership: React.FC = () => {
           className="p-6 rounded-2xl glass-panel border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-md transform-gpu"
         >
           <div className="text-3xl sm:text-5xl font-black font-mono text-emerald-600 dark:text-emerald-400 mb-2">
-            100%
+            2017
           </div>
           <div className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
-            CV-Verified Proof
+            Production Since
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Every metric backed by production deployments and real users.
+            Delivering continuous production systems and technical leadership.
           </p>
         </motion.div>
       </div>

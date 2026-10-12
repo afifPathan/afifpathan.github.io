@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
       'Modular Python daemon orchestrated via systemd on Ubuntu, integrating Angel One SmartAPI, SQLite persistence, and dual paper/live execution pathways.',
     contributions: [
       'Designed Python-based NSE trading engine evaluating 5-minute candle data, EMA 9/21 crossovers, VWAP, and volume confirmation.',
-      'Built broker-verified execution layer with position reconciliation, duplicate-order protection, and daily loss circuit breakers.',
+      'Built broker-authenticated execution layer with position reconciliation, duplicate-order protection, and daily loss circuit breakers.',
       'Separated paper simulation and live trading pathways with hardware kill-switch and instant Telegram alerts.',
       'Packaged systemd deployment with automated market-hours scheduler and daemon health checks.',
     ],
@@ -91,7 +91,7 @@ export const PROJECTS: Project[] = [
       'Ubuntu/Linux',
       'REST APIs',
     ],
-    metrics: 'Broker-verified execution with automated kill-switches & risk circuit breakers',
+    metrics: 'Broker-authenticated execution with automated kill-switches & risk circuit breakers',
     links: {
       github: 'https://github.com/afifPathan/swing_delivery_stock_trading_bot',
     },
@@ -277,7 +277,7 @@ export const PROJECTS: Project[] = [
     category: 'Systems & AI',
     featured: false,
     problem:
-      'Large-scale enterprise field maintenance operations demanded automated presence verification and real-time geofence tracking across distributed mobile and web surfaces without battery drain.',
+      'Large-scale enterprise field maintenance operations demanded automated presence validation and real-time geofence tracking across distributed mobile and web surfaces without battery drain.',
     architecture:
       'Continuous background geolocation tracking engine featuring polygon geofence evaluation algorithms and adaptive GPS duty-cycling for battery preservation.',
     contributions: [
@@ -558,7 +558,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     location: 'Remote',
     responsibilities: [
       'Designed a Python-based NSE equity trading automation system leveraging Angel One SmartAPI, 5-minute market data, EMA 9/21, VWAP and volume confirmation signals.',
-      'Built broker-verified execution, SQLite persistence, position reconciliation, duplicate-order protection, kill-switch and daily risk circuit breakers.',
+      'Built broker-authenticated execution, SQLite persistence, position reconciliation, duplicate-order protection, kill-switch and daily risk circuit breakers.',
       'Separated paper and live execution paths; packaged Ubuntu/systemd deployment with market-hours scheduling and health monitoring.',
       'Developed a real-time trading observability SPA (React 18, TypeScript 5.5, Vite 5, Tailwind CSS, TanStack Query, Native WebSocket, Recharts) providing portfolio P&L, positions, trades, orders, and Telegram signal telemetry.',
     ],
@@ -801,7 +801,7 @@ export const PHILOSOPHY_PRINCIPLES = [
     subtitle: 'Business logic that outlives any UI framework',
     description:
       'UI frameworks and backend protocols change, but domain business rules must remain pure and decoupled. By strictly isolating Presentation from Domain and Data through abstraction interfaces, the codebase remains testable, maintainable, and resilient to third-party SDK deprecation.',
-    codeSnippet: `// Pure Domain Use Case - Zero Framework Coupling
+    codeSnippet: `// Sovereign Enterprise Domain Core - Zero Framework Coupling
 abstract class OrderRepository {
   Future<Either<Failure, Order>> submitOrder(OrderDraft draft);
   Stream<OrderState> watchOrderStatus(String orderId);
@@ -886,3 +886,20 @@ class RiskCircuitBreaker:
         telegram.send_alert(f"🚨 KILL-SWITCH ACTIVATED: {reason}")`,
   },
 ];
+
+export interface Testimonial {
+  id: string;
+  author: string;
+  role: string;
+  company: string;
+  avatar?: string;
+  quote: string;
+  linkedIn?: string;
+}
+
+/**
+ * Authentic testimonials only. Section remains completely unrendered if array is empty.
+ * Refer to README.md for instructions on adding authentic testimonials.
+ */
+export const TESTIMONIALS: Testimonial[] = [];
+

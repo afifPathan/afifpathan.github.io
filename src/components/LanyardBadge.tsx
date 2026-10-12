@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { ShieldCheck, RefreshCw, Cpu, Layers } from 'lucide-react';
+import { RefreshCw, Cpu, Layers, Terminal } from 'lucide-react';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 export const LanyardBadge: React.FC = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [rotateOffset, setRotateOffset] = useState({ x: 0, y: 0 });
+  const prefersReducedMotion = useReducedMotion();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (prefersReducedMotion) return;
+    if (typeof window !== 'undefined' && ('ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches)) {
+      return;
+    }
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -22,47 +28,19 @@ export const LanyardBadge: React.FC = () => {
 
   return (
     <motion.div
-      initial={{ y: -60, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: false, amount: 0.1 }}
-      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="badge-scene select-none"
-      aria-label="Interactive 3D Engineering ID Badge"
+      aria-label="Interactive 3D Engineering ID Pass"
     >
-      {/* Lanyard Cord SVG Ribbon */}
-      <svg
-        className="badge-cord pointer-events-none"
-        viewBox="0 0 320 390"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          d="M 160 0 C 130 18, 110 42, 160 66"
-          stroke="rgba(0,0,0,0.12)"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 160 0 C 135 22, 115 46, 160 66"
-          stroke="#0f172a"
-          strokeWidth="4"
-          strokeLinecap="round"
-          className="dark:stroke-slate-300"
-        />
-        {/* Metal Clip Ring */}
-        <rect
-          x="152"
-          y="60"
-          width="16"
-          height="12"
-          rx="3"
-          fill="#94a3b8"
-          stroke="#475569"
-          strokeWidth="1.5"
-        />
-        <circle cx="160" cy="66" r="3" fill="#1e293b" />
-      </svg>
+      {/* Physical Clip Mount at Top of Badge */}
+      <div className="flex flex-col items-center mb-1">
+        <div className="w-8 h-2 rounded-t-sm bg-slate-700 dark:bg-slate-700" />
+        <div className="w-12 h-3.5 rounded-full bg-slate-800 border border-slate-600/80 flex items-center justify-center shadow-xs">
+          <div className="w-6 h-1 rounded-full bg-slate-950" />
+        </div>
+      </div>
 
       {/* 3D Physical Badge Container */}
       <div
@@ -78,7 +56,7 @@ export const LanyardBadge: React.FC = () => {
         }}
         tabIndex={0}
         role="button"
-        aria-label="3D Engineering ID Badge. Click to flip between pass and verified metrics."
+        aria-label="Mobile Systems Pass - 3D Interactive Engineering Pass. Click or press Enter to flip."
       >
         <motion.div
           className="badge-flip"
@@ -94,20 +72,20 @@ export const LanyardBadge: React.FC = () => {
           }}
           style={{ transformStyle: 'preserve-3d' }}
         >
-          {/* FRONT FACE: Physical ID Pass - Clean & Unobstructed */}
-          <div className="badge-face badge-front p-3.5 flex flex-col justify-between">
+          {/* FRONT FACE: Clean Engineering ID Pass */}
+          <div className="badge-face badge-front p-3.5 flex flex-col justify-between bg-dark-surface/90 border border-white/10 text-white">
             {/* Top Bar with Slot Hole */}
             <div>
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200 dark:border-white/10 text-[10px] font-mono">
-                <div className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>VERIFIED ARCHITECT CREDENTIAL</span>
+              <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-[10px] font-mono">
+                <div className="flex items-center gap-1.5 text-white/80 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <span className="uppercase tracking-wider">Mobile Systems Pass</span>
                 </div>
-                <span className="text-slate-400 dark:text-slate-500 font-mono tracking-wider">#AP-89412</span>
+                <span className="text-white/40 font-mono text-[9px]">Ahmedabad, IN</span>
               </div>
 
-              {/* Portrait Photo: Dedicated Frame with ZERO overlapping text */}
-              <div className="w-full h-[132px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-slate-800 shadow-inner">
+              {/* Portrait Photo Frame */}
+              <div className="w-full h-[138px] rounded-xl overflow-hidden border border-white/10 bg-slate-900 shadow-inner">
                 <img
                   src="/profile.jpg"
                   alt="Afif Pathan - Senior Mobile Architect"
@@ -116,93 +94,80 @@ export const LanyardBadge: React.FC = () => {
               </div>
             </div>
 
-            {/* Identity Information: Cleanly Positioned Below Photo */}
+            {/* Identity Information */}
             <div className="my-1.5 text-center flex flex-col items-center">
-              <span className="inline-block px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/60 text-[9px] font-mono font-bold tracking-wider mb-1">
-                PRINCIPAL / SENIOR ARCHITECT
-              </span>
-              <h2 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+              <h2 className="text-base font-extrabold text-white tracking-tight leading-tight">
                 {PERSONAL_INFO.name}
               </h2>
-              <div className="text-[11px] font-bold text-blue-700 dark:text-cyan-400 font-mono mt-0.5">
+              <div className="text-[11px] font-bold text-primary font-mono mt-0.5">
                 Senior Mobile Architect
               </div>
-              <div className="text-[9px] text-slate-500 dark:text-slate-400 font-mono">
-                Flutter Tech Lead · Ahmedabad, IN
+              <div className="text-[9px] text-white/50 font-mono mt-0.5">
+                Flutter Tech Lead · 8+ Years
               </div>
             </div>
 
-            {/* Barcode & Flip Hint Footer - Guaranteed Full Clearance */}
-            <div className="pt-2 pb-1 border-t border-slate-200 dark:border-white/10 shrink-0">
-              {/* Simulated Barcode */}
-              <div className="flex items-center justify-center gap-[2px] h-4 opacity-75 dark:opacity-70 mb-1" aria-hidden="true">
-                {[3, 1, 4, 1, 2, 5, 2, 1, 4, 2, 1, 3, 2, 4, 1, 3, 2, 1, 4, 2, 3, 1].map((w, i) => (
-                  <span
-                    key={i}
-                    className="h-full bg-slate-800 dark:bg-slate-200 inline-block"
-                    style={{ width: `${w}px` }}
-                  />
-                ))}
-              </div>
-              <div className="flex items-center justify-center gap-1 text-[9px] font-mono text-slate-500 dark:text-slate-400">
+            {/* Flip Hint Footer */}
+            <div className="pt-2 pb-0.5 border-t border-white/10 shrink-0">
+              <div className="flex items-center justify-center gap-1 text-[9px] font-mono text-white/50">
                 <RefreshCw className="w-2.5 h-2.5 animate-spin" style={{ animationDuration: '6s' }} />
-                <span>Tap to flip badge</span>
+                <span>Tap to flip profile</span>
               </div>
             </div>
           </div>
 
-          {/* BACK FACE: Architectural Credentials & Metrics */}
-          <div className="badge-face badge-back p-3.5 flex flex-col justify-between">
+          {/* BACK FACE: Architectural Track Record & Core Metrics */}
+          <div className="badge-face badge-back p-3.5 flex flex-col justify-between bg-dark-surfaceElevated border border-white/10 text-dark-text">
             <div className="w-full">
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-700 text-[10px] font-mono text-slate-300">
+              <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-[10px] font-mono text-dark-textMuted">
                 <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-                  <span className="font-semibold text-white">SYSTEM AUDIT</span>
+                  <Terminal className="w-3.5 h-3.5 text-accent-cyan" />
+                  <span className="font-semibold text-dark-text uppercase tracking-wider">Track Record</span>
                 </div>
-                <span className="text-emerald-400 font-bold">100% VERIFIED</span>
+                <span className="text-primary font-mono text-[9px] font-bold">Production Data</span>
               </div>
 
-              {/* Metrics Grid */}
+              {/* Metrics Grid from portfolioData.ts */}
               <div className="grid grid-cols-2 gap-1.5 my-2 text-center font-mono">
-                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
-                  <div className="text-xl font-extrabold text-cyan-400">8+</div>
-                  <div className="text-[8px] text-slate-300 uppercase">Years Eng.</div>
+                <div className="p-2 rounded-lg bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/5">
+                  <div className="text-xl font-extrabold text-primary">8+</div>
+                  <div className="text-[8px] text-dark-textMuted uppercase font-medium">Years Total</div>
                 </div>
-                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
-                  <div className="text-xl font-extrabold text-amber-400">25+</div>
-                  <div className="text-[8px] text-slate-300 uppercase">Systems Built</div>
+                <div className="p-2 rounded-lg bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/5">
+                  <div className="text-xl font-extrabold text-accent-violet">25+</div>
+                  <div className="text-[8px] text-dark-textMuted uppercase font-medium">Systems Built</div>
                 </div>
-                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
-                  <div className="text-xl font-extrabold text-indigo-400">6+</div>
-                  <div className="text-[8px] text-slate-300 uppercase">Cross-Platform</div>
+                <div className="p-2 rounded-lg bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/5">
+                  <div className="text-xl font-extrabold text-accent-cyan">6+</div>
+                  <div className="text-[8px] text-dark-textMuted uppercase font-medium">Years Mobile</div>
                 </div>
-                <div className="p-2 rounded-lg bg-slate-700/60 border border-slate-600/60">
-                  <div className="text-xl font-extrabold text-emerald-400">60-120</div>
-                  <div className="text-[8px] text-slate-300 uppercase">FPS Engine</div>
+                <div className="p-2 rounded-lg bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/5">
+                  <div className="text-xl font-extrabold text-highlight-amber">12+</div>
+                  <div className="text-[8px] text-dark-textMuted uppercase font-medium">Case Studies</div>
                 </div>
               </div>
 
-              {/* Core capabilities */}
-              <div className="space-y-1.5 text-[9px] font-mono text-slate-300 mt-2">
+              {/* Core capabilities from CV */}
+              <div className="space-y-1.5 text-[9px] font-mono text-dark-textMuted mt-2">
                 <div className="flex items-center gap-1.5">
-                  <Layers className="w-3 h-3 text-cyan-400 shrink-0" />
+                  <Layers className="w-3 h-3 text-accent-cyan shrink-0" />
                   <span>Clean Architecture &amp; SOLID</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Cpu className="w-3 h-3 text-indigo-400 shrink-0" />
+                  <Cpu className="w-3 h-3 text-accent-violet shrink-0" />
                   <span>BLoC, Cubit, Riverpod</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3 h-3 text-emerald-400 shrink-0" />
-                  <span>FastAPI &amp; Angel One SmartAPI</span>
+                  <Terminal className="w-3 h-3 text-primary shrink-0" />
+                  <span>FastAPI &amp; Algorithmic Trading</span>
                 </div>
               </div>
             </div>
 
             {/* Back Footer */}
-            <div className="w-full pt-1.5 border-t border-slate-700 flex items-center justify-between text-[9px] font-mono text-slate-400">
-              <span>STATUS: PRODUCTION</span>
-              <span className="text-cyan-400 font-bold">FLIP BACK ↻</span>
+            <div className="w-full pt-1.5 border-t border-white/10 flex items-center justify-between text-[9px] font-mono text-dark-textDim">
+              <span>AFIF PATHAN</span>
+              <span className="text-primary font-bold">FLIP BACK ↻</span>
             </div>
           </div>
         </motion.div>

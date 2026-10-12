@@ -30,7 +30,7 @@ export const Education: React.FC = () => {
           </em>
         </motion.h2>
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl">
-          Verified academic degrees in Information Technology paired with formal industry awards and multilingual communication capabilities.
+          Formal academic degrees in Information Technology paired with industry awards and multilingual communication capabilities.
         </p>
       </div>
 
@@ -68,7 +68,7 @@ export const Education: React.FC = () => {
                   <div className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1 flex items-center gap-1.5">
                     <span>{edu.location}</span>
                     <span>•</span>
-                    <span className="text-emerald-600 dark:text-emerald-400">Verified Degree</span>
+                    <span className="text-emerald-600 dark:text-emerald-400">Accredited Degree</span>
                   </div>
                 </div>
               </motion.div>
@@ -107,7 +107,7 @@ export const Education: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                  {PERSONAL_INFO.award.description}
+                  Honored by engineering leadership for architecting the NewsPod regional audio engine and delivering resilient cross-platform audio streaming.
                 </p>
               </div>
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Menu, X, Sun, Moon, ArrowUpRight } from 'lucide-react';
 import { useScrollSpy } from '../hooks/useScrollSpy';
@@ -9,93 +9,114 @@ interface HeaderProps {
 }
 
 const NAV_ITEMS = [
-  { id: 'snapshot', label: 'About' },
+  { id: 'about', label: 'About' },
   { id: 'philosophy', label: 'Architecture' },
-  { id: 'projects', label: 'Work (25+)' },
-  { id: 'experience', label: 'Journey' },
-  { id: 'skills', label: 'Toolkit' },
-  { id: 'leadership', label: 'Leadership' },
+  { id: 'projects', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolledPastHero, setScrolledPastHero] = useState(false);
-  const activeSection = useScrollSpy(
-    NAV_ITEMS.map((item) => item.id),
-    120
-  );
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
+  const activeSection = useScrollSpy(NAV_ITEMS.map((item) => item.id));
+
+  // Focus trap, Escape key listener, and body scroll lock
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolledPastHero(window.scrollY > 280);
+    if (!mobileMenuOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Focus the first interactive element inside drawer
+    const focusTimer = setTimeout(() => {
+      if (drawerRef.current) {
+        const focusables = drawerRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length > 0) {
+          focusables[0].focus();
+        }
+      }
+    }, 50);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMobileMenuOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+
+      if (e.key === 'Tab' && drawerRef.current) {
+        const focusables = Array.from(
+          drawerRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        );
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      clearTimeout(focusTimer);
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
+
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+    triggerRef.current?.focus();
+  };
 
   return (
     <>
-      {/* Accessible Skip Link - completely off-screen unless focused via keyboard */}
+      {/* Accessible Skip Link */}
       <a href="#main-content" className="skip-to-content">
         Skip to main content
       </a>
 
-      {/* Floating Centered Pill Header (exact yaseenmuhammed.com look) */}
-      <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 pointer-events-none px-3 sm:px-4 flex justify-center">
-        <div className="pill-nav pointer-events-auto flex items-center justify-between gap-2 sm:gap-3 px-3 py-1.5 sm:py-2 rounded-full border border-slate-200/90 dark:border-white/10 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-lg max-w-5xl transition-all duration-300">
-          {/* Identity Monogram / Scrolled Avatar */}
+      {/* Floating Centered Glass Header (Permanently Anchored) */}
+      <header
+        className="fixed top-3 sm:top-5 left-0 right-0 z-50 pointer-events-none px-3 sm:px-4 flex justify-center transition-all duration-300 transform-gpu translate-y-0 opacity-100"
+      >
+        <div className="pointer-events-auto flex items-center justify-between gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full border border-white/10 bg-[#111320]/85 backdrop-blur-xl shadow-glass max-w-5xl transition-all duration-300">
+          {/* Identity Monogram */}
           <a
             href="#hero"
-            className="group flex items-center gap-2 pl-1 pr-1.5 py-0.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors shrink-0"
-            aria-label="Afif Pathan - Back to top"
+            className="group flex items-center gap-2 pl-1 pr-1.5 py-0.5 rounded-full hover:bg-white/5 transition-colors shrink-0"
+            aria-label="AP Afif Pathan - Back to top"
           >
-            <AnimatePresence mode="wait">
-              {!scrolledPastHero ? (
-                <motion.div
-                  key="top-monogram"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2"
-                >
-                  <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center font-mono font-bold text-[11px] shadow-xs">
-                    AP
-                  </div>
-                  <span className="text-xs font-bold text-slate-900 dark:text-white hidden sm:inline tracking-tight">
-                    Afif
-                  </span>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="scrolled-identity"
-                  initial={{ opacity: 0, x: -10, scale: 0.92 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -10, scale: 0.92 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2"
-                >
-                  <div className="relative w-7 h-7 rounded-full overflow-hidden border border-slate-400 dark:border-cyan-400 shrink-0">
-                    <img
-                      src="/profile.jpg"
-                      alt="Afif Pathan"
-                      className="w-full h-full object-cover object-top"
-                    />
-                    <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border border-white dark:border-slate-900" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs font-bold text-slate-900 dark:text-white leading-none">
-                      Afif Pathan
-                    </span>
-                    <span className="text-[9px] text-blue-600 dark:text-cyan-400 font-mono hidden md:inline leading-tight">
-                      Architect
-                    </span>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="w-7 h-7 rounded-full bg-primary text-slate-950 flex items-center justify-center font-mono font-black text-[11px] shadow-glow-primary shrink-0">
+              AP
+            </div>
+            <span className="text-xs font-bold text-white tracking-tight hidden sm:inline">
+              Afif Pathan
+            </span>
+            <span className="text-xs font-bold text-white tracking-tight sm:hidden">
+              Afif
+            </span>
           </a>
 
           {/* Desktop Navigation Links */}
@@ -111,8 +132,8 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
                   href={`#${item.id}`}
                   className={`px-3 py-1 rounded-full text-xs font-mono transition-all duration-200 ${
                     isActive
-                      ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-bold shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
+                      ? 'bg-primary text-slate-950 font-bold shadow-glow-primary'
+                      : 'text-dark-textMuted hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {item.label}
@@ -127,101 +148,130 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
             <button
               onClick={onToggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              className="p-1.5 sm:p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-colors"
+              className="p-1.5 rounded-full text-dark-textMuted hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-800" />}
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-300" />
+              )}
             </button>
 
-            {/* Resume Button */}
+            {/* Direct Résumé Download Action */}
             <a
               href="/resume.pdf"
               download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-medium text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-white/10 hover:border-slate-800 dark:hover:border-white transition-all shadow-2xs"
+              aria-label="Download Resume"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 transition-all cursor-pointer"
             >
-              <Download className="w-3 h-3 text-blue-600 dark:text-cyan-400" />
+              <Download className="w-3.5 h-3.5 text-accent-cyan" />
               <span className="hidden sm:inline">Résumé</span>
-              <span>↓</span>
             </a>
 
-            {/* Connect CTA */}
+            {/* Primary Connect CTA */}
             <a
               href="#contact"
-              className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-white bg-slate-800 hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 transition-colors shadow-2xs"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold text-slate-950 bg-primary hover:bg-primary-hover shadow-glow-primary transition-all duration-200 cursor-pointer"
             >
               <span>Connect</span>
-              <ArrowUpRight className="w-3 h-3" />
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
 
             {/* Mobile Menu Trigger */}
             <button
+              ref={triggerRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
-              className="md:hidden p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-slate-800 dark:text-slate-200"
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              className="md:hidden p-1.5 rounded-full text-white hover:bg-white/5 transition-colors cursor-pointer"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-3 top-16 z-50 bg-[#fcfaf4]/98 dark:bg-[#0d111a]/98 backdrop-blur-2xl border border-slate-300 dark:border-white/10 rounded-3xl p-6 md:hidden shadow-2xl"
+            ref={drawerRef}
+            id="mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation Menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closeMenu();
+            }}
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-2xl flex flex-col justify-center px-6 md:hidden"
           >
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-white/10">
-              <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">
-                Navigation
-              </span>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-1 rounded-full text-slate-500 hover:text-slate-900 dark:hover:text-white"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <nav className="flex flex-col gap-1.5">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-mono transition-colors ${
-                    activeSection === item.id
-                      ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-bold'
-                      : 'text-slate-700 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5'
-                  }`}
+            <motion.div
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-4 max-w-sm mx-auto w-full"
+            >
+              <div className="flex items-center justify-between pb-2 border-b border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-primary">
+                  Navigation Menu
+                </span>
+                <button
+                  autoFocus
+                  onClick={closeMenu}
+                  aria-label="Close menu"
+                  className="p-1 rounded-lg text-white/70 hover:text-white"
                 >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
 
-            <div className="pt-4 mt-4 border-t border-slate-200 dark:border-white/10 flex flex-col gap-2">
-              <a
-                href="/resume.pdf"
-                download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-mono text-slate-800 dark:text-slate-200 bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10"
-              >
-                <Download className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
-                <span>Download Verified Résumé PDF</span>
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-mono font-bold text-white bg-slate-800 dark:text-slate-950 dark:bg-white"
-              >
-                <span>Initiate Contact</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={closeMenu}
+                    className={`flex items-center justify-between p-3.5 rounded-2xl text-base font-mono transition-all ${
+                      isActive
+                        ? 'bg-primary text-slate-950 font-bold shadow-glow-primary'
+                        : 'text-white hover:bg-white/5 border border-white/5'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <span className="text-xs opacity-50">→</span>
+                  </a>
+                );
+              })}
+
+              <div className="pt-4 mt-2 border-t border-white/10 flex flex-col gap-3">
+                <a
+                  href="/resume.pdf"
+                  download="Afif_Pathan_Senior_Mobile_Architect_CV.pdf"
+                  aria-label="Download Resume"
+                  onClick={closeMenu}
+                  className="flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-mono font-medium text-white"
+                >
+                  <Download className="w-4 h-4 text-accent-cyan" />
+                  <span>Download Résumé</span>
+                </a>
+
+                <a
+                  href="#contact"
+                  onClick={closeMenu}
+                  className="flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-slate-950 text-xs font-mono font-bold shadow-glow-primary"
+                >
+                  <span>Connect &amp; Collaborate</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

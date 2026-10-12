@@ -13,7 +13,6 @@ permissions:
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: 'pages'
   cancel-in-progress: false
@@ -26,19 +25,24 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js (Pinned LTS)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20.18.0'
           cache: 'npm'
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Automated Tests
+      - name: Run Typecheck
+        run: npx tsc --noEmit
+
+      - name: Run Unit Tests (Vitest)
         run: npm run test
 
       - name: Build Production Bundle
+        env:
+          VITE_CONTACT_ENDPOINT: ${{ vars.VITE_CONTACT_ENDPOINT }}
         run: npm run build
 
       - name: Setup Pages

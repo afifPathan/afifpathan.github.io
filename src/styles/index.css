@@ -2,58 +2,349 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-primary: #f0f9ff;
-  --bg-secondary: #faf5ff;
-  --bg-tertiary: #e0f2fe;
-  --color-cream: #f0f9ff;
-  --color-yellow: #f0f9ff;
-  --color-blue: #f0f9ff;
-  --color-purple: #faf5ff;
-  --color-ink: #0f172a;
-  --color-amber: #d97706;
-  --line: rgba(15, 23, 42, 0.08);
-  --card-bg: rgba(255, 255, 255, 0.40);
-  --card-border: rgba(15, 23, 42, 0.08);
-  --accent-cyan: #0284c7;
-  --accent-electric: #0369a1;
-  --accent-violet: #7c3aed;
-  --accent-emerald: #10b981;
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
-  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
+:root, html.dark {
+  --bg-base: #0A0B14;
+  --bg-surface: rgba(17, 19, 32, 0.7);
+  --bg-surface-elevated: rgba(23, 26, 44, 0.85);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(91, 140, 255, 0.25);
+  
+  --primary: #5B8CFF;
+  --primary-hover: #4A7BE8;
+  --accent-cyan: #22D3EE;
+  --accent-violet: #A78BFA;
+  --highlight-amber: #F59E0B;
+  
+  --text-primary: #F5F7FF;
+  --text-secondary: #A7ADC7;
+  --text-muted: #8E96B5;
+
+  --hero-gradient: linear-gradient(135deg, #5B8CFF 0%, #8B5CF6 55%, #22D3EE 100%);
+  
+  /* Backward-compatible aliases */
+  --bg-primary: #0A0B14;
+  --bg-secondary: #111320;
+  --bg-tertiary: #171A2C;
+  --color-cream: #0A0B14;
+  --color-yellow: #0A0B14;
+  --color-purple: #111320;
+  --color-ink: #F5F7FF;
+  --color-amber: #F59E0B;
+  --line: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(17, 19, 32, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --accent-electric: #5B8CFF;
+  --accent-emerald: #10B981;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-html.dark {
-  --bg-primary: #0f1420;
-  --bg-secondary: #141829;
-  --bg-tertiary: #1c2236;
-  --color-cream: #0f1420;
-  --color-yellow: #0f1420;
-  --color-purple: #141829;
-  --color-ink: #f8fafc;
-  --color-amber: #f59e0b;
-  --line: rgba(255, 255, 255, 0.08);
-  --card-bg: rgba(30, 41, 59, 0.35);
-  --card-border: rgba(255, 255, 255, 0.09);
-  --accent-cyan: #38bdf8;
-  --accent-electric: #0ea5e9;
-  --accent-violet: #a855f7;
-  --accent-emerald: #34d399;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+html.light {
+  --bg-base: #F8FAFC;
+  --bg-surface: rgba(255, 255, 255, 0.85);
+  --bg-surface-elevated: rgba(241, 245, 249, 0.95);
+  --border-subtle: rgba(15, 23, 42, 0.12);
+  --border-glow: rgba(37, 99, 235, 0.3);
+  
+  --primary: #1D4ED8;
+  --primary-hover: #1E40AF;
+  --accent-cyan: #0E7490;
+  --accent-violet: #6D28D9;
+  --highlight-amber: #B45309;
+  
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+
+  --hero-gradient: linear-gradient(135deg, #2563EB 0%, #7C3AED 55%, #0891B2 100%);
+  
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #F1F5F9;
+  --bg-tertiary: #E2E8F0;
+  --color-cream: #F8FAFC;
+  --color-yellow: #F8FAFC;
+  --color-purple: #F1F5F9;
+  --color-ink: #0F172A;
+  --color-amber: #D97706;
+  --line: rgba(15, 23, 42, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(15, 23, 42, 0.08);
+  --accent-electric: #2563EB;
+  --accent-emerald: #059669;
+}
+
+/* Light Mode Harmonization Overrides */
+html.light .text-white {
+  color: #0F172A !important;
+}
+html.light .text-white\/95,
+html.light .text-white\/90,
+html.light .text-white\/85,
+html.light .text-white\/80 {
+  color: #1E293B !important;
+}
+html.light .text-white\/70,
+html.light .text-white\/60,
+html.light .text-white\/50 {
+  color: #334155 !important;
+}
+html.light .text-white\/40,
+html.light .text-white\/30,
+html.light .text-white\/20 {
+  color: #475569 !important;
+}
+
+html.light .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.04);
+}
+html.light .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.06);
+}
+html.light .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+html.light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.12);
+}
+html.light .border-white\/20 {
+  border-color: rgba(15, 23, 42, 0.18);
+}
+html.light .bg-black\/20,
+html.light .bg-black\/25,
+html.light .bg-black\/30 {
+  background-color: rgba(241, 245, 249, 0.85);
+}
+html.light .bg-black\/40 {
+  background-color: rgba(241, 245, 249, 0.9);
+}
+html.light .bg-black\/50 {
+  background-color: rgba(241, 245, 249, 0.95);
+}
+html.light .shadow-glass {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.85);
+}
+html.light header.fixed > div {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+html.light .bg-primary.text-slate-950,
+html.light .bg-primary .text-slate-950,
+html.light .bg-primary span,
+html.light .bg-primary {
+  color: #FFFFFF !important;
+}
+
+/* Accessible High-Contrast Overrides for Light Mode */
+html.light .text-accent-cyan {
+  color: #0369A1 !important;
+}
+html.light .text-accent-violet {
+  color: #581C87 !important;
+}
+html.light .text-emerald-400,
+html.light .text-emerald-300 {
+  color: #065F46 !important;
+}
+html.light .text-amber-400,
+html.light .text-amber-300 {
+  color: #92400E !important;
+}
+html.light .text-indigo-400,
+html.light .text-indigo-300 {
+  color: #3730A3 !important;
+}
+html.light .text-blue-400 {
+  color: #1E40AF !important;
+}
+html.light .bg-accent-violet\/10,
+html.light .bg-accent-violet\/20 {
+  background-color: rgba(88, 28, 135, 0.08) !important;
+}
+html.light .bg-accent-cyan\/10,
+html.light .bg-accent-cyan\/20 {
+  background-color: rgba(3, 105, 161, 0.08) !important;
+}
+html.light .bg-emerald-500\/10,
+html.light .bg-emerald-500\/20,
+html.light .bg-emerald-950\/20 {
+  background-color: rgba(6, 95, 70, 0.08) !important;
+}
+
+/* Terminal Surface High-Contrast Isolation: Protect terminal colors on its dark background */
+.terminal-surface,
+html.light .terminal-surface {
+  background-color: #0F111E !important;
+  color: #E2E8F0 !important;
+}
+
+html.light .terminal-surface .text-primary {
+  color: #7DA4FF !important; /* >7:1 contrast on #0F111E */
+}
+html.light .terminal-surface .text-white,
+html.light .terminal-surface .text-white\/90,
+html.light .terminal-surface .text-white\/80,
+html.light .terminal-surface .text-white\/70,
+html.light .terminal-surface .text-white\/60,
+html.light .terminal-surface .text-white\/50 {
+  color: #E2E8F0 !important; /* >13:1 contrast on #0F111E */
+}
+html.light .terminal-surface .text-slate-400,
+html.light .terminal-surface .text-slate-300 {
+  color: #CBD5E1 !important; /* >9:1 contrast */
+}
+html.light .terminal-surface .text-indigo-300 {
+  color: #C7D2FE !important;
+}
+html.light .terminal-surface .text-accent-cyan {
+  color: #38BDF8 !important;
+}
+html.light .terminal-surface .text-emerald-400,
+html.light .terminal-surface .text-emerald-300 {
+  color: #34D399 !important;
+}
+html.light .terminal-surface .bg-black\/30,
+html.light .terminal-surface .bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Code Editor Surface: Preserve high-contrast bright syntax and labels on dark editor canvas */
+.code-editor-surface,
+html.light .code-editor-surface {
+  background-color: #090A10 !important;
+  color: #F8FAFC !important;
+}
+
+html.light .code-editor-surface pre,
+html.light .code-editor-surface code {
+  color: #F1F5F9 !important; /* >16:1 contrast against #090A10 */
+}
+
+html.light .code-editor-surface .text-white,
+html.light .code-editor-surface .text-white\/90,
+html.light .code-editor-surface .text-white\/85,
+html.light .code-editor-surface .text-white\/80 {
+  color: #F8FAFC !important; /* >16:1 contrast */
+}
+
+html.light .code-editor-surface .bg-\[\#121422\] {
+  background-color: #121422 !important;
+}
+
+html.light .code-editor-surface .text-emerald-400 {
+  color: #34D399 !important; /* 8.5:1 contrast against #121422 */
+}
+
+html.light .code-editor-surface .text-accent-cyan {
+  color: #38BDF8 !important; /* 9:1 contrast against #121422 */
+}
+
+html.light .code-editor-surface .text-dark-textMuted {
+  color: #94A3B8 !important; /* 6:1 contrast against #121422 */
+}
+
+/* Miniature Device Mockups: Protect high-contrast display text in simulated screens */
+html.light .device-browser .text-white,
+html.light .device-browser .text-white\/90,
+html.light .device-browser .text-white\/80,
+html.light .device-browser .text-white\/70,
+html.light .device-browser .text-white\/50,
+html.light .device-iphone .text-white,
+html.light .device-iphone .text-white\/90,
+html.light .device-iphone .text-white\/80,
+html.light .device-iphone .text-white\/70,
+html.light .device-iphone .text-white\/50,
+html.light .device-terminal .text-white,
+html.light .device-terminal .text-white\/90,
+html.light .device-terminal .text-white\/80,
+html.light .device-terminal .text-white\/70,
+html.light .device-terminal .text-white\/50,
+html.light .device-android .text-white,
+html.light .device-android .text-white\/90,
+html.light .device-android .text-white\/80,
+html.light .device-android .text-white\/70,
+html.light .device-android .text-white\/50 {
+  color: #F8FAFC !important; /* >15:1 contrast */
+}
+
+html.light .device-browser .text-emerald-400,
+html.light .device-terminal .text-emerald-400 {
+  color: #34D399 !important; /* 8.5:1 contrast against #0F111E */
+}
+
+html.light .device-browser .text-accent-cyan,
+html.light .device-terminal .text-accent-cyan,
+html.light .device-iphone .text-accent-cyan,
+html.light .device-android .text-accent-cyan {
+  color: #38BDF8 !important; /* >9:1 contrast */
+}
+
+html.light .device-android .text-accent-violet {
+  color: #C084FC !important; /* >9:1 contrast */
+}
+
+html.light .device-terminal .text-amber-400,
+html.light .device-terminal .text-amber-300 {
+  color: #FBBF24 !important; /* >9:1 contrast against #0F111E */
+}
+
+html.light .device-browser .bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+html.light .bg-emerald-700,
+html.light .bg-emerald-700 * {
+  color: #FFFFFF !important;
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-base);
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Lenis Smooth Scroll Normalization */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Glassmorphism Surface Utilities */
+.glass-panel {
+  background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-panel-elevated {
+  background: var(--bg-surface-elevated);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Hide scrollbar utility while maintaining scroll behavior */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }
 
 /* Editorial Serif Italic Styling from reference (yaseenmuhammed.com) */
@@ -191,8 +482,8 @@ html.dark .badge-flip {
 .badge-face {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: 14px;
   display: flex;
   flex-direction: column;
@@ -201,9 +492,20 @@ html.dark .badge-flip {
   overflow: hidden;
 }
 
-html.dark .badge-face {
-  background: #1e293b;
-  border-color: rgba(255, 255, 255, 0.14);
+html.light .badge-face,
+html.light .badge-front,
+html.light .badge-back {
+  background: #ffffff !important;
+  color: #0F172A !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+html.dark .badge-face,
+html.dark .badge-front,
+html.dark .badge-back {
+  background: #171A2C !important;
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 .badge-front {
@@ -211,17 +513,7 @@ html.dark .badge-face {
 }
 
 .badge-back {
-  background: #1e293b;
-  color: #f8fafc;
-  text-align: left;
-  align-items: flex-start;
-  padding: 24px 18px;
   transform: rotateY(180deg);
-}
-
-html.dark .badge-back {
-  background: #1e293b;
-  color: #f8fafc;
 }
 
 /* Device Model 1: iPhone 16 Pro (Dynamic Island) */
@@ -457,6 +749,37 @@ html.dark .glass-panel {
 }
 html.dark ::-webkit-scrollbar-thumb {
   background: #1e293b;
+}
+
+/* Infinite Marquee Keyframes */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 35s linear infinite;
 }
 
 /* Reduced Motion */

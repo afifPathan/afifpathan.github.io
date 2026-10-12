@@ -52,3 +52,16 @@ Object.defineProperty(window, 'IntersectionObserver', {
 
 // Polyfill scrollTo
 window.scrollTo = () => {};
+
+// Polyfill ResizeObserver for Lenis & GSAP in JSDOM
+class MockResizeObserver {
+  observe = () => {};
+  unobserve = () => {};
+  disconnect = () => {};
+}
+
+Object.defineProperty(window, 'ResizeObserver', {
+  writable: true,
+  configurable: true,
+  value: MockResizeObserver,
+});

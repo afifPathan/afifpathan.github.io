@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '../types/portfolio';
 import {
@@ -13,30 +13,27 @@ import {
   Smartphone,
   ShoppingBag,
   BookOpen,
-  Video,
   Camera,
-  MapPin,
-  Globe,
-  Radio,
   FileText,
-  Calendar,
   Volume2,
 } from 'lucide-react';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  compact?: boolean;
 }
 
 // Flagship projects that warrant dedicated architectural deep-dive callout
 const ARCH_DEEP_DIVE_IDS = [
   'trading-bot-dashboard',
+  'stock-trading-bot',
   'swing-delivery-stock-trading-bot',
   'buyzaar',
   'degreed',
   'practo-doctor-hub',
-  'roadzen-fleet',
-  'rz-camera-package',
+  'roadzen-mvpex',
   'diversified-maintenance',
 ];
 
@@ -47,18 +44,18 @@ const renderDeviceMockup = (project: Project) => {
   // 1. LIVE PROJECT: Trading Bot Terminal Dashboard -> macOS Browser Model
   if (pid === 'trading-bot-dashboard') {
     return (
-      <div className="device-browser hidden sm:block shrink-0" aria-hidden="true">
+      <div className="device-browser hidden sm:block shrink-0 shadow-glass" aria-hidden="true">
         {/* macOS Window Titlebar */}
-        <div className="bg-slate-800 px-2.5 py-1.5 flex items-center gap-1.5 border-b border-white/10">
+        <div className="bg-[#171A2C] px-2.5 py-1.5 flex items-center gap-1.5 border-b border-white/10">
           <span className="w-2 h-2 rounded-full bg-rose-500" />
           <span className="w-2 h-2 rounded-full bg-amber-500" />
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-slate-900/60 text-[7px] font-mono text-cyan-300 truncate">
+          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-black/40 text-[7px] font-mono text-accent-cyan truncate">
             dashboard.nseswingtrading.dpdns.org
           </div>
         </div>
         {/* Live Terminal UI */}
-        <div className="p-2.5 bg-slate-800 text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
+        <div className="p-2.5 bg-[#0F111E] text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
               <span className="text-emerald-400 font-bold flex items-center gap-1">
@@ -68,7 +65,7 @@ const renderDeviceMockup = (project: Project) => {
               <span className="text-emerald-400 font-bold">P&amp;L: +₹18,420</span>
             </div>
             <div className="flex items-center justify-between text-[8px] my-1">
-              <span className="font-bold text-slate-200">TATAMOTORS (5m)</span>
+              <span className="font-bold text-white/90">TATAMOTORS (5m)</span>
               <span className="text-emerald-400 font-bold">₹982.40 ▲</span>
             </div>
             {/* Candlestick Visualizer */}
@@ -78,9 +75,9 @@ const renderDeviceMockup = (project: Project) => {
               ))}
             </div>
           </div>
-          <div className="flex items-center justify-between text-[7px] text-slate-400 pt-1 border-t border-white/10">
-            <span className="text-slate-400">Cloudflare Pages · 32ms</span>
-            <span className="text-cyan-400 font-bold">TanStack + WebSocket</span>
+          <div className="flex items-center justify-between text-[7px] text-white/50 pt-1 border-t border-white/10">
+            <span>Cloudflare Pages · 32ms</span>
+            <span className="text-accent-cyan font-bold">TanStack + WebSocket</span>
           </div>
         </div>
       </div>
@@ -90,35 +87,35 @@ const renderDeviceMockup = (project: Project) => {
   // 2. LIVE PROJECT: Buyzaar -> macOS Browser Model
   if (pid === 'buyzaar') {
     return (
-      <div className="device-browser hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-200 dark:bg-slate-800 px-2.5 py-1.5 flex items-center gap-1.5 border-b border-slate-300 dark:border-white/10">
+      <div className="device-browser hidden sm:block shrink-0 shadow-glass" aria-hidden="true">
+        <div className="bg-[#171A2C] px-2.5 py-1.5 flex items-center gap-1.5 border-b border-white/10">
           <span className="w-2 h-2 rounded-full bg-rose-500" />
           <span className="w-2 h-2 rounded-full bg-amber-500" />
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 text-[7px] font-mono text-slate-700 dark:text-slate-300 truncate">
+          <div className="ml-2 flex-1 px-1.5 py-0.5 rounded bg-black/40 text-[7px] font-mono text-accent-cyan truncate">
             buyzaar-26379.web.app
           </div>
         </div>
-        <div className="p-2.5 bg-gradient-to-b from-sky-950 via-slate-800 to-slate-900 text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
+        <div className="p-2.5 bg-gradient-to-b from-[#0F1424] via-[#111320] to-[#0A0B14] text-white font-mono text-[9px] h-[175px] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="font-bold text-cyan-400 flex items-center gap-1">
+              <span className="font-bold text-accent-cyan flex items-center gap-1">
                 <ShoppingBag className="w-2.5 h-2.5" /> Buyzaar Live
               </span>
-              <span className="bg-cyan-950 text-cyan-300 px-1 rounded border border-cyan-500/30">Cart (3)</span>
+              <span className="bg-primary/20 text-accent-cyan px-1 rounded border border-primary/30">Cart (3)</span>
             </div>
             <div className="grid grid-cols-2 gap-1.5 my-1">
               <div className="p-1 rounded bg-white/5 border border-white/10 text-center">
                 <div className="text-xs">🍎 Fresh Produce</div>
-                <div className="text-cyan-400 text-[8px] font-bold mt-0.5">₹140.00</div>
+                <div className="text-accent-cyan text-[8px] font-bold mt-0.5">₹140.00</div>
               </div>
               <div className="p-1 rounded bg-white/5 border border-white/10 text-center">
                 <div className="text-xs">🥛 Farm Dairy</div>
-                <div className="text-cyan-400 text-[8px] font-bold mt-0.5">₹65.00</div>
+                <div className="text-accent-cyan text-[8px] font-bold mt-0.5">₹65.00</div>
               </div>
             </div>
           </div>
-          <div className="p-1.5 rounded-lg bg-emerald-600 text-white text-[8px] text-center font-bold shadow-xs">
+          <div className="p-1.5 rounded-lg bg-emerald-700 text-white text-[8px] text-center font-bold shadow-xs">
             WhatsApp Order Dispatch →
           </div>
         </div>
@@ -129,34 +126,34 @@ const renderDeviceMockup = (project: Project) => {
   // 3. LIVE PROJECT: Degreed -> iPhone 16 Pro (Dynamic Island)
   if (pid.includes('degreed')) {
     return (
-      <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
+      <div className="device-iphone hidden sm:block shrink-0 shadow-glass" aria-hidden="true">
         {/* Dynamic Island */}
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
-          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-[#171A2C]">
+          <div className="w-14 h-3 bg-black/60 rounded-full flex items-center justify-center border border-white/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
           </div>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-[#0a192f] via-slate-800 to-[#172a45] text-white font-mono text-[9px]">
+        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-[#0F1424] via-[#111320] to-[#0A0B14] text-white font-mono text-[9px]">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="text-cyan-400 font-bold flex items-center gap-1">
+              <span className="text-accent-cyan font-bold flex items-center gap-1">
                 <BookOpen className="w-2.5 h-2.5" /> Degreed
               </span>
-              <span className="text-blue-300">Enterprise</span>
+              <span className="text-primary font-medium">Enterprise</span>
             </div>
             <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 mt-1">
-              <div className="text-[7px] text-cyan-400 font-bold uppercase">LEARNING PATH</div>
+              <div className="text-[7px] text-accent-cyan font-bold uppercase">LEARNING PATH</div>
               <div className="font-bold text-[9px] text-white mt-0.5">Clean Architecture in Dart</div>
-              <div className="w-full bg-slate-700 h-1.5 rounded-full mt-2 overflow-hidden">
-                <div className="bg-cyan-400 h-full w-[78%]" />
+              <div className="w-full bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div className="bg-primary h-full w-[78%]" />
               </div>
-              <div className="flex justify-between text-[7px] text-slate-400 mt-1">
+              <div className="flex justify-between text-[7px] text-white/50 mt-1">
                 <span>78% complete</span>
                 <span>12 modules</span>
               </div>
             </div>
           </div>
-          <div className="p-1.5 rounded-lg bg-blue-600 text-white text-[8px] text-center font-bold">
+          <div className="p-1.5 rounded-lg bg-primary text-slate-950 text-[8px] text-center font-bold">
             Resume Pathway →
           </div>
         </div>
@@ -164,82 +161,24 @@ const renderDeviceMockup = (project: Project) => {
     );
   }
 
-  // 4. LIVE PROJECT: rz_camera / Roadzen -> Server Daemon / SDK Terminal Model
-  if (pid.includes('camera') || pid.includes('roadzen')) {
+  // 4. Python Trading Daemon -> Server Terminal Model
+  if (pid.includes('trading-bot') || pid.includes('swing') || pid === 'stock-trading-bot') {
     return (
-      <div className="device-terminal hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-800 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
-          <span className="flex items-center gap-1"><Camera className="w-2.5 h-2.5" /> rz_camera</span>
-          <span className="text-emerald-400">pub.dev</span>
-        </div>
-        <div className="p-2.5 bg-slate-800 text-white font-mono text-[8px] h-[175px] flex flex-col justify-between relative">
-          <div className="absolute inset-2 border border-dashed border-cyan-400/40 rounded pointer-events-none" />
-          <div className="text-center my-auto relative z-10">
-            <div className="text-cyan-400 font-bold text-[10px]">[ VEHICLE DETECTED ]</div>
-            <div className="text-[7px] text-slate-300 mt-1">Bounding Box: 98.4% Confidence</div>
-            <div className="text-emerald-400 text-[7px] mt-0.5">60 FPS Isolated Stream</div>
-          </div>
-          <div className="p-1.5 rounded-lg bg-cyan-400 text-slate-900 text-[7px] text-center font-bold z-10">
-            Capture High-Res Image
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 5. LIVE PROJECT: NewsPod -> Android Flagship (Punch-Hole)
-  if (pid.includes('newspod')) {
-    return (
-      <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
-        {/* Top Punch-Hole Camera */}
-        <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
-          <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-purple-950 via-indigo-950 to-slate-900 text-white font-mono text-[9px]">
-          <div>
-            <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="text-purple-300 font-bold flex items-center gap-1">
-                <FileText className="w-2.5 h-2.5" /> NewsPod
-              </span>
-              <span className="text-cyan-400 text-[7px]">OFFLINE CACHE</span>
-            </div>
-            <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 mt-1">
-              <div className="text-[7px] text-purple-300 font-bold">TECH BRIEFING</div>
-              <div className="font-bold text-[9px] text-white mt-0.5 line-clamp-2">Compiled 120Hz Mobile Frameworks</div>
-              {/* Sound Frequency Waveform */}
-              <div className="flex items-center gap-0.5 mt-2 h-4">
-                {[4, 8, 14, 6, 12, 16, 9, 14, 8, 12, 5].map((h, i) => (
-                  <div key={i} className="flex-1 bg-purple-400 rounded-full" style={{ height: `${h}px` }} />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="p-1.5 rounded-lg bg-purple-600 text-white text-[8px] text-center font-bold flex items-center justify-center gap-1">
-            <Volume2 className="w-2.5 h-2.5" /> <span>Play Audio Brief (14:20)</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 6. Python Trading Daemon -> Server Terminal Model
-  if (pid.includes('trading-bot') || pid.includes('swing')) {
-    return (
-      <div className="device-terminal hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-800 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
+      <div className="device-terminal hidden sm:block shrink-0 shadow-glass" aria-hidden="true">
+        <div className="bg-[#171A2C] px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-accent-cyan font-mono">
           <span>systemd://nse-bot</span>
           <span className="text-emerald-400">ACTIVE</span>
         </div>
-        <div className="p-2.5 bg-slate-800 text-emerald-400 font-mono text-[8px] h-[175px] flex flex-col justify-between">
+        <div className="p-2.5 bg-[#0F111E] text-emerald-400 font-mono text-[8px] h-[175px] flex flex-col justify-between">
           <div className="space-y-1">
-            <div className="text-slate-400">[09:15:00] Angel One SmartAPI Feed Verified</div>
-            <div className="text-cyan-400">[09:20:05] FastAPI Daemon: 50 Symbols Active</div>
+            <div className="text-white/50">[09:15:00] Angel One SmartAPI Feed Connected</div>
+            <div className="text-accent-cyan">[09:20:05] FastAPI Daemon: 50 Symbols Active</div>
             <div className="text-white bg-emerald-950/60 p-1 rounded border border-emerald-500/30">
               [09:35:12] SIGNAL: TATAMOTORS EMA 9/21
             </div>
             <div className="text-amber-400">[09:35:13] Risk Circuit: Drawdown 0.00% OK</div>
           </div>
-          <div className="text-[7px] text-slate-400 pt-1 border-t border-white/10 flex justify-between">
+          <div className="text-[7px] text-white/50 pt-1 border-t border-white/10 flex justify-between">
             <span>FastAPI &amp; SQLite</span>
             <span className="text-emerald-400 font-bold">0 Duplicate Orders</span>
           </div>
@@ -248,364 +187,196 @@ const renderDeviceMockup = (project: Project) => {
     );
   }
 
-  // 7. Practo Doctor Hub -> iPhone 16 Pro (Clinical Teal Gradient & WebRTC Controls)
-  if (pid.includes('practo')) {
+  // 5. LIVE PROJECT: rz_camera / Roadzen -> Server Daemon / SDK Terminal Model
+  if (pid.includes('camera') || pid.includes('roadzen')) {
     return (
-      <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
-          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+      <div className="device-terminal hidden sm:block shrink-0 shadow-glass" aria-hidden="true">
+        <div className="bg-[#171A2C] px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-accent-cyan font-mono">
+          <span className="flex items-center gap-1"><Camera className="w-2.5 h-2.5" /> rz_camera</span>
+          <span className="text-emerald-400">pub.dev</span>
+        </div>
+        <div className="p-2.5 bg-[#0F111E] text-white font-mono text-[8px] h-[175px] flex flex-col justify-between relative">
+          <div className="absolute inset-2 border border-dashed border-accent-cyan/40 rounded pointer-events-none" />
+          <div className="text-center my-auto relative z-10">
+            <div className="text-accent-cyan font-bold text-[10px]">[ VEHICLE DETECTED ]</div>
+            <div className="text-[7px] text-white/70 mt-1">Bounding Box: 98.4% Confidence</div>
+            <div className="text-emerald-400 text-[7px] mt-0.5">60 FPS Isolated Stream</div>
+          </div>
+          <div className="p-1.5 rounded-lg bg-accent-cyan text-slate-900 text-[7px] text-center font-bold z-10">
+            Capture High-Res Image
           </div>
         </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-teal-950 via-slate-800 to-cyan-950 text-white font-mono text-[9px]">
+      </div>
+    );
+  }
+
+  // 6. LIVE PROJECT: NewsPod -> Android Flagship (Punch-Hole)
+  if (pid.includes('newspod')) {
+    return (
+      <div className="device-android hidden sm:block shrink-0 shadow-glass" aria-hidden="true">
+        <div className="pt-1.5 pb-1 flex justify-center bg-[#171A2C]">
+          <span className="w-2.5 h-2.5 rounded-full bg-white/20 ring-1 ring-white/10" />
+        </div>
+        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-[#1C1335] via-[#111320] to-[#0A0B14] text-white font-mono text-[9px]">
           <div>
             <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="text-teal-300 font-bold flex items-center gap-1">
-                <Video className="w-2.5 h-2.5" /> Practo Telehealth
+              <span className="text-accent-violet font-bold flex items-center gap-1">
+                <FileText className="w-2.5 h-2.5" /> NewsPod
               </span>
-              <span className="text-emerald-400 animate-pulse">● LIVE</span>
-            </div>
-            <div className="p-2 rounded-lg bg-teal-950/50 border border-teal-500/30 text-center my-1.5">
-              <div className="w-7 h-7 rounded-full bg-teal-600/30 border border-teal-400 mx-auto mb-1 flex items-center justify-center text-xs">🩺</div>
-              <div className="font-bold text-[9px] text-white">Dr. Mehta, MD</div>
-              <div className="text-[7px] text-slate-300">Vitals: BP 120/80 · SpO2 99%</div>
-            </div>
-          </div>
-          <div className="p-1.5 rounded-lg bg-rose-600 text-white text-[8px] text-center font-bold">
-            End Consult (12:45)
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 8. Diversified Maintenance -> Android Flagship (Safety Amber/Charcoal Gradient)
-  if (pid.includes('diversified')) {
-    return (
-      <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
-          <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-amber-950 via-slate-800 to-zinc-950 text-white font-mono text-[9px]">
-          <div>
-            <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="text-amber-400 font-bold flex items-center gap-1">
-                <MapPin className="w-2.5 h-2.5" /> Geofence
-              </span>
-              <span className="text-emerald-400">GPS LOCKED</span>
-            </div>
-            <div className="p-2 rounded-lg bg-amber-950/40 border border-amber-500/30 text-center my-1.5">
-              <div className="text-xs">📍</div>
-              <div className="font-bold text-[9px] text-white">Facility #104 Verified</div>
-              <div className="text-[7px] text-slate-300">Work Order #4928 Active</div>
-            </div>
-          </div>
-          <div className="p-1.5 rounded-lg bg-emerald-600 text-white text-[8px] text-center font-bold">
-            Shift Clocked In (08:00 AM)
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 9. Kaizen Family Dental -> Tablet Landscape Model (Mint & Slate Gradient)
-  if (pid.includes('kaizen')) {
-    return (
-      <div className="device-tablet hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-800 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-teal-300 font-mono">
-          <span className="flex items-center gap-1"><Calendar className="w-2.5 h-2.5" /> Kaizen Dental Clinic</span>
-          <span className="text-slate-400">Ohio, USA</span>
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[145px] bg-gradient-to-r from-emerald-950 via-teal-950 to-slate-800 text-white font-mono text-[9px]">
-          <div>
-            <div className="text-[7px] text-teal-400 font-bold uppercase">PATIENT VISIT #9842</div>
-            <div className="font-bold text-[9px] text-white mt-0.5">Oral Exam &amp; Hygiene Cleaning</div>
-            <div className="text-[7px] text-emerald-300 mt-1">Confirmed: Mon, 10:30 AM</div>
-          </div>
-          <div className="flex items-center gap-2 pt-1 border-t border-white/10">
-            <span className="flex-1 p-1 rounded bg-white/10 text-center text-[7px]">Reschedule</span>
-            <span className="flex-1 p-1 rounded bg-teal-600 text-center text-[7px] font-bold">Confirm Visit</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 10. Smart Gate VMS -> Smart POS Hardware Device (Thermal Slot & MiFare Tap)
-  if (pid.includes('smart-gate')) {
-    return (
-      <div className="device-pos hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-800 px-2.5 py-1.5 flex items-center justify-between border-b border-white/10 text-[8px] text-cyan-400 font-mono">
-          <span>Sunmi POS / VMS</span>
-          <span className="text-emerald-400">READY</span>
-        </div>
-        <div className="p-2.5 bg-gradient-to-b from-cyan-950 via-slate-800 to-slate-900 text-white font-mono text-[8px] h-[175px] flex flex-col justify-between">
-          <div className="p-1.5 rounded bg-white/5 border border-white/10 text-center">
-            <div className="text-xs">💳</div>
-            <div className="text-[8px] text-cyan-300 font-bold mt-0.5">MiFare RFID Tap</div>
-            <div className="text-[7px] text-slate-300">PASS: #GATE-04 AUTHORIZED</div>
-          </div>
-          <div className="p-1.5 rounded-lg bg-cyan-600 text-white text-[7px] text-center font-bold">
-            Print Thermal Badge [SUNMI]
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 11. Road Roaders -> Android Flagship (Rescue Red & Stone Gradient)
-  if (pid.includes('road-roaders')) {
-    return (
-      <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
-          <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-rose-950 via-slate-900 to-stone-900 text-white font-mono text-[9px]">
-          <div>
-            <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="text-rose-400 font-bold flex items-center gap-1">
-                <Radio className="w-2.5 h-2.5" /> Road RoDer
-              </span>
-              <span className="text-amber-400 animate-pulse">DISPATCHED</span>
-            </div>
-            <div className="p-2 rounded-lg bg-rose-950/40 border border-rose-500/30 text-center my-1.5">
-              <div className="text-xs">🚗 ➔ 🚚</div>
-              <div className="font-bold text-[9px] text-white">Tow Truck ETA: 8 Mins</div>
-              <div className="text-[7px] text-slate-300">Live GPS Telemetry Transmitted</div>
-            </div>
-          </div>
-          <div className="p-1.5 rounded-lg bg-rose-600 text-white text-[8px] text-center font-bold">
-            Call Breakdown Dispatcher 🚨
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 12. Tajweed Lesson Card -> Tablet Landscape Model (Royal Emerald & Gold)
-  if (pid.includes('tajweed')) {
-    return (
-      <div className="device-tablet hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-800 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-amber-300 font-mono">
-          <span>Tajweed Audio Lesson</span>
-          <span className="text-slate-400">Lesson 04</span>
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[145px] bg-gradient-to-r from-emerald-950 via-stone-900 to-amber-950 text-white font-mono text-[9px]">
-          <div className="text-center my-auto">
-            <div className="text-base text-amber-300">بِسْمِ اللَّهِ</div>
-            <div className="text-[7px] text-slate-300 mt-1">Phonetic Makharij al-Huruf Stream</div>
-          </div>
-          <div className="flex items-center gap-2 pt-1 border-t border-white/10">
-            <span className="flex-1 p-1 rounded bg-white/10 text-center text-[7px]">Play Reciter</span>
-            <span className="flex-1 p-1 rounded bg-emerald-600 text-center text-[7px] font-bold">Record Voice 🎙</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 13. ProHOff -> iPhone 16 Pro (Midnight Indigo & Blue Gradient)
-  if (pid.includes('prohoff')) {
-    return (
-      <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
-          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-          </div>
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-blue-950 via-indigo-950 to-slate-800 text-white font-mono text-[9px]">
-          <div>
-            <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="text-indigo-400 font-bold flex items-center gap-1">
-                <Globe className="w-2.5 h-2.5" /> ProHOff
-              </span>
-              <span className="text-indigo-300">Coworking</span>
+              <span className="text-accent-cyan text-[7px]">OFFLINE CACHE</span>
             </div>
             <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 mt-1">
-              <div className="text-[7px] text-indigo-400 font-bold">EXECUTIVE DESK #14</div>
-              <div className="font-bold text-[9px] text-white mt-0.5">High-Speed Fiber &amp; Suite</div>
-              <div className="text-[7px] text-emerald-300 mt-1">$25/hr · ₹1,800/day</div>
-            </div>
-          </div>
-          <div className="p-1.5 rounded-lg bg-indigo-600 text-white text-[8px] text-center font-bold">
-            Reserve Desk Now →
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 14. Mamta Wholesale Garments -> iPhone 16 Pro (Ruby & Textile Gradient)
-  if (pid.includes('mamta')) {
-    return (
-      <div className="device-iphone hidden sm:block shrink-0" aria-hidden="true">
-        <div className="pt-1.5 pb-1 px-3 flex justify-center bg-slate-800">
-          <div className="w-14 h-3 bg-slate-800 rounded-full flex items-center justify-center border border-white/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-pink-400" />
-          </div>
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-pink-950 via-purple-950 to-slate-800 text-white font-mono text-[9px]">
-          <div>
-            <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-              <span className="text-pink-300 font-bold">Mamta Textiles</span>
-              <span className="text-slate-400">Wholesale</span>
-            </div>
-            <div className="grid grid-cols-2 gap-1 my-1">
-              <div className="p-1 rounded bg-white/5 border border-white/10 text-center">
-                <div className="text-xs">🧵 Cotton</div>
-                <div className="text-[7px] text-slate-300">₹85/meter</div>
-              </div>
-              <div className="p-1 rounded bg-white/5 border border-white/10 text-center">
-                <div className="text-xs">🧶 Hosiery</div>
-                <div className="text-[7px] text-slate-300">₹110/meter</div>
+              <div className="text-[7px] text-accent-violet font-bold">TECH BRIEFING</div>
+              <div className="font-bold text-[9px] text-white mt-0.5 line-clamp-2">Compiled 120Hz Mobile Frameworks</div>
+              <div className="flex items-center gap-0.5 mt-2 h-4">
+                {[4, 8, 14, 6, 12, 16, 9, 14, 8, 12, 5].map((h, i) => (
+                  <div key={i} className="flex-1 bg-accent-violet rounded-full" style={{ height: `${h}px` }} />
+                ))}
               </div>
             </div>
           </div>
-          <div className="p-1.5 rounded-lg bg-pink-600 text-white text-[8px] text-center font-bold">
-            Generate Wholesale Invoice →
+          <div className="p-1.5 rounded-lg bg-accent-violet text-white text-[8px] text-center font-bold flex items-center justify-center gap-1">
+            <Volume2 className="w-2.5 h-2.5" /> <span>Play Audio Brief (14:20)</span>
           </div>
         </div>
       </div>
     );
   }
 
-  // 15. BBC Connect -> Tablet Landscape Model (Corporate Cobalt & Slate)
-  if (pid.includes('bbc')) {
-    return (
-      <div className="device-tablet hidden sm:block shrink-0" aria-hidden="true">
-        <div className="bg-slate-800 px-3 py-1 flex items-center justify-between border-b border-white/10 text-[8px] text-blue-300 font-mono">
-          <span>BBC Connect Enterprise</span>
-          <span className="text-slate-400">B2B Platform</span>
-        </div>
-        <div className="p-2.5 flex flex-col justify-between h-[145px] bg-gradient-to-r from-blue-900 via-slate-800 to-zinc-900 text-white font-mono text-[9px]">
-          <div>
-            <div className="text-[7px] text-blue-300 font-bold uppercase">COMMUNITY TASK BOARD</div>
-            <div className="font-bold text-[9px] text-white mt-0.5">Synchronized Multi-Tenant Directory</div>
-            <div className="text-[7px] text-slate-300 mt-1">1,240 Active Verified Businesses</div>
-          </div>
-          <div className="flex items-center justify-between text-[7px] font-mono text-slate-400 pt-1 border-t border-white/10">
-            <span>Feed</span>
-            <span className="text-blue-400 font-bold">Tasks</span>
-            <span>Network</span>
-            <span>Profile</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 16. Yelli -> Android Flagship (Academic Amber & Navy Gradient)
-  return (
-    <div className="device-android hidden sm:block shrink-0" aria-hidden="true">
-      <div className="pt-1.5 pb-1 flex justify-center bg-slate-800">
-        <span className="w-2.5 h-2.5 rounded-full bg-slate-700 ring-1 ring-white/20" />
-      </div>
-      <div className="p-2.5 flex flex-col justify-between h-[180px] bg-gradient-to-b from-yellow-950 via-amber-900 to-slate-900 text-white font-mono text-[9px]">
-        <div>
-          <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10 text-[8px]">
-            <span className="text-amber-300 font-bold">Yelli Tutorial</span>
-            <span className="text-amber-400 font-bold">⏱ 14:32</span>
-          </div>
-          <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 mt-1">
-            <div className="text-[7px] text-amber-400 font-bold">QUESTION #18</div>
-            <div className="font-bold text-[9px] text-white mt-0.5">Which pattern preserves immutability?</div>
-            <div className="text-[7px] text-emerald-300 mt-1">✓ Option B: BLoC State Machine</div>
-          </div>
-        </div>
-        <div className="p-1.5 rounded-lg bg-amber-600 text-white text-[8px] text-center font-bold">
-          Submit Exam Answer →
-        </div>
-      </div>
-    </div>
-  );
+  return null;
 };
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = false }) => {
+  const cardRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
   const [showArchDetails, setShowArchDetails] = useState(false);
-  const isFlagshipArch = ARCH_DEEP_DIVE_IDS.includes(project.id) || project.featured;
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const [glowPos, setGlowPos] = useState({ x: 0, y: 0, active: false });
+
+  const isFlagshipArch = !compact && (ARCH_DEEP_DIVE_IDS.includes(project.id) || project.featured);
+
+  // 3D Tilt & Glow Handler (strictly disabled on touch devices and for reduced motion)
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (prefersReducedMotion) return;
+    const isTouch = 'ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch || !cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotX = ((y / rect.height) - 0.5) * -8;
+    const rotY = ((x / rect.width) - 0.5) * 8;
+
+    setRotate({ x: rotX, y: rotY });
+    setGlowPos({ x, y, active: true });
+  };
+
+  const handleMouseLeave = () => {
+    setRotate({ x: 0, y: 0 });
+    setGlowPos((prev) => ({ ...prev, active: false }));
+  };
 
   return (
     <motion.article
-      initial={{ opacity: 0, x: index % 2 === 0 ? -120 : 120 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: false, amount: 0.08 }}
-      whileHover={{ y: -5, transition: { duration: 0.2, ease: 'easeOut' } }}
-      transition={{ duration: 0.42, delay: (index % 2) * 0.04, ease: [0.16, 1, 0.3, 1] }}
-      className={`rounded-2xl glass-panel border border-slate-300/70 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-slate-500 dark:hover:border-cyan-500/40 hover:shadow-2xl flex flex-col justify-between bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-lg transform-gpu ${
-        project.featured ? 'lg:col-span-2' : ''
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.4, delay: (index % 2) * 0.08 }}
+      style={{
+        transform: prefersReducedMotion
+          ? 'none'
+          : `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+        transition: 'transform 0.18s ease-out, border-color 0.25s ease',
+      }}
+      className={`relative rounded-2xl bg-dark-surface/65 backdrop-blur-xl border border-white/10 hover:border-primary/40 shadow-glass overflow-hidden flex flex-col justify-between group transition-colors duration-300 ${
+        project.featured && !compact ? 'lg:col-span-2' : ''
       }`}
-      style={{ willChange: 'transform, opacity' }}
     >
-      <div className="p-6 md:p-8">
+      {/* Mouse Follow Glow Overlay */}
+      {glowPos.active && !prefersReducedMotion && (
+        <div
+          className="pointer-events-none absolute -inset-px rounded-2xl opacity-100 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(400px circle at ${glowPos.x}px ${glowPos.y}px, rgba(91, 140, 255, 0.15), transparent 60%)`,
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      <div className={`${compact ? 'p-4 sm:p-6' : 'p-6 md:p-8'} relative z-10`}>
         {/* Top Header & Tilted Device Layout */}
-        <div className="flex flex-col md:flex-row items-start justify-between gap-6 mb-5">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-4 mb-4">
           {/* Main Info */}
           <div className="flex-1">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="text-xs font-mono font-medium text-blue-700 dark:text-cyan-400 bg-blue-50 dark:bg-cyan-950/40 border border-blue-200 dark:border-cyan-800/30 px-2.5 py-1 rounded-full">
+            <div className="flex flex-wrap items-center gap-2 mb-2.5">
+              <span className="text-xs font-mono font-medium text-primary bg-primary/10 border border-primary/20 px-2.5 py-0.5 rounded-full">
                 {project.category}
               </span>
-              {project.featured && (
-                <span className="text-xs font-mono font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/30 px-2.5 py-1 rounded-full">
-                  Featured Architecture
+              {project.featured && !compact && (
+                <span className="text-xs font-mono font-medium text-accent-violet bg-accent-violet/10 border border-accent-violet/20 px-2.5 py-0.5 rounded-full">
+                  Featured Tier-1 System
                 </span>
               )}
-              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 ml-auto md:ml-0">
+              <span className="text-xs font-mono text-dark-textMuted ml-auto md:ml-0">
                 {project.period}
               </span>
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">
+            <h3 className={`${compact ? 'text-lg sm:text-xl' : 'text-2xl md:text-3xl'} font-bold text-white tracking-tight mb-1 font-heading`}>
               {project.title}
             </h3>
-            <p className="text-sm font-semibold text-blue-700 dark:text-cyan-300/90 mb-3">
+            <p className="text-xs sm:text-sm font-semibold text-accent-cyan mb-2">
               {project.tagline}
             </p>
 
-            <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-2">
-              Role: <span className="text-slate-800 dark:text-slate-200 font-semibold">{project.role}</span>
+            <div className="text-xs font-mono text-dark-textMuted mb-2">
+              Role: <span className="text-white font-medium">{project.role}</span>
             </div>
-            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+            <p className="text-xs sm:text-sm text-dark-textMuted leading-relaxed mb-3 font-normal">
               {project.problem}
             </p>
           </div>
 
-          {/* Individual Device Mockup (Browser for Web, Phone for Mobile, Terminal for SDK) */}
-          {renderDeviceMockup(project)}
+          {/* Individual Device Mockup (Hidden in compact mode or mobile) */}
+          {!compact && renderDeviceMockup(project)}
         </div>
 
-        {/* Architecture Note: ONLY ON FLAGSHIP / DEEP-DIVE PROJECTS (Addresses User Point 11) */}
+        {/* Architecture Note on Flagship Projects */}
         {isFlagshipArch && project.architecture && (
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-white/5 mb-5 text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
-            <div className="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-mono font-semibold">
-              <ShieldCheck className="w-3.5 h-3.5" />
+          <div className="p-4 rounded-xl bg-black/25 border border-white/10 mb-5 text-xs text-dark-textMuted space-y-1.5">
+            <div className="flex items-center gap-2 text-primary font-mono font-semibold">
+              <ShieldCheck className="w-3.5 h-3.5 text-primary" />
               <span>Architecture &amp; System Design:</span>
             </div>
-            <p className="leading-relaxed text-slate-700 dark:text-slate-300">{project.architecture}</p>
+            <p className="leading-relaxed text-white/90">{project.architecture}</p>
           </div>
         )}
 
-        {/* Verified Contributions */}
+        {/* Production Contributions */}
         <div className="space-y-2 mb-5">
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <div className="text-xs font-mono uppercase tracking-wider text-dark-textMuted">
             Key Engineering Contributions:
           </div>
           <ul className="space-y-2">
             {project.contributions.map((c, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
-                <span className="text-blue-600 dark:text-cyan-400 font-bold mt-0.5">•</span>
-                <span className="leading-relaxed">{c}</span>
+              <li key={idx} className="flex items-start gap-2 text-xs text-dark-textMuted">
+                <span className="text-primary font-bold mt-0.5">•</span>
+                <span className="leading-relaxed text-white/85">{c}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Architecture Layers Toggle (if available) */}
+        {/* Architecture Layers Toggle */}
         {project.architectureLayers && (
           <div className="mb-5">
             <button
               onClick={() => setShowArchDetails(!showArchDetails)}
-              className="flex items-center gap-2 text-xs font-mono text-blue-700 dark:text-cyan-400 hover:text-blue-800 dark:hover:text-cyan-300 transition-colors py-1 font-semibold"
+              className="flex items-center gap-2 text-xs font-mono text-primary hover:text-accent-cyan transition-colors py-1 font-semibold cursor-pointer"
             >
               <Layers className="w-3.5 h-3.5" />
               <span>{showArchDetails ? 'Hide Layer Architecture' : 'View Clean Architecture Blueprint'}</span>
@@ -618,19 +389,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="mt-3 p-4 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 text-xs space-y-2 font-mono overflow-hidden shadow-inner"
+                  className="mt-3 p-4 rounded-xl bg-black/40 text-white/90 border border-white/10 text-xs space-y-2 font-mono overflow-hidden shadow-inner"
                 >
                   <div>
-                    <span className="text-cyan-400 font-semibold">[Presentation]: </span>
-                    <span className="text-slate-300">{project.architectureLayers.presentation}</span>
+                    <span className="text-accent-cyan font-semibold">[Presentation]: </span>
+                    <span className="text-dark-textMuted">{project.architectureLayers.presentation}</span>
                   </div>
                   <div>
-                    <span className="text-indigo-400 font-semibold">[Domain Core]: </span>
-                    <span className="text-slate-300">{project.architectureLayers.domain}</span>
+                    <span className="text-accent-violet font-semibold">[Domain Core]: </span>
+                    <span className="text-dark-textMuted">{project.architectureLayers.domain}</span>
                   </div>
                   <div>
                     <span className="text-emerald-400 font-semibold">[Data / Sync]: </span>
-                    <span className="text-slate-300">{project.architectureLayers.data}</span>
+                    <span className="text-dark-textMuted">{project.architectureLayers.data}</span>
                   </div>
                 </motion.div>
               )}
@@ -643,7 +414,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
+              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 text-white/80 border border-white/5"
             >
               {tech}
             </span>
@@ -651,26 +422,26 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         </div>
       </div>
 
-      {/* Card Footer: Verified External Links */}
-      <div className="px-6 md:px-8 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-white/5 flex flex-wrap items-center justify-between gap-3">
+      {/* Card Footer: External Links */}
+      <div className="px-6 md:px-8 py-4 bg-black/20 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 relative z-10">
         {project.metrics ? (
-          <span className="text-xs font-mono text-slate-600 dark:text-slate-400">
+          <span className="text-xs font-mono text-dark-textMuted">
             {project.metrics}
           </span>
         ) : (
-          <span className="text-xs font-mono text-slate-500">
-            Verified Production Delivery
+          <span className="text-xs font-mono text-dark-textMuted">
+            Production Delivery
           </span>
         )}
 
-        <div className="flex items-center gap-3 ml-auto">
+        <div className="flex items-center gap-2.5 ml-auto">
           {project.links.github && (
             <a
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.title} repository on GitHub`}
-              className="flex items-center gap-1.5 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10 shadow-2xs"
+              className="flex items-center gap-1.5 text-xs font-mono text-white/80 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"
             >
               <Github className="w-3.5 h-3.5" />
               <span>Repository</span>
@@ -683,10 +454,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Visit live site for ${project.title}`}
-              className="flex items-center gap-1.5 text-xs font-mono text-blue-700 dark:text-cyan-300 hover:text-blue-900 dark:hover:text-white transition-colors bg-blue-50 dark:bg-cyan-500/10 hover:bg-blue-100 dark:hover:bg-cyan-500/20 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-cyan-500/30 shadow-2xs"
+              className="flex items-center gap-1.5 text-xs font-mono text-slate-950 bg-primary hover:bg-primary-hover transition-colors px-3 py-1.5 rounded-lg shadow-glow-primary font-bold"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              <span>Live Application</span>
+              <span>Live System</span>
             </a>
           )}
 
@@ -696,7 +467,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.title} on Google Play Store`}
-              className="flex items-center gap-1.5 text-xs font-mono text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-white transition-colors bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 px-3 py-1.5 rounded-lg border border-emerald-200 dark:border-emerald-500/30 shadow-2xs"
+              className="flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors bg-emerald-500/10 hover:bg-emerald-500/20 px-3 py-1.5 rounded-lg border border-emerald-500/30"
             >
               <Play className="w-3.5 h-3.5" />
               <span>Play Store</span>
@@ -709,7 +480,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.title} on Apple App Store`}
-              className="flex items-center gap-1.5 text-xs font-mono text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10 shadow-2xs"
+              className="flex items-center gap-1.5 text-xs font-mono text-white/90 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"
             >
               <Smartphone className="w-3.5 h-3.5" />
               <span>App Store</span>
@@ -722,7 +493,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.title} package on pub.dev`}
-              className="flex items-center gap-1.5 text-xs font-mono text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 dark:hover:text-white transition-colors bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-indigo-500/30 shadow-2xs"
+              className="flex items-center gap-1.5 text-xs font-mono text-accent-violet hover:text-white transition-colors bg-accent-violet/10 hover:bg-accent-violet/20 px-3 py-1.5 rounded-lg border border-accent-violet/30"
             >
               <Package className="w-3.5 h-3.5" />
               <span>pub.dev Package</span>

@@ -111,3 +111,73 @@ To update the resume downloadable by recruiters and visitors:
 - **Phone**: [+91 8200614344](tel:+918200614344)
 - **LinkedIn**: [linkedin.com/in/afif-pathan](https://linkedin.com/in/afif-pathan)
 - **GitHub**: [github.com/afifPathan](https://github.com/afifPathan)
+
+---
+
+## ⚙️ Environment Configuration & Contact Form
+
+The contact section features an interactive dispatch form with:
+- Client-side input validation (name >= 2 chars, valid email, message >= 10 chars)
+- Hidden honeypot field (`_gotcha`) for automated spam detection
+- Dynamic `mailto:` fallback if no custom endpoint is configured
+- Quick one-click "Copy email" button with dynamic toast feedback
+
+### Connecting Formspree or EmailJS
+
+To route submissions to your inbox via a webhook service:
+
+1. Create a `.env` or `.env.local` file in the project root:
+   ```bash
+   # Formspree endpoint example:
+   VITE_CONTACT_ENDPOINT=https://formspree.io/f/your_form_id
+
+   # Or EmailJS / Custom Serverless Webhook:
+   # VITE_CONTACT_ENDPOINT=https://api.emailjs.com/api/v1.0/email/send
+   ```
+
+2. **Note on Default Behavior**: If `VITE_CONTACT_ENDPOINT` is unset or omitted in the environment, the form gracefully falls back to generating a pre-filled `mailto:` draft in the user's native email client, ensuring messages are never lost.
+
+---
+
+## 💬 Adding Testimonials & Recommendations
+
+The portfolio includes an automated `Testimonials` section that remains cleanly unmounted until testimonials are added:
+
+1. Open `src/data/portfolioData.ts`.
+2. Populate the `TESTIMONIALS` array with authentic endorsements:
+   ```ts
+   export const TESTIMONIALS: Testimonial[] = [
+     {
+       id: 'rec-1',
+       name: 'Jane Doe',
+       role: 'VP of Engineering',
+       company: 'Enterprise Client',
+       content: 'Afif established exceptional Clean Architecture standards across our Flutter platform...',
+       avatarUrl: '/testimonials/jane.jpg',
+       linkedinUrl: 'https://linkedin.com/in/...',
+     },
+   ];
+   ```
+3. Once entries exist in `TESTIMONIALS`, the section automatically mounts with smooth carousel navigation and card animations.
+
+---
+
+## 🧪 Comprehensive Verification Pipeline
+
+Run the full end-to-end verification pipeline locally:
+
+```bash
+npm run verify
+```
+
+This runs in sequence:
+1. `tsc --noEmit` — Strict TypeScript type-checking across all source files.
+2. `npm test` — 23 Vitest unit tests covering data integrity, state machines, and components.
+3. `npm run build` — Production Vite bundle compilation with code-splitting and gzip verification (<120 kB gzip entry JS, <20 kB gzip CSS).
+4. `npm run test:e2e` — 28 Playwright automated end-to-end tests across Chromium Desktop (1440x900) and Chromium Mobile (390x844), checking:
+   - Zero WCAG 2.1 AA accessibility violations in dark and light modes via `@axe-core/playwright`.
+   - Focus traps, keyboard navigation, and `prefers-reduced-motion` compliance.
+   - Zero horizontal overflow across all responsive viewports (320px to 1920px).
+   - Core Web Vitals (LCP < 600ms, CLS < 0.02, FCP < 30ms).
+   - Strict audit for prohibited phrases or synthetic placeholders.
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,10 @@
     <meta
       name="description"
       content="Portfolio of Afif Pathan, Senior Mobile Architect and Flutter Lead with 8+ years experience building production-grade cross-platform apps, Clean Architecture, real-time trading bots, and AI systems."
+    />
+    <meta
+      name="keywords"
+      content="Afif Pathan, Senior Mobile Architect, Flutter Lead, Clean Architecture, BLoC, Riverpod, TypeScript, Python Trading Bots, AI Systems, Mobile Architecture"
     />
     <meta name="author" content="Afif Pathan" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -32,35 +36,55 @@
     />
     <meta property="twitter:image" content="https://afifpathan.github.io/og-image.png" />
 
-    <!-- Favicon -->
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
 
-    <!-- Default Theme Bootstrap -->
+    <!-- Dual Theme-Color for Light and Dark Modes -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F8FAFC" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0B14" />
+
+    <!-- Default Theme Bootstrap (Dark-First) -->
     <script>
       (function() {
         try {
           var saved = localStorage.getItem('ap-portfolio-theme-v2');
-          if (saved === 'dark') {
-            document.documentElement.classList.add('dark');
-            document.documentElement.classList.remove('light');
-          } else {
+          if (saved === 'light') {
             document.documentElement.classList.add('light');
             document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
           }
         } catch(e) {
-          document.documentElement.classList.add('light');
+          document.documentElement.classList.add('dark');
         }
       })();
     </script>
 
-    <!-- Fonts: Plus Jakarta Sans (Grotesk) & Instrument Serif (Editorial Italic) -->
+    <!-- Google Fonts: Space Grotesk (Headings), Inter (Body), JetBrains Mono (Code/Labels) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+      />
+    </noscript>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -99,8 +123,65 @@
       }
     </script>
   </head>
-  <body class="bg-white text-slate-900 antialiased selection:bg-blue-500/20 selection:text-blue-900">
-    <div id="root"></div>
+  <body class="bg-[var(--bg-base)] text-[var(--text-primary)] antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden font-sans">
+    <!-- Noscript Fallback Notice -->
+    <noscript>
+      <div style="padding: 1.5rem; text-align: center; background: #111320; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); font-family: sans-serif;">
+        <p>JavaScript is recommended for dynamic telemetry. Read the portfolio summary below or <a href="/resume.pdf" style="color: #5B8CFF; text-decoration: underline;">download my résumé (PDF)</a>.</p>
+      </div>
+    </noscript>
+
+    <!-- Semantic Static Fallback inside #root (replaced upon client hydration) -->
+    <div id="root">
+      <header style="padding: 2.5rem 1rem; max-width: 80rem; margin: 0 auto;">
+        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Afif Pathan</h1>
+        <p style="font-size: 1.125rem; color: #5B8CFF; margin-bottom: 1rem;">Senior Mobile Architect &amp; Flutter Lead</p>
+        <p style="max-width: 48rem; line-height: 1.6; margin-bottom: 1.5rem;">
+          8+ years of software engineering excellence, including 6+ years architecting production-grade cross-platform platforms and 25+ production systems across EdTech, InsurTech, Fintech, algorithmic trading, and AI workflows.
+        </p>
+        <nav aria-label="Static Navigation" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#about" style="color: inherit; text-decoration: underline;">About</a>
+          <a href="#philosophy" style="color: inherit; text-decoration: underline;">Architecture</a>
+          <a href="#projects" style="color: inherit; text-decoration: underline;">Work</a>
+          <a href="#experience" style="color: inherit; text-decoration: underline;">Experience</a>
+          <a href="#skills" style="color: inherit; text-decoration: underline;">Skills</a>
+          <a href="#contact" style="color: inherit; text-decoration: underline;">Contact</a>
+          <a href="/resume.pdf" style="color: #5B8CFF; text-decoration: underline; font-weight: 600;">Download Résumé (PDF)</a>
+        </nav>
+      </header>
+
+      <main style="padding: 1rem; max-width: 80rem; margin: 0 auto;">
+        <section id="about" style="margin-bottom: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem;">About &amp; Perspective</h2>
+          <p style="line-height: 1.6;">
+            Specializing in enterprise Clean Architecture, deterministic BLoC &amp; Riverpod state machines, real-time WebSocket telemetry, and Python algorithmic trading daemons.
+          </p>
+        </section>
+
+        <section id="projects" style="margin-bottom: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem;">Production Systems</h2>
+          <ul style="line-height: 1.8;">
+            <li><strong>Trading Bot Terminal Dashboard</strong> — Real-time observability SPA for algorithmic trading systems.</li>
+            <li><strong>Buyzaar</strong> — Full-stack hyperlocal commerce platform on Flutter Web &amp; Firebase.</li>
+            <li><strong>Degreed Enterprise Mobile</strong> — Enterprise global workforce learning platform.</li>
+            <li><strong>NewsPod</strong> — Audio news streaming and regional curation platform (Award Winner).</li>
+          </ul>
+        </section>
+
+        <section id="contact" style="margin-bottom: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem;">Contact &amp; Connect</h2>
+          <p style="line-height: 1.6; margin-bottom: 1rem;">
+            Available for Staff/Senior Mobile Architect roles, enterprise Flutter engineering leadership, and architecture advisory.
+          </p>
+          <p style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://linkedin.com/in/afif-pathan" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">LinkedIn</a>
+            <a href="https://github.com/afifPathan" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">GitHub</a>
+            <a href="/resume.pdf" style="color: #5B8CFF; text-decoration: underline; font-weight: 600;">Download Résumé</a>
+          </p>
+        </section>
+      </main>
+    </div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

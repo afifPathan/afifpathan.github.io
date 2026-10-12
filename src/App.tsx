@@ -1,48 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Hero } from './sections/Hero';
-import { Snapshot } from './sections/Snapshot';
-import { Philosophy } from './sections/Philosophy';
-import { Projects } from './sections/Projects';
-import { Experience } from './sections/Experience';
-import { Skills } from './sections/Skills';
-import { Leadership } from './sections/Leadership';
-import { Education } from './sections/Education';
-import { Contact } from './sections/Contact';
 import { VerticalArchSplit } from './components/VerticalArchSplit';
-import { useReducedMotion } from './hooks/useReducedMotion';
+import { CustomCursor } from './components/CustomCursor';
+import { Preloader } from './components/Preloader';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { TESTIMONIALS } from './data/portfolioData';
+
+// Code-split below-the-fold sections to optimize initial bundle and LCP
+const Snapshot = React.lazy(() =>
+  import('./sections/Snapshot').then((m) => ({ default: m.Snapshot }))
+);
+const Philosophy = React.lazy(() =>
+  import('./sections/Philosophy').then((m) => ({ default: m.Philosophy }))
+);
+const Projects = React.lazy(() =>
+  import('./sections/Projects').then((m) => ({ default: m.Projects }))
+);
+const Experience = React.lazy(() =>
+  import('./sections/Experience').then((m) => ({ default: m.Experience }))
+);
+const Skills = React.lazy(() =>
+  import('./sections/Skills').then((m) => ({ default: m.Skills }))
+);
+const Leadership = React.lazy(() =>
+  import('./sections/Leadership').then((m) => ({ default: m.Leadership }))
+);
+const Education = React.lazy(() =>
+  import('./sections/Education').then((m) => ({ default: m.Education }))
+);
+const Testimonials = React.lazy(() =>
+  import('./sections/Testimonials').then((m) => ({ default: m.Testimonials }))
+);
+const Contact = React.lazy(() =>
+  import('./sections/Contact').then((m) => ({ default: m.Contact }))
+);
 
 export const App: React.FC = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
-  const prefersReducedMotion = useReducedMotion();
 
-  // Initialize theme from storage or system (strictly default: light)
+  // Initialize Lenis momentum scroll driven from GSAP ticker
+  useSmoothScroll(true);
+
+  // Initialize theme from storage (default: dark)
   useEffect(() => {
     try {
-      const savedTheme = typeof window !== 'undefined' && window.localStorage
-        ? (window.localStorage.getItem('ap-portfolio-theme-v2') as 'dark' | 'light' | null)
-        : null;
-      if (savedTheme === 'dark') {
-        setTheme('dark');
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-      } else {
+      const savedTheme =
+        typeof window !== 'undefined' && window.localStorage
+          ? (window.localStorage.getItem('ap-portfolio-theme-v2') as 'dark' | 'light' | null)
+          : null;
+      if (savedTheme === 'light') {
         setTheme('light');
         document.documentElement.classList.add('light');
         document.documentElement.classList.remove('dark');
+      } else {
+        setTheme('dark');
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
       }
     } catch {
-      setTheme('light');
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     }
   }, []);
 
   const toggleTheme = () => {
-    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
@@ -67,23 +93,17 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Desktop subtle ambient cursor glow
-  useEffect(() => {
-    if (prefersReducedMotion || window.matchMedia('(pointer: coarse)').matches) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [prefersReducedMotion]);
-
   return (
-    <div className="relative min-h-screen bg-[#f0f9ff] dark:bg-[#0f1420] text-slate-800 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200 overflow-x-hidden overflow-x-clip">
+    <div className="relative min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] flex flex-col font-sans transition-colors duration-200 overflow-x-hidden overflow-x-clip">
+      {/* Short Branded Preloader (< 1.2s, non-blocking, skipped on return & reduced motion) */}
+      <Preloader />
+
+      {/* Precision Custom Cursor */}
+      <CustomCursor />
+
       {/* Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-accent-violet to-accent-cyan z-50 origin-left"
         style={{ width: `${scrollProgress}%` }}
         role="progressbar"
         aria-valuenow={Math.round(scrollProgress)}
@@ -92,24 +112,12 @@ export const App: React.FC = () => {
         aria-label="Reading scroll progress"
       />
 
-      {/* Subtle Desktop Mouse Glow */}
-      {!prefersReducedMotion && (
-        <div
-          className="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/[0.03] dark:bg-cyan-500/[0.04] rounded-full blur-[100px] z-30 transition-transform duration-75 ease-out hidden lg:block"
-          style={{
-            left: `${cursorPos.x}px`,
-            top: `${cursorPos.y}px`,
-          }}
-          aria-hidden="true"
-        />
-      )}
-
       {/* Header */}
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
-      {/* Main Landmark: Vertical Split (Light Yellow & Light Purple) with Random Architectural Arch at Every Page */}
+      {/* Main Landmark: Vertical Split with Architectural Arches */}
       <main id="main-content" className="flex-1 w-full overflow-x-hidden overflow-x-clip">
-        {/* Section 01: Hero (Vertical Split: Left Yellow, Right Purple with Classical Roman Arch) */}
+        {/* Section 01: Hero (Above the fold, statically imported for instant LCP) */}
         <section className="w-full relative overflow-hidden">
           <VerticalArchSplit variant="roman" flipSides={false} />
           <div className="relative z-10">
@@ -117,69 +125,75 @@ export const App: React.FC = () => {
           </div>
         </section>
 
-        {/* Section 02: Snapshot (Vertical Split: Left Purple, Right Yellow with Gothic Pointed Lancet Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="cathedral" flipSides={true} />
-          <div className="relative z-10">
-            <Snapshot />
-          </div>
-        </section>
+        {/* Below-the-fold sections wrapped in Suspense for optimal bundle size */}
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          {/* Section 02: Snapshot */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="cathedral" flipSides={true} />
+            <div className="relative z-10">
+              <Snapshot />
+            </div>
+          </section>
 
-        {/* Section 03: Philosophy (Vertical Split: Left Yellow, Right Purple with Venetian Ogee S-Curve Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="ogee" flipSides={false} />
-          <div className="relative z-10">
-            <Philosophy />
-          </div>
-        </section>
+          {/* Section 03: Philosophy */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="ogee" flipSides={false} />
+            <div className="relative z-10">
+              <Philosophy />
+            </div>
+          </section>
 
-        {/* Section 04: Projects & Systems Showcase (Vertical Split: Left Purple, Right Yellow with Parabolic Catenary Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="parabolic" flipSides={true} />
-          <div className="relative z-10">
-            <Projects />
-          </div>
-        </section>
+          {/* Section 04: Projects & Systems Showcase */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="parabolic" flipSides={true} />
+            <div className="relative z-10">
+              <Projects />
+            </div>
+          </section>
 
-        {/* Section 05: Experience Timeline (Vertical Split: Left Yellow, Right Purple with Trefoil Arcade Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="trefoil" flipSides={false} />
-          <div className="relative z-10">
-            <Experience />
-          </div>
-        </section>
+          {/* Section 05: Experience Timeline */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="trefoil" flipSides={false} />
+            <div className="relative z-10">
+              <Experience />
+            </div>
+          </section>
 
-        {/* Section 06: Skills / Arsenal Matrix (Vertical Split: Left Purple, Right Yellow with Moorish Keyhole Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="horseshoe" flipSides={true} />
-          <div className="relative z-10">
-            <Skills />
-          </div>
-        </section>
+          {/* Section 06: Skills / Arsenal Matrix */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="horseshoe" flipSides={true} />
+            <div className="relative z-10">
+              <Skills />
+            </div>
+          </section>
 
-        {/* Section 07: Leadership & Milestones (Vertical Split: Left Yellow, Right Purple with Art Deco Stepped Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="stepped" flipSides={false} />
-          <div className="relative z-10">
-            <Leadership />
-          </div>
-        </section>
+          {/* Section 07: Leadership & Milestones */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="stepped" flipSides={false} />
+            <div className="relative z-10">
+              <Leadership />
+            </div>
+          </section>
 
-        {/* Section 08: Education & Honors (Vertical Split: Left Purple, Right Yellow with Compression Vault Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="vault" flipSides={true} />
-          <div className="relative z-10">
-            <Education />
-          </div>
-        </section>
+          {/* Section 08: Education & Honors */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="vault" flipSides={true} />
+            <div className="relative z-10">
+              <Education />
+            </div>
+          </section>
 
-        {/* Section 09: Contact & Channels (Vertical Split: Left Yellow, Right Purple with Grand Concentric Portal Arch) */}
-        <section className="w-full relative overflow-hidden">
-          <VerticalArchSplit variant="portal" flipSides={false} />
-          <div className="relative z-10">
-            <Contact />
-          </div>
-        </section>
+          {/* Section 09: Testimonials (lazy loaded ONLY when testimonials exist) */}
+          {TESTIMONIALS.length > 0 && <Testimonials />}
+
+          {/* Section 10: Contact & Channels */}
+          <section className="w-full relative overflow-hidden">
+            <VerticalArchSplit variant="portal" flipSides={false} />
+            <div className="relative z-10">
+              <Contact />
+            </div>
+          </section>
+        </Suspense>
       </main>
 
       {/* Footer */}

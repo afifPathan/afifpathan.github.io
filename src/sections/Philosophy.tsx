@@ -2,90 +2,107 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArchitectureDiagram } from '../components/ArchitectureDiagram';
 import { PHILOSOPHY_PRINCIPLES } from '../data/portfolioData';
-import { Code, CheckCircle, Terminal } from 'lucide-react';
+import { Code, Terminal } from 'lucide-react';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 export const Philosophy: React.FC = () => {
   const [selectedPrincipleIndex, setSelectedPrincipleIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
   const activePrinciple = PHILOSOPHY_PRINCIPLES[selectedPrincipleIndex];
 
   return (
     <section
       id="philosophy"
       aria-label="Architecture and Engineering Philosophy"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-x-hidden overflow-x-clip"
+      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-x-hidden overflow-x-clip scroll-mt-24"
     >
-      {/* Signature Section Marker from Reference */}
-      <div className="section-marker">
-        <span>03 — ARCHITECTURAL PHILOSOPHY · HOW I BUILD</span>
-        <span>ARCHITECTURE &amp; SYSTEM PHILOSOPHY</span>
+      {/* Section Header Tag */}
+      <div className="flex items-center gap-2 mb-3 text-xs font-mono tracking-widest text-primary uppercase">
+        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+        <span>Architecture &amp; System Philosophy</span>
       </div>
 
-      <div className="mb-12">
-        <motion.h2
-          initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
-          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-4"
-        >
-          Engineering Principles &amp;<br />
-          <em className="text-slate-900 dark:text-white font-serif font-normal italic">
-            System Boundaries.
-          </em>
-        </motion.h2>
-        <div className="text-sm font-mono text-blue-700 dark:text-cyan-400 font-semibold mb-2">
-          Enterprise Clean Architecture &amp; System Boundary Model
+      {/* Balanced Desktop Header */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div>
+          <motion.h2
+            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4 }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white font-heading tracking-tight leading-[1.08] mb-3"
+          >
+            Engineering Principles &amp;<br />
+            <span className="bg-gradient-to-r from-primary via-accent-violet to-accent-cyan bg-clip-text text-transparent font-normal italic font-serif">
+              System Boundaries.
+            </span>
+          </motion.h2>
+          <p className="text-dark-textMuted text-sm sm:text-base max-w-2xl font-normal">
+            Strict architectural boundaries, deterministic reactive data flow, and resilient fail-safes designed for continuous enterprise scale.
+          </p>
         </div>
-        <p className="text-slate-700 dark:text-slate-300 max-w-3xl text-sm sm:text-base leading-relaxed">
-          Robust mobile engineering is not about assembling widgets; it is about establishing strict architectural boundaries, deterministic reactive data flow, and resilient fail-safes that guarantee continuity across offline edge conditions and market volatility.
-        </p>
+
+        {/* Supporting Header Card (Hidden on Mobile) */}
+        <div className="hidden lg:block lg:max-w-xs w-full p-4 rounded-2xl bg-dark-surface/65 backdrop-blur-xl border border-white/10 shadow-glass shrink-0">
+          <div className="text-[10px] font-mono uppercase tracking-wider text-accent-cyan font-bold mb-1.5 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
+            <span>Architectural Rigor</span>
+          </div>
+          <p className="text-white/80 text-xs font-mono leading-relaxed">
+            Inversion of Control, testable state machines, and offline-first edge persistence.
+          </p>
+        </div>
       </div>
 
-      {/* Interactive Clean Architecture Diagram Component: Fast Repeat Swipe from Left */}
+      {/* Interactive Clean Architecture Diagram Component */}
       <motion.div
-        initial={{ opacity: 0, x: -110 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.08 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-16 transform-gpu"
+        initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.45 }}
+        className="mb-14"
       >
         <ArchitectureDiagram />
       </motion.div>
 
-      {/* Architectural Principles & Code Snippets Explorer: Fast Repeat Swipe from Right */}
+      {/* Architectural Principles & Code Snippets Explorer */}
       <motion.div
-        initial={{ opacity: 0, x: 110 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.08 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="glass-panel rounded-2xl p-6 lg:p-8 border border-slate-200/60 dark:border-white/10 bg-white/35 dark:bg-slate-800/35 backdrop-blur-md shadow-xl transform-gpu"
+        initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.45 }}
+        className="rounded-2xl p-6 sm:p-8 bg-dark-surface/65 backdrop-blur-xl border border-white/10 shadow-glass"
       >
-        <div className="flex items-center gap-2 text-xs font-mono text-indigo-700 dark:text-indigo-400 mb-6 uppercase tracking-wider font-semibold">
-          <Terminal className="w-4 h-4" />
-          <span>Core Engineering Principles &amp; Verified Implementations</span>
+        <div className="flex items-center gap-2 text-xs font-mono text-accent-cyan mb-6 uppercase tracking-wider font-semibold">
+          <Terminal className="w-4 h-4 text-accent-cyan" />
+          <span>Core Engineering Principles &amp; Concrete Implementations</span>
         </div>
 
         {/* Principle Tab Selectors */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
           {PHILOSOPHY_PRINCIPLES.map((principle, idx) => {
             const isSelected = idx === selectedPrincipleIndex;
             return (
               <button
                 key={principle.title}
                 onClick={() => setSelectedPrincipleIndex(idx)}
-                className={`p-4 rounded-xl text-left transition-all duration-200 border flex flex-col justify-between backdrop-blur-md shadow-sm ${
+                className={`p-4 rounded-xl text-left transition-all duration-200 border flex flex-col justify-between cursor-pointer ${
                   isSelected
-                    ? 'bg-blue-50/80 dark:bg-cyan-500/20 border-blue-400 dark:border-cyan-500/40 shadow-md'
-                    : 'bg-white/40 dark:bg-slate-800/40 border-slate-200/60 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20'
+                    ? 'bg-dark-surfaceElevated border-primary/50 shadow-glass ring-1 ring-primary/20'
+                    : 'bg-black/25 border-white/5 hover:border-white/20 hover:bg-black/40'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono text-slate-500">0{idx + 1}</span>
-                  {isSelected && <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400" />}
+                  <span className="text-xs font-mono text-dark-textDim font-bold">
+                    0{idx + 1}
+                  </span>
+                  {isSelected && (
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  )}
                 </div>
                 <h3
-                  className={`text-xs font-semibold leading-snug ${
-                    isSelected ? 'text-slate-900 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400'
+                  className={`text-xs sm:text-sm font-semibold leading-snug ${
+                    isSelected ? 'text-white font-bold' : 'text-dark-textMuted'
                   }`}
                 >
                   {principle.title}
@@ -99,42 +116,50 @@ export const Philosophy: React.FC = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activePrinciple.title}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start"
           >
-            {/* Description Column */}
+            {/* Left: Principle Narrative (5 cols) */}
             <div className="lg:col-span-5 space-y-4">
               <div>
-                <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 font-semibold">ARCHITECTURAL RATIONALE</span>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">{activePrinciple.title}</h3>
-                <p className="text-sm font-semibold text-indigo-700 dark:text-indigo-300 mt-1">{activePrinciple.subtitle}</p>
+                <span className="text-xs font-mono text-accent-cyan font-semibold uppercase tracking-wider">
+                  {activePrinciple.subtitle}
+                </span>
+                <h4 className="text-xl font-bold text-white font-heading mt-1">
+                  {activePrinciple.title}
+                </h4>
               </div>
-
-              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-dark-textMuted leading-relaxed font-normal">
                 {activePrinciple.description}
               </p>
-
-              <div className="pt-4 border-t border-slate-200/60 dark:border-white/5 flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400">
-                <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>Enforced in production at Degreed, Buyzaar &amp; Roadzen</span>
-              </div>
             </div>
 
-            {/* Code Snippet Column */}
-            <div className="lg:col-span-7 rounded-xl overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-white/30 dark:bg-[#1e2538]/40 backdrop-blur-md shadow-md transition-colors">
-              <div className="bg-white/50 dark:bg-[#283248]/50 px-4 py-2.5 border-b border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between text-xs font-mono">
-                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Code className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
-                  <span className="font-semibold">architectural_pattern.dart / .py</span>
+            {/* Right: Real Code Implementation (7 cols) */}
+            <div className="lg:col-span-7">
+              <div className="code-editor-surface rounded-xl bg-[#090A10] border border-white/10 overflow-hidden shadow-glass">
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[#121422] border-b border-white/10 text-xs font-mono text-dark-textMuted">
+                  <div className="flex items-center gap-2">
+                    <Code className="w-3.5 h-3.5 text-accent-cyan" />
+                    <span className="text-white/90 text-xs font-semibold">
+                      Production Implementation (Dart)
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-emerald-400 font-mono">Clean Architecture</span>
                 </div>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-medium">Production Snippet</span>
+                <div
+                  tabIndex={0}
+                  role="region"
+                  aria-label="Architecture code specification"
+                  className="p-4 overflow-x-auto text-xs font-mono text-white/90 leading-relaxed max-h-[300px] no-scrollbar focus:outline-none focus:ring-1 focus:ring-primary/40"
+                >
+                  <pre>
+                    <code>{activePrinciple.codeSnippet}</code>
+                  </pre>
+                </div>
               </div>
-              <pre className="p-4 sm:p-5 text-xs font-mono text-slate-800 dark:text-slate-200 overflow-x-auto leading-relaxed bg-white/20 dark:bg-[#1e2538]/20 transition-colors">
-                <code>{activePrinciple.codeSnippet}</code>
-              </pre>
             </div>
           </motion.div>
         </AnimatePresence>
